@@ -1,0 +1,75 @@
+{
+  "name": "d3-charts",
+  "version": "0.0.0",
+  "author": "Anand Tiwary",
+  "repository": "git@github.com:Ikshanam/d3-charts.git",
+  "license": "MIT",
+  "main": "dist/d3-charts.umd.js",
+  "module": "dist/d3-charts.es5.js",
+  "typings": "dist/types/d3-charts.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "clean": "rm -rf node_modules dist",
+    "serve:cli": "ng serve",
+    "build": "tsc --noEmit && rollup -c rollup.config.ts",
+    "start": "rollup -c rollup.config.ts -w",
+    "test": "ng test --watch=false --browsers=ChromeHeadless",
+    "lint": "ng lint",
+    "compodoc": "compodoc -p projects/cartesian/tsconfig.lib.json --output ./docs",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
+  },
+  "private": true,
+  "dependencies": {
+    "d3": "^5.9.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@compodoc/compodoc": "^1.1.10",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "@rollup/plugin-typescript": "^8.2.0",
+    "@types/d3-array": "^1.0.12",
+    "@types/d3-axis": "^1.0.12",
+    "@types/d3-color": "^1.0.12",
+    "@types/d3-format": "^1.0.12",
+    "@types/d3-scale": "^1.0.12",
+    "@types/d3-selection": "^1.0.12",
+    "@types/d3-shape": "^1.0.12",
+    "@types/d3-time-format": "^2.1.1",
+    "@types/d3-transition": "^2.0.0",
+    "@types/lodash-es": "^4.17.4",
+    "commitizen": "^4.0.3",
+    "cpr": "~3.0.0",
+    "cz-conventional-changelog": "^3.0.2",
+    "husky": "^3.0.5",
+    "lodash-es": "^4.17.15",
+    "prettier": "~1.18.2",
+    "pretty-quick": "^1.11.1",
+    "rollup": "^2.42.1",
+    "semantic-release": "^17.4.2",
+    "typescript": "^4.2",
+    "webpack": "^4.32.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  }
+}
