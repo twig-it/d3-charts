@@ -4,12 +4,9 @@
   "author": "Anand Tiwary",
   "repository": "git@github.com:Ikshanam/d3-charts.git",
   "license": "MIT",
-  "main": "d3-charts.umd.js",
-  "module": "d3-charts.es5.js",
-  "typings": "types/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "main": "./d3-charts.umd.js",
+  "module": "./d3-charts.es5.js",
+  "typings": "./types/index.d.ts",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
