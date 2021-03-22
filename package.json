@@ -89,9 +89,6 @@
         "@semantic-release/github",
         {
           "assets": [
-            [
-              "dist/charts"
-            ],
             {
               "path": "CHANGELOG.md",
               "label": "Changelog"
