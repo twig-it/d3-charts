@@ -13,11 +13,17 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
+  "keywords": [
+    "D3",
+    "D3Js",
+    "Charts",
+    "Visualization"
+  ],
   "scripts": {
     "clean": "rm -rf node_modules dist",
     "serve:cli": "ng serve",
     "build": "tsc && rollup -c rollup.config.ts",
-    "build:watch": "rollup -c rollup.config.ts -w",  
+    "build:watch": "rollup -c rollup.config.ts -w",
     "commit": "git-cz",
     "semantic-release": "semantic-release"
   },

@@ -15,6 +15,7 @@
     "noUnusedParameters": true,
     "downlevelIteration": true,
     "declarationDir": "dist/types",
+    "outDir": "dist/lib",
     "types": ["jest"]
   },
   "include": ["src"]
