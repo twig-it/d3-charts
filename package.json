@@ -16,7 +16,7 @@
   "scripts": {
     "clean": "rm -rf node_modules dist",
     "serve:cli": "ng serve",
-    "build": "tsc && rollup -c rollup.config.ts",
+    "build": "npm run bundle:libs",
     "bundle:libs": "rollup -c ./projects/charts/rollup.config.ts",
     "bundle:watch": "rollup -c ./projects/charts/rollup.config.ts -w",
     "commit": "git-cz",
