@@ -23,6 +23,7 @@
       "@ikshanam/d3-charts/*": ["dist/charts/*"]
     }
   },
-  "include": ["src/**/*"]
+  "include": ["../src/**/*"],
+  "files": ["../src/**/*"]
 }
 

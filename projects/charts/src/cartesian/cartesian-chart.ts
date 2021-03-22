@@ -1,6 +1,7 @@
 import { select } from 'd3-selection';
+import { defaultsDeep } from 'lodash-es';
 import { CartesianAxis } from './axis/cartesian-axis';
-import { CartesianOptions, DataPoint, SeriesOptions } from './cartesian';
+import { CartesianOptions, DataPoint, getDefaultOptions, RecursivePartial, SeriesOptions } from './cartesian';
 import { CartesianChartSelection, CartesianObject } from './cartesian-object';
 import { CartesianLayout } from './layout/cartesian-layout';
 import { CartesianLegend } from './legend/cartesian-legend';
@@ -16,9 +17,9 @@ export class CartesianChart extends CartesianObject {
 
   private readonly chartSelection: CartesianChartSelection;
 
-  public constructor(chartContainer: HTMLElement, options: CartesianOptions) {
-    super(chartContainer, options);
-    this.chartSelection = this.buildChartSelection(chartContainer, options);
+  public constructor(chartContainer: HTMLElement, partialOptions: RecursivePartial<CartesianOptions>) {
+    super(chartContainer, defaultsDeep({}, partialOptions, getDefaultOptions()));
+    this.chartSelection = this.buildChartSelection(chartContainer, this.options);
   }
 
   public draw(): void {

@@ -15,7 +15,8 @@ export {
   VisualizationType,
   ToolTipOption,
   DataPoint,
-  OrdinalDataPoint
+  OrdinalDataPoint,
+  RecursivePartial
 } from './cartesian/cartesian';
 
 export { CartesianObject } from './cartesian/cartesian-object';

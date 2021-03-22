@@ -125,3 +125,30 @@ export interface OrdinalDataPoint {
   x: string;
   y: number;
 }
+
+export const getDefaultOptions = (): CartesianOptions => {
+  return {
+    animation: false,
+    style: {
+      backgroundColor: '#FFFFFF',
+      fontFamily: '"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif',
+      fontSize: '12px'
+    },
+    margin: {
+      top: 5,
+      left: 5,
+      bottom: 5,
+      right: 5
+    },
+    xAxis: [],
+    yAxis: [],
+    series: [],
+    legend: {
+      title: '',
+      visible: true,
+      align: LegendAlign.Right
+    }
+  };
+}
+
+export type RecursivePartial<T> = { [P in keyof T]?: RecursivePartial<T[P]> };
