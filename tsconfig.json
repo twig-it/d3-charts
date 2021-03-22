@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "moduleResolution": "node",
     "module": "esNext",
     "target": "es5",
@@ -16,8 +17,12 @@
     "downlevelIteration": true,
     "declarationDir": "dist/types",
     "outDir": "dist/lib",
-    "types": ["jest"]
+    "types": ["jest"],
+    "paths": {
+      "@ikshanam/d3-charts": ["dist/charts"],
+      "@ikshanam/d3-charts/*": ["dist/charts/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src/**/*"]
 }
 

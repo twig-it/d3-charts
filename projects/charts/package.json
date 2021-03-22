@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "d3-charts.umd.js",
   "module": "d3-charts.es5.js",
-  "typings": "types/d3-charts.d.ts",
+  "typings": "types/index.d.ts",
   "files": [
     "dist"
   ],

@@ -34,7 +34,7 @@ export default {
     "d3-transition",
   ],
   watch: {
-    include: `${rootDir}/src/**`,
+    include: `${rootDir}/**`,
   },
   plugins: [
     copy({
