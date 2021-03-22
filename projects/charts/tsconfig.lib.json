@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist/charts",
+    "target": "es2015",
+    "declaration": true,
+    "declarationDir": "types",
+    "inlineSources": true,
+    "types": []
+  },
+  "include": ["src"],
+  "exclude": ["**/*.test.ts", "**/*.spec.ts"]
+}

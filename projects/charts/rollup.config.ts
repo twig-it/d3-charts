@@ -2,12 +2,16 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import pkg from "./package.json";
+import copy from "rollup-plugin-copy";
+
+const rootDir = "./projects/charts";
+const outputDir = "dist/charts";
 
 export default {
-  input: "src/index.ts",
+  input: `${rootDir}/src/index.ts`,
   output: [
     {
-      file: pkg.main,
+      file: `${outputDir}/${pkg.main}`,
       name: pkg.name,
       format: "umd",
       sourcemap: true,
@@ -15,7 +19,7 @@ export default {
         "lodash-es": "_",
       },
     },
-    { file: pkg.module, format: "es", sourcemap: true },
+    { file: `${outputDir}/${pkg.module}`, format: "es", sourcemap: true },
   ],
   external: [
     "lodash-es",
@@ -30,10 +34,14 @@ export default {
     "d3-transition",
   ],
   watch: {
-    include: "src/**",
+    include: `${rootDir}/src/**`,
   },
   plugins: [
+    copy({
+      targets: [{ src: `${rootDir}/package.json`, dest: `${outputDir}` }],
+    }),
     typescript({
+      tsconfig: `${rootDir}/tsconfig.lib.json`,
       exclude: ["*.d.ts", "**/*.d.ts", "**/test/**", "**/*.test.ts"],
     }),
     commonjs(),

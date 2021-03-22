@@ -4,6 +4,12 @@
   "author": "Anand Tiwary",
   "repository": "git@github.com:Ikshanam/d3-charts.git",
   "license": "MIT",
+  "main": "d3-charts.umd.js",
+  "module": "d3-charts.es5.js",
+  "typings": "types/d3-charts.d.ts",
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
@@ -13,16 +19,7 @@
     "Charts",
     "Visualization"
   ],
-  "scripts": {
-    "clean": "rm -rf node_modules dist",
-    "serve:cli": "ng serve",
-    "build": "tsc && rollup -c rollup.config.ts",
-    "bundle:libs": "rollup -c ./projects/charts/rollup.config.ts",
-    "bundle:watch": "rollup -c ./projects/charts/rollup.config.ts -w",
-    "commit": "git-cz",
-    "semantic-release": "semantic-release"
-  },
-  "private": true,
+  "public": true,
   "peerDependencies": {
     "d3": "^5.9.2",
     "lodash-es": "^4.17.21"
@@ -36,7 +33,6 @@
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/github": "^7.2.0",
-    "@semantic-release/npm": "^7.0.10",
     "@semantic-release/release-notes-generator": "^9.0.2",
     "@types/d3-array": "^1.0.12",
     "@types/d3-axis": "^1.0.12",
@@ -60,7 +56,6 @@
     "prettier": "~1.18.2",
     "pretty-quick": "^1.11.1",
     "rollup": "^2.42.1",
-    "rollup-plugin-copy": "^3.4.0",
     "semantic-release": "^17.4.2",
     "ts-jest": "^26.5.3",
     "tslib": "^2.1.0",
@@ -80,17 +75,11 @@
         }
       ],
       [
-        "@semantic-release/npm",
-        {
-          "pkgRoot": "dist/charts"
-        }
-      ],
-      [
         "@semantic-release/github",
         {
           "assets": [
             [
-              "dist/charts"
+              "dist"
             ],
             {
               "path": "CHANGELOG.md",
@@ -100,20 +89,5 @@
         }
       ]
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $GIT_PARAMS"
-    }
   }
 }
