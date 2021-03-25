@@ -10,6 +10,7 @@
     "declaration": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "preserveConstEnums": true,
     "esModuleInterop": true,
     "noEmitOnError": true,
     "noUnusedLocals": true,
@@ -23,7 +24,6 @@
       "@ikshanam/d3-charts/*": ["dist/charts/*"]
     }
   },
-  "include": ["../src/**/*"],
-  "files": ["../src/**/*"]
+  "include": ["src/**/*"]
 }
 
