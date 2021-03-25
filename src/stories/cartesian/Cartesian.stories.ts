@@ -1,4 +1,8 @@
-import { AxisScaleType, CartesianChart, VisualizationType } from "@ikshanam/d3-charts";
+import {
+  AxisScaleType,
+  CartesianChart,
+  VisualizationType
+} from "@ikshanam/d3-charts";
 import { createCartesian } from "./cartesian";
 
 export default {
@@ -8,10 +12,10 @@ export default {
     primary: { control: "boolean" },
     backgroundColor: { control: "color" },
     size: {
-      control: { type: "select", options: ["small", "medium", "large"] },
+      control: { type: "select", options: ["small", "medium", "large"] }
     },
-    onClick: { action: "onClick" },
-  },
+    onClick: { action: "onClick" }
+  }
 };
 
 // const container = createCartesian();
@@ -19,14 +23,14 @@ const options = {
   series: [
     {
       visualization: VisualizationType.Line,
-      name: 'First series',
-      color: '#2D1C90',
+      name: "First series",
+      color: "#2D1C90",
       xIndex: 0,
       yIndex: 0,
       visible: true,
       tooltip: {
         visible: false,
-        formatter: () => ''
+        formatter: () => ""
       },
       data: [
         {
@@ -65,14 +69,14 @@ const options = {
     },
     {
       visualization: VisualizationType.Area,
-      name: 'Second series',
-      color: '#409FF0',
+      name: "Second series",
+      color: "#409FF0",
       xIndex: 1,
       yIndex: 1,
       visible: true,
       tooltip: {
         visible: false,
-        formatter: () => ''
+        formatter: () => ""
       },
       data: [
         {
@@ -112,53 +116,53 @@ const options = {
   ],
   xAxis: [
     {
-      title: 'XAxis 1 label',
+      title: "XAxis 1 label",
       scale: AxisScaleType.Time,
       grid: {
         visible: true,
-        color: '#D3D3D3'
+        color: "#D3D3D3"
       },
       visible: true,
       opposite: false,
-      color: '#4b0082'
+      color: "#4b0082"
     },
     {
-      title: 'XAxis 2 label',
+      title: "XAxis 2 label",
       scale: AxisScaleType.Time,
       grid: {
         visible: true,
-        color: '#409FF0'
+        color: "#409FF0"
       },
       visible: true,
       opposite: true,
-      color: '#4b0082'
+      color: "#4b0082"
     }
   ],
   yAxis: [
     {
-      title: 'YAxis 1 Label',
+      title: "YAxis 1 Label",
       scale: AxisScaleType.Linear,
       grid: {
         visible: true,
-        color: '#D3D3D3'
+        color: "#D3D3D3"
       },
       visible: true,
       opposite: false,
-      color: '#4b0082'
+      color: "#4b0082"
     },
     {
-      title: 'YAxis 2 Label',
+      title: "YAxis 2 Label",
       scale: AxisScaleType.Linear,
       grid: {
         visible: true,
-        color: '#409FF0'
+        color: "#409FF0"
       },
       visible: true,
       opposite: true,
-      color: '#4b0082'
+      color: "#4b0082"
     }
   ]
-};;
+};
 
 const Template = () => {
   // You can either use a function to create DOM elements or use a plain html string!

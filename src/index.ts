@@ -25,12 +25,12 @@ cartesianObject.addSeries(
       { x: 1516321670325, y: 512 },
       { x: 1516322670325, y: 1024 },
       { x: 1516323670325, y: 2048 },
-      { x: 1516324670325, y: 4096 },
+      { x: 1516324670325, y: 4096 }
     ],
     tooltip: {
       visible: true,
-      formatter: () => "Tooltip Test",
-    },
+      formatter: () => "Tooltip Test"
+    }
   },
   true
 );

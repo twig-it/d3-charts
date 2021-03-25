@@ -1,4 +1,3 @@
-
 /*
  * Options for configuring the chart
  */
@@ -55,10 +54,10 @@ export interface AxisGridOptions {
  * Specifies the scale type for the given axis
  */
 export enum AxisScaleType {
-  Linear = 'linear',
-  Logarithmic = 'logarithmic',
-  Time = 'datetime',
-  Category = 'category'
+  Linear = "linear",
+  Logarithmic = "logarithmic",
+  Time = "datetime",
+  Category = "category"
 }
 
 /*
@@ -74,8 +73,8 @@ export interface LegendOptions {
  * Specifies the alignment for legend
  */
 export enum LegendAlign {
-  Right = 'right',
-  Bottom = 'bottom'
+  Right = "right",
+  Bottom = "bottom"
 }
 
 /*
@@ -96,10 +95,10 @@ export interface SeriesOptions {
  * Specifies the visualization type for the given series
  */
 export enum VisualizationType {
-  Column = 'column',
-  Area = 'area',
-  Line = 'line',
-  Points = 'points'
+  Column = "column",
+  Area = "area",
+  Line = "line",
+  Points = "points"
 }
 
 /*
@@ -130,9 +129,10 @@ export const getDefaultOptions = (): CartesianOptions => {
   return {
     animation: false,
     style: {
-      backgroundColor: '#FFFFFF',
-      fontFamily: '"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif',
-      fontSize: '12px'
+      backgroundColor: "#FFFFFF",
+      fontFamily:
+        '"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif',
+      fontSize: "12px"
     },
     margin: {
       top: 5,
@@ -144,11 +144,11 @@ export const getDefaultOptions = (): CartesianOptions => {
     yAxis: [],
     series: [],
     legend: {
-      title: '',
+      title: "",
       visible: true,
       align: LegendAlign.Right
     }
   };
-}
+};
 
 export type RecursivePartial<T> = { [P in keyof T]?: RecursivePartial<T[P]> };

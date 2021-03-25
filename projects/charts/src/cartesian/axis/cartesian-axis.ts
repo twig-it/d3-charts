@@ -1,24 +1,36 @@
-import { AxisRenderer } from './renderer/axis-renderer';
+import { AxisRenderer } from "./renderer/axis-renderer";
 
-import { AxisOptions, CartesianOptions } from '../cartesian';
-import { CartesianAxisData, CartesianChartSelection, ScaleType } from '../cartesian-object';
-import { ChartLayoutClass } from '../layout/cartesian-layout';
-import { CartesianAxisScale } from './cartesian-axis-scale';
-import { XAxisBottomRenderer } from './renderer/x-axis-bottom-renderer';
-import { XAxisTopRenderer } from './renderer/x-axis-top-renderer';
-import { YAxisLeftRenderer } from './renderer/y-axis-left-renderer';
-import { YAxisRightRenderer } from './renderer/y-axis-right-renderer';
+import { AxisOptions, CartesianOptions } from "../cartesian";
+import {
+  CartesianAxisData,
+  CartesianChartSelection,
+  ScaleType
+} from "../cartesian-object";
+import { ChartLayoutClass } from "../layout/cartesian-layout";
+import { CartesianAxisScale } from "./cartesian-axis-scale";
+import { XAxisBottomRenderer } from "./renderer/x-axis-bottom-renderer";
+import { XAxisTopRenderer } from "./renderer/x-axis-top-renderer";
+import { YAxisLeftRenderer } from "./renderer/y-axis-left-renderer";
+import { YAxisRightRenderer } from "./renderer/y-axis-right-renderer";
 
 export class CartesianAxis {
   private readonly cartesianAxisScale: CartesianAxisScale = new CartesianAxisScale();
 
-  public drawAxes(chartSelection: CartesianChartSelection, options: CartesianOptions): void {
-    const plotSelection = chartSelection.select<SVGGElement>(`.${ChartLayoutClass.Plot}`);
+  public drawAxes(
+    chartSelection: CartesianChartSelection,
+    options: CartesianOptions
+  ): void {
+    const plotSelection = chartSelection.select<SVGGElement>(
+      `.${ChartLayoutClass.Plot}`
+    );
     this.drawXAxes(plotSelection, options.xAxis);
     this.drawYAxes(plotSelection, options.yAxis);
   }
 
-  public drawXAxes(plotSelection: CartesianChartSelection, axisOptions: AxisOptions[]): void {
+  public drawXAxes(
+    plotSelection: CartesianChartSelection,
+    axisOptions: AxisOptions[]
+  ): void {
     this.drawAxis(plotSelection, axisOptions, true);
   }
 
@@ -29,19 +41,29 @@ export class CartesianAxis {
     axisPosition: number,
     domain: number[] | string[]
   ): void {
-    const axisData = this.getAxisData(plotSelection, axisOption, isXAxis, axisPosition);
+    const axisData = this.getAxisData(
+      plotSelection,
+      axisOption,
+      isXAxis,
+      axisPosition
+    );
     if (!axisData) {
       return;
     }
-    const seriesSectionSelection = plotSelection.select<SVGElement>(`.${ChartLayoutClass.Series}`);
-    const seriesWidth = Number(seriesSectionSelection.attr('width'));
-    const seriesHeight = Number(seriesSectionSelection.attr('height'));
+    const seriesSectionSelection = plotSelection.select<SVGElement>(
+      `.${ChartLayoutClass.Series}`
+    );
+    const seriesWidth = Number(seriesSectionSelection.attr("width"));
+    const seriesHeight = Number(seriesSectionSelection.attr("height"));
     const scale = this.setDomain(axisData, domain);
 
     const axisSectionSelection = plotSelection.select<SVGElement>(
       this.getAxisSectionClass(isXAxis, axisOption.opposite)
     );
-    const axisSelection = axisSectionSelection.selectAll<SVGGElement, CartesianAxisData>(`.axis-${axisPosition}`);
+    const axisSelection = axisSectionSelection.selectAll<
+      SVGGElement,
+      CartesianAxisData
+    >(`.axis-${axisPosition}`);
 
     const renderer = this.getRenderer(isXAxis, axisOption.opposite);
     renderer.drawAxis({
@@ -62,31 +84,51 @@ export class CartesianAxis {
     const axisSectionSelection = plotSelection.select<SVGElement>(
       this.getAxisSectionClass(isXAxis, axisOption.opposite)
     );
-    const axisSelection = axisSectionSelection.selectAll<SVGElement, CartesianAxisData | undefined>(
-      `.axis-${axisPosition}`
-    );
+    const axisSelection = axisSectionSelection.selectAll<
+      SVGElement,
+      CartesianAxisData | undefined
+    >(`.axis-${axisPosition}`);
 
     return axisSelection.datum();
   }
 
-  public setDomain(axisData: CartesianAxisData, domain: number[] | string[]): ScaleType {
-    return this.cartesianAxisScale.setDomain(axisData.scaleType, axisData.axis, domain);
+  public setDomain(
+    axisData: CartesianAxisData,
+    domain: number[] | string[]
+  ): ScaleType {
+    return this.cartesianAxisScale.setDomain(
+      axisData.scaleType,
+      axisData.axis,
+      domain
+    );
   }
 
-  private drawYAxes(plotSelection: CartesianChartSelection, axisOptions: AxisOptions[]): void {
+  private drawYAxes(
+    plotSelection: CartesianChartSelection,
+    axisOptions: AxisOptions[]
+  ): void {
     this.drawAxis(plotSelection, axisOptions, false);
   }
 
-  private drawAxis(plotSelection: CartesianChartSelection, axisOptions: AxisOptions[], isXAxis: boolean): void {
-    const seriesSectionSelection = plotSelection.select<SVGElement>(`.${ChartLayoutClass.Series}`);
-    const seriesWidth = Number(seriesSectionSelection.attr('width'));
-    const seriesHeight = Number(seriesSectionSelection.attr('height'));
+  private drawAxis(
+    plotSelection: CartesianChartSelection,
+    axisOptions: AxisOptions[],
+    isXAxis: boolean
+  ): void {
+    const seriesSectionSelection = plotSelection.select<SVGElement>(
+      `.${ChartLayoutClass.Series}`
+    );
+    const seriesWidth = Number(seriesSectionSelection.attr("width"));
+    const seriesHeight = Number(seriesSectionSelection.attr("height"));
 
     axisOptions.forEach((axisOption, axisPosition) => {
-      const axisSectionSelection = plotSelection.selectAll<SVGGElement, CartesianAxisData>(
-        this.getAxisSectionClass(isXAxis, axisOption.opposite)
+      const axisSectionSelection = plotSelection.selectAll<
+        SVGGElement,
+        CartesianAxisData
+      >(this.getAxisSectionClass(isXAxis, axisOption.opposite));
+      const axisSelection = axisSectionSelection.select<SVGGElement>(
+        `.axis-${axisPosition}`
       );
-      const axisSelection = axisSectionSelection.select<SVGGElement>(`.axis-${axisPosition}`);
 
       const renderer = this.getRenderer(isXAxis, axisOption.opposite);
       renderer.drawAxis({

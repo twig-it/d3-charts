@@ -16,10 +16,10 @@ export default {
       format: "umd",
       sourcemap: true,
       globals: {
-        "lodash-es": "_",
-      },
+        "lodash-es": "_"
+      }
     },
-    { file: `${outputDir}/${pkg.module}`, format: "es", sourcemap: true },
+    { file: `${outputDir}/${pkg.module}`, format: "es", sourcemap: true }
   ],
   external: [
     "lodash-es",
@@ -31,20 +31,20 @@ export default {
     "d3-selection",
     "d3-shape",
     "d3-time-format",
-    "d3-transition",
+    "d3-transition"
   ],
   watch: {
-    include: `${rootDir}/**`,
+    include: `${rootDir}/**`
   },
   plugins: [
     copy({
-      targets: [{ src: `${rootDir}/package.json`, dest: `${outputDir}` }],
+      targets: [{ src: `${rootDir}/package.json`, dest: `${outputDir}` }]
     }),
     typescript({
       tsconfig: `${rootDir}/tsconfig.lib.json`,
-      exclude: ["*.d.ts", "**/*.d.ts", "**/test/**", "**/*.test.ts"],
+      exclude: ["*.d.ts", "**/*.d.ts", "**/test/**", "**/*.test.ts"]
     }),
     commonjs(),
-    resolve(),
-  ],
+    resolve()
+  ]
 };

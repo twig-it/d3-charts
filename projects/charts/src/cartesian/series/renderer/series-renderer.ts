@@ -1,6 +1,10 @@
-import { SeriesOptions } from '../../cartesian';
-import { CartesianAxisData, CartesianChartSelection, DataPointSelection } from '../../cartesian-object';
-import { CartesianTooltip } from '../../tooltip/cartesian-tooltip';
+import { SeriesOptions } from "../../cartesian";
+import {
+  CartesianAxisData,
+  CartesianChartSelection,
+  DataPointSelection
+} from "../../cartesian-object";
+import { CartesianTooltip } from "../../tooltip/cartesian-tooltip";
 
 export interface SeriesRendererConfig {
   seriesSection: CartesianChartSelection;
@@ -11,7 +15,9 @@ export interface SeriesRendererConfig {
 }
 
 export abstract class SeriesRenderer {
-  protected constructor(protected readonly cartesianTooltip: CartesianTooltip) {}
+  protected constructor(
+    protected readonly cartesianTooltip: CartesianTooltip
+  ) {}
 
   public abstract drawSeries(config: SeriesRendererConfig): void;
 
@@ -20,11 +26,18 @@ export abstract class SeriesRenderer {
     seriesOption: SeriesOptions,
     seriesIndex: number
   ): CartesianChartSelection {
-    const seriesClassName = `${seriesOption.name.replace(/\s/g, '')}-${seriesIndex}`;
-    let seriesSelection = seriesSection.select<SVGGElement>(`.${seriesClassName}`);
+    const seriesClassName = `${seriesOption.name.replace(
+      /\s/g,
+      ""
+    )}-${seriesIndex}`;
+    let seriesSelection = seriesSection.select<SVGGElement>(
+      `.${seriesClassName}`
+    );
 
     if (seriesSelection.empty()) {
-      seriesSelection = seriesSection.append<SVGGElement>('svg:g').classed(seriesClassName, true);
+      seriesSelection = seriesSection
+        .append<SVGGElement>("svg:g")
+        .classed(seriesClassName, true);
     }
 
     return seriesSelection;
@@ -35,6 +48,10 @@ export abstract class SeriesRenderer {
     seriesSelection: CartesianChartSelection,
     dataPointSelection: DataPointSelection
   ): void {
-    this.cartesianTooltip.setToolTipGenerator(seriesOption, seriesSelection, dataPointSelection);
+    this.cartesianTooltip.setToolTipGenerator(
+      seriesOption,
+      seriesSelection,
+      dataPointSelection
+    );
   }
 }

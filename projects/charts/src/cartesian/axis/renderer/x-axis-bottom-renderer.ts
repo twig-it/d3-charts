@@ -1,8 +1,11 @@
-import { axisBottom, AxisScale } from 'd3-axis';
-import { AxisOptions } from '../../cartesian';
-import { SVGGAxisSelection, SVGGAxisTitleSelection } from '../../cartesian-object';
-import { CartesianAxisScale } from '../cartesian-axis-scale';
-import { AxisRenderer, AxisRendererConfig } from './axis-renderer';
+import { axisBottom, AxisScale } from "d3-axis";
+import { AxisOptions } from "../../cartesian";
+import {
+  SVGGAxisSelection,
+  SVGGAxisTitleSelection
+} from "../../cartesian-object";
+import { CartesianAxisScale } from "../cartesian-axis-scale";
+import { AxisRenderer, AxisRendererConfig } from "./axis-renderer";
 
 export class XAxisBottomRenderer extends AxisRenderer {
   public constructor(cartesianAxisScale: CartesianAxisScale) {
@@ -17,14 +20,18 @@ export class XAxisBottomRenderer extends AxisRenderer {
         rendererConfig.seriesWidth
       );
     }
-    const d3Axis = axisBottom(rendererConfig.scale as AxisScale<number | Date | string>);
+    const d3Axis = axisBottom(rendererConfig.scale as AxisScale<
+      number | Date | string
+    >);
 
     d3Axis.tickSize(-rendererConfig.seriesHeight);
     d3Axis.tickSizeInner(10);
     d3Axis.tickSizeOuter(0);
     d3Axis.tickPadding(10);
     this.setScaleFormatting(rendererConfig, d3Axis);
-    rendererConfig.axisSelection.datum(this.buildAxisData(d3Axis, rendererConfig.axisOption.scale));
+    rendererConfig.axisSelection.datum(
+      this.buildAxisData(d3Axis, rendererConfig.axisOption.scale)
+    );
 
     return rendererConfig.axisSelection.call(d3Axis);
   }
@@ -36,9 +43,14 @@ export class XAxisBottomRenderer extends AxisRenderer {
     this.drawAxisTitle(rendererConfig.axisSelection, rendererConfig.axisOption);
   }
 
-  protected drawAxisTitle(axisSelection: SVGGAxisSelection, axisOption: AxisOptions): SVGGAxisTitleSelection {
-    const xAxisWidth = Number(axisSelection.attr('width'));
+  protected drawAxisTitle(
+    axisSelection: SVGGAxisSelection,
+    axisOption: AxisOptions
+  ): SVGGAxisTitleSelection {
+    const xAxisWidth = Number(axisSelection.attr("width"));
 
-    return super.drawAxisTitle(axisSelection, axisOption).attr('transform', `translate(${xAxisWidth / 2}, 40)`);
+    return super
+      .drawAxisTitle(axisSelection, axisOption)
+      .attr("transform", `translate(${xAxisWidth / 2}, 40)`);
   }
 }

@@ -1,5 +1,5 @@
-import { AxisOptions, CartesianOptions, LegendAlign } from '../cartesian';
-import { CartesianChartSelection } from '../cartesian-object';
+import { AxisOptions, CartesianOptions, LegendAlign } from "../cartesian";
+import { CartesianChartSelection } from "../cartesian-object";
 
 interface SectionDimension {
   position: Position;
@@ -13,13 +13,13 @@ interface Position {
 }
 
 export const enum ChartLayoutClass {
-  Plot = 'plot-section',
-  Legend = 'legend-section',
-  Series = 'series-section',
-  AxisTop = 'axis-top-section',
-  AxisBottom = 'axis-bottom-section',
-  AxisLeft = 'axis-left-section',
-  AxisRight = 'axis-right-section'
+  Plot = "plot-section",
+  Legend = "legend-section",
+  Series = "series-section",
+  AxisTop = "axis-top-section",
+  AxisBottom = "axis-bottom-section",
+  AxisLeft = "axis-left-section",
+  AxisRight = "axis-right-section"
 }
 
 export class CartesianLayout {
@@ -29,9 +29,12 @@ export class CartesianLayout {
   private static readonly YAXIS_SECTION_WIDTH: number = 70;
   private static readonly XAXIS_SECTION_HEIGHT: number = 70;
 
-  public drawLayout(chartSelection: CartesianChartSelection, options: CartesianOptions): void {
-    const chartWidth = Number(chartSelection.attr('width'));
-    const chartHeight = Number(chartSelection.attr('height'));
+  public drawLayout(
+    chartSelection: CartesianChartSelection,
+    options: CartesianOptions
+  ): void {
+    const chartWidth = Number(chartSelection.attr("width"));
+    const chartHeight = Number(chartSelection.attr("height"));
     const legendProperties = options.legend;
 
     if (!legendProperties.visible) {
@@ -50,35 +53,87 @@ export class CartesianLayout {
     this.buildSeriesSection(chartSelection);
   }
 
-  private buildPlotOnlyLayout(parent: CartesianChartSelection, width: number, height: number): void {
-    this.addSection(parent, this.getPlotOnlyDimension(width, height), ChartLayoutClass.Plot);
+  private buildPlotOnlyLayout(
+    parent: CartesianChartSelection,
+    width: number,
+    height: number
+  ): void {
+    this.addSection(
+      parent,
+      this.getPlotOnlyDimension(width, height),
+      ChartLayoutClass.Plot
+    );
   }
 
-  private buildHorizontalLayout(parent: CartesianChartSelection, width: number, height: number): void {
-    this.addSection(parent, this.getHorizontalPlotDimension(width, height), ChartLayoutClass.Plot);
-    this.addSection(parent, this.getHorizontalLegendDimension(width, height), ChartLayoutClass.Legend);
+  private buildHorizontalLayout(
+    parent: CartesianChartSelection,
+    width: number,
+    height: number
+  ): void {
+    this.addSection(
+      parent,
+      this.getHorizontalPlotDimension(width, height),
+      ChartLayoutClass.Plot
+    );
+    this.addSection(
+      parent,
+      this.getHorizontalLegendDimension(width, height),
+      ChartLayoutClass.Legend
+    );
   }
 
-  private buildVerticalLayout(parent: CartesianChartSelection, width: number, height: number): void {
-    this.addSection(parent, this.getVerticalPlotDimension(width, height), ChartLayoutClass.Plot);
-    this.addSection(parent, this.getVerticalLegendDimension(width, height), ChartLayoutClass.Legend);
+  private buildVerticalLayout(
+    parent: CartesianChartSelection,
+    width: number,
+    height: number
+  ): void {
+    this.addSection(
+      parent,
+      this.getVerticalPlotDimension(width, height),
+      ChartLayoutClass.Plot
+    );
+    this.addSection(
+      parent,
+      this.getVerticalLegendDimension(width, height),
+      ChartLayoutClass.Legend
+    );
   }
 
-  private buildAxesSections(chartSelection: CartesianChartSelection, options: CartesianOptions): void {
-    const plotSelection = chartSelection.select<SVGGElement>(`.${ChartLayoutClass.Plot}`);
+  private buildAxesSections(
+    chartSelection: CartesianChartSelection,
+    options: CartesianOptions
+  ): void {
+    const plotSelection = chartSelection.select<SVGGElement>(
+      `.${ChartLayoutClass.Plot}`
+    );
 
     this.buildXAxesSections(plotSelection, options);
     this.buildYAxesSections(plotSelection, options);
   }
 
-  private buildXAxesSections(plotSelection: CartesianChartSelection, options: CartesianOptions): void {
-    const plotWidth = Number(plotSelection.attr('width'));
-    const availablePlotWidth = plotWidth - options.yAxis.length * CartesianLayout.YAXIS_SECTION_WIDTH;
+  private buildXAxesSections(
+    plotSelection: CartesianChartSelection,
+    options: CartesianOptions
+  ): void {
+    const plotWidth = Number(plotSelection.attr("width"));
+    const availablePlotWidth =
+      plotWidth - options.yAxis.length * CartesianLayout.YAXIS_SECTION_WIDTH;
     const offsetX =
-      options.yAxis.filter(axisOption => !axisOption.opposite).length * CartesianLayout.YAXIS_SECTION_WIDTH;
+      options.yAxis.filter(axisOption => !axisOption.opposite).length *
+      CartesianLayout.YAXIS_SECTION_WIDTH;
 
-    this.buildBottomXAxesSections(plotSelection, options.xAxis, availablePlotWidth, offsetX);
-    this.buildTopXAxesSections(plotSelection, options.xAxis, availablePlotWidth, offsetX);
+    this.buildBottomXAxesSections(
+      plotSelection,
+      options.xAxis,
+      availablePlotWidth,
+      offsetX
+    );
+    this.buildTopXAxesSections(
+      plotSelection,
+      options.xAxis,
+      availablePlotWidth,
+      offsetX
+    );
   }
 
   private buildBottomXAxesSections(
@@ -87,8 +142,10 @@ export class CartesianLayout {
     availablePlotWidth: number,
     offsetX: number
   ): void {
-    const plotheight = Number(plotSelection.attr('height'));
-    const bottomAligned = axisOptions.filter(axisOption => !axisOption.opposite);
+    const plotheight = Number(plotSelection.attr("height"));
+    const bottomAligned = axisOptions.filter(
+      axisOption => !axisOption.opposite
+    );
     const dimension = this.getXAxisSectionDimension(
       availablePlotWidth,
       plotheight,
@@ -96,12 +153,23 @@ export class CartesianLayout {
       offsetX,
       true
     );
-    const xAxisBottomSelection = this.addSection(plotSelection, dimension, ChartLayoutClass.AxisBottom);
+    const xAxisBottomSelection = this.addSection(
+      plotSelection,
+      dimension,
+      ChartLayoutClass.AxisBottom
+    );
     let axisIndex = 0;
     axisOptions.forEach((axisOption, axisPosition) => {
       if (!axisOption.opposite) {
-        const axisDimension = this.getXAxisDimension(availablePlotWidth, axisIndex++);
-        this.addSection(xAxisBottomSelection, axisDimension, `axis-${axisPosition}`);
+        const axisDimension = this.getXAxisDimension(
+          availablePlotWidth,
+          axisIndex++
+        );
+        this.addSection(
+          xAxisBottomSelection,
+          axisDimension,
+          `axis-${axisPosition}`
+        );
       }
     });
   }
@@ -112,28 +180,60 @@ export class CartesianLayout {
     availablePlotWidth: number,
     offsetX: number
   ): void {
-    const plotheight = Number(plotSelection.attr('height'));
+    const plotheight = Number(plotSelection.attr("height"));
     const topAligned = axisOptions.filter(axisOption => axisOption.opposite);
-    const dimension = this.getXAxisSectionDimension(availablePlotWidth, plotheight, topAligned.length, offsetX, false);
-    const xAxisTopSelection = this.addSection(plotSelection, dimension, ChartLayoutClass.AxisTop);
+    const dimension = this.getXAxisSectionDimension(
+      availablePlotWidth,
+      plotheight,
+      topAligned.length,
+      offsetX,
+      false
+    );
+    const xAxisTopSelection = this.addSection(
+      plotSelection,
+      dimension,
+      ChartLayoutClass.AxisTop
+    );
 
     let axisIndex = 0;
     axisOptions.forEach((axisOption, axisPosition) => {
       if (axisOption.opposite) {
-        const axisDimension = this.getXAxisDimension(availablePlotWidth, axisIndex++);
-        this.addSection(xAxisTopSelection, axisDimension, `axis-${axisPosition}`);
+        const axisDimension = this.getXAxisDimension(
+          availablePlotWidth,
+          axisIndex++
+        );
+        this.addSection(
+          xAxisTopSelection,
+          axisDimension,
+          `axis-${axisPosition}`
+        );
       }
     });
   }
 
-  private buildYAxesSections(plotSelection: CartesianChartSelection, options: CartesianOptions): void {
-    const plotheight = Number(plotSelection.attr('height'));
-    const availablePlotHeight = plotheight - options.xAxis.length * CartesianLayout.XAXIS_SECTION_HEIGHT;
+  private buildYAxesSections(
+    plotSelection: CartesianChartSelection,
+    options: CartesianOptions
+  ): void {
+    const plotheight = Number(plotSelection.attr("height"));
+    const availablePlotHeight =
+      plotheight - options.xAxis.length * CartesianLayout.XAXIS_SECTION_HEIGHT;
     const offsetY =
-      options.xAxis.filter(axisOption => axisOption.opposite).length * CartesianLayout.XAXIS_SECTION_HEIGHT;
+      options.xAxis.filter(axisOption => axisOption.opposite).length *
+      CartesianLayout.XAXIS_SECTION_HEIGHT;
 
-    this.buildLeftYAxesSections(plotSelection, options.yAxis, availablePlotHeight, offsetY);
-    this.buildRightYAxesSections(plotSelection, options.yAxis, availablePlotHeight, offsetY);
+    this.buildLeftYAxesSections(
+      plotSelection,
+      options.yAxis,
+      availablePlotHeight,
+      offsetY
+    );
+    this.buildRightYAxesSections(
+      plotSelection,
+      options.yAxis,
+      availablePlotHeight,
+      offsetY
+    );
   }
 
   private buildLeftYAxesSections(
@@ -142,16 +242,33 @@ export class CartesianLayout {
     availablePlotHeight: number,
     offsetY: number
   ): void {
-    const plotWidth = Number(plotSelection.attr('width'));
+    const plotWidth = Number(plotSelection.attr("width"));
     const leftAligned = axisOptions.filter(axisOption => !axisOption.opposite);
-    const dimension = this.getYAxisSectionDimension(plotWidth, availablePlotHeight, leftAligned.length, offsetY, true);
-    const yAxisLeftSelection = this.addSection(plotSelection, dimension, ChartLayoutClass.AxisLeft);
+    const dimension = this.getYAxisSectionDimension(
+      plotWidth,
+      availablePlotHeight,
+      leftAligned.length,
+      offsetY,
+      true
+    );
+    const yAxisLeftSelection = this.addSection(
+      plotSelection,
+      dimension,
+      ChartLayoutClass.AxisLeft
+    );
 
     let axisIndex = 0;
     axisOptions.forEach((axisOption, axisPosition) => {
       if (!axisOption.opposite) {
-        const axisDimension = this.getYAxisDimension(availablePlotHeight, axisIndex++);
-        this.addSection(yAxisLeftSelection, axisDimension, `axis-${axisPosition}`);
+        const axisDimension = this.getYAxisDimension(
+          availablePlotHeight,
+          axisIndex++
+        );
+        this.addSection(
+          yAxisLeftSelection,
+          axisDimension,
+          `axis-${axisPosition}`
+        );
       }
     });
   }
@@ -162,7 +279,7 @@ export class CartesianLayout {
     availablePlotHeight: number,
     offsetY: number
   ): void {
-    const plotWidth = Number(plotSelection.attr('width'));
+    const plotWidth = Number(plotSelection.attr("width"));
     const rightAligned = axisOptions.filter(axisOption => axisOption.opposite);
     const dimension = this.getYAxisSectionDimension(
       plotWidth,
@@ -171,28 +288,50 @@ export class CartesianLayout {
       offsetY,
       false
     );
-    const yAxisRightSelection = this.addSection(plotSelection, dimension, ChartLayoutClass.AxisRight);
+    const yAxisRightSelection = this.addSection(
+      plotSelection,
+      dimension,
+      ChartLayoutClass.AxisRight
+    );
 
     let axisIndex = 0;
     axisOptions.forEach((axisOption, axisPosition) => {
       if (axisOption.opposite) {
-        const axisDimension = this.getYAxisDimension(availablePlotHeight, axisIndex++);
-        this.addSection(yAxisRightSelection, axisDimension, `axis-${axisPosition}`);
+        const axisDimension = this.getYAxisDimension(
+          availablePlotHeight,
+          axisIndex++
+        );
+        this.addSection(
+          yAxisRightSelection,
+          axisDimension,
+          `axis-${axisPosition}`
+        );
       }
     });
   }
 
   private buildSeriesSection(chartSelection: CartesianChartSelection): void {
-    const plotSelection = chartSelection.select<SVGGElement>(`.${ChartLayoutClass.Plot}`);
-    const axisTopSelection = plotSelection.select<SVGGElement>(`.${ChartLayoutClass.AxisTop}`);
-    const axisLeftSelection = plotSelection.select<SVGGElement>(`.${ChartLayoutClass.AxisLeft}`);
+    const plotSelection = chartSelection.select<SVGGElement>(
+      `.${ChartLayoutClass.Plot}`
+    );
+    const axisTopSelection = plotSelection.select<SVGGElement>(
+      `.${ChartLayoutClass.AxisTop}`
+    );
+    const axisLeftSelection = plotSelection.select<SVGGElement>(
+      `.${ChartLayoutClass.AxisLeft}`
+    );
 
-    const offsetX = Number(axisLeftSelection.attr('width'));
-    const offsetY = Number(axisTopSelection.attr('height'));
-    const width = Number(axisTopSelection.attr('width'));
-    const height = Number(axisLeftSelection.attr('height'));
+    const offsetX = Number(axisLeftSelection.attr("width"));
+    const offsetY = Number(axisTopSelection.attr("height"));
+    const width = Number(axisTopSelection.attr("width"));
+    const height = Number(axisLeftSelection.attr("height"));
 
-    const dimension = this.getSeriesSectionDimension(width, height, offsetX, offsetY);
+    const dimension = this.getSeriesSectionDimension(
+      width,
+      height,
+      offsetX,
+      offsetY
+    );
     this.addSection(plotSelection, dimension, ChartLayoutClass.Series);
   }
 
@@ -202,17 +341,23 @@ export class CartesianLayout {
     className: string
   ): CartesianChartSelection {
     const childSection = parent
-      .append<SVGGElement>('svg:g')
-      .attr('width', dimension.width)
-      .attr('height', dimension.height)
+      .append<SVGGElement>("svg:g")
+      .attr("width", dimension.width)
+      .attr("height", dimension.height)
       .classed(className, true);
 
-    childSection.attr('transform', `translate(${dimension.position.x}, ${dimension.position.y})`);
+    childSection.attr(
+      "transform",
+      `translate(${dimension.position.x}, ${dimension.position.y})`
+    );
 
     return childSection;
   }
 
-  private getPlotOnlyDimension(width: number, height: number): SectionDimension {
+  private getPlotOnlyDimension(
+    width: number,
+    height: number
+  ): SectionDimension {
     return {
       width: width,
       height: height,
@@ -223,7 +368,10 @@ export class CartesianLayout {
     };
   }
 
-  private getHorizontalPlotDimension(width: number, height: number): SectionDimension {
+  private getHorizontalPlotDimension(
+    width: number,
+    height: number
+  ): SectionDimension {
     const legendWidth = CartesianLayout.RIGHT_ALIGNED_WIDTH;
 
     return {
@@ -236,7 +384,10 @@ export class CartesianLayout {
     };
   }
 
-  private getVerticalPlotDimension(width: number, height: number): SectionDimension {
+  private getVerticalPlotDimension(
+    width: number,
+    height: number
+  ): SectionDimension {
     const legendHeight = CartesianLayout.BOTTOM_ALIGNED_HEIGHT;
 
     return {
@@ -249,7 +400,10 @@ export class CartesianLayout {
     };
   }
 
-  private getHorizontalLegendDimension(width: number, height: number): SectionDimension {
+  private getHorizontalLegendDimension(
+    width: number,
+    height: number
+  ): SectionDimension {
     const legendWidth = CartesianLayout.RIGHT_ALIGNED_WIDTH;
 
     return {
@@ -262,7 +416,10 @@ export class CartesianLayout {
     };
   }
 
-  private getVerticalLegendDimension(width: number, height: number): SectionDimension {
+  private getVerticalLegendDimension(
+    width: number,
+    height: number
+  ): SectionDimension {
     const legendHeight = CartesianLayout.BOTTOM_ALIGNED_HEIGHT;
 
     return {
@@ -313,7 +470,10 @@ export class CartesianLayout {
     };
   }
 
-  private getYAxisDimension(height: number, axisPosition: number): SectionDimension {
+  private getYAxisDimension(
+    height: number,
+    axisPosition: number
+  ): SectionDimension {
     const sectionWidth = CartesianLayout.YAXIS_SECTION_WIDTH;
 
     return {
@@ -326,7 +486,10 @@ export class CartesianLayout {
     };
   }
 
-  private getXAxisDimension(width: number, axisPosition: number): SectionDimension {
+  private getXAxisDimension(
+    width: number,
+    axisPosition: number
+  ): SectionDimension {
     const sectionHeight = CartesianLayout.XAXIS_SECTION_HEIGHT;
 
     return {
@@ -339,7 +502,12 @@ export class CartesianLayout {
     };
   }
 
-  private getSeriesSectionDimension(width: number, height: number, offsetX: number, offsetY: number): SectionDimension {
+  private getSeriesSectionDimension(
+    width: number,
+    height: number,
+    offsetX: number,
+    offsetY: number
+  ): SectionDimension {
     return {
       width: width,
       height: height,

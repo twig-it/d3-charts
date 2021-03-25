@@ -1,4 +1,4 @@
-import { Axis } from 'd3-axis';
+import { Axis } from "d3-axis";
 import {
   scaleBand,
   ScaleBand,
@@ -8,12 +8,16 @@ import {
   ScaleLogarithmic,
   scaleTime,
   ScaleTime
-} from 'd3-scale';
-import { AxisScaleType } from '../cartesian';
-import { ScaleType } from '../cartesian-object';
+} from "d3-scale";
+import { AxisScaleType } from "../cartesian";
+import { ScaleType } from "../cartesian-object";
 
 export class CartesianAxisScale {
-  public getScale(scaleType: AxisScaleType, rangeMin: number, rangeMax: number): ScaleType {
+  public getScale(
+    scaleType: AxisScaleType,
+    rangeMin: number,
+    rangeMax: number
+  ): ScaleType {
     switch (scaleType) {
       case AxisScaleType.Time:
         return this.getTimeScale(rangeMin, rangeMax);
@@ -28,11 +32,14 @@ export class CartesianAxisScale {
         return this.getLinearScale(rangeMin, rangeMax);
 
       default:
-        throw new Error('Invalid Scale');
+        throw new Error("Invalid Scale");
     }
   }
 
-  public getTimeScale(rangeMin: number, rangeMax: number): ScaleTime<number, number> {
+  public getTimeScale(
+    rangeMin: number,
+    rangeMax: number
+  ): ScaleTime<number, number> {
     const endTime = new Date();
     // TODO: setting a default time axis range of 15 hrs. Change this with UX feedback.
     const startTime = new Date(endTime.getTime() - 15 * 60 * 60 * 1000);
@@ -43,19 +50,28 @@ export class CartesianAxisScale {
       .nice();
   }
 
-  public getLinearScale(rangeMin: number, rangeMax: number): ScaleLinear<number, number> {
+  public getLinearScale(
+    rangeMin: number,
+    rangeMax: number
+  ): ScaleLinear<number, number> {
     return scaleLinear()
       .range([rangeMin, rangeMax])
       .nice();
   }
 
-  public getLogarithmicScale(rangeMin: number, rangeMax: number): ScaleLogarithmic<number, number> {
+  public getLogarithmicScale(
+    rangeMin: number,
+    rangeMax: number
+  ): ScaleLogarithmic<number, number> {
     return scaleLog()
       .range([rangeMin, rangeMax])
       .nice();
   }
 
-  public getOrdinalScale(rangeMin: number, rangeMax: number): ScaleBand<string> {
+  public getOrdinalScale(
+    rangeMin: number,
+    rangeMax: number
+  ): ScaleBand<string> {
     return scaleBand()
       .range([rangeMin, rangeMax])
       .paddingInner(0.2)
@@ -70,7 +86,9 @@ export class CartesianAxisScale {
   ): ScaleType {
     switch (axisScaleType) {
       case AxisScaleType.Time:
-        return (axis.scale() as ScaleTime<number, number>).domain(domain as number[]);
+        return (axis.scale() as ScaleTime<number, number>).domain(
+          domain as number[]
+        );
 
       case AxisScaleType.Logarithmic:
         const logDomain = domain as number[];
@@ -78,7 +96,7 @@ export class CartesianAxisScale {
           logDomain[0] = 1;
         }
         const logScale = axis.scale() as ScaleLogarithmic<number, number>;
-        logScale.tickFormat(5, ',d');
+        logScale.tickFormat(5, ",d");
 
         return logScale.domain(logDomain);
 
@@ -86,10 +104,12 @@ export class CartesianAxisScale {
         return (axis.scale() as ScaleBand<string>).domain(domain as string[]);
 
       case AxisScaleType.Linear:
-        return (axis.scale() as ScaleLinear<number, number>).domain(domain as number[]);
+        return (axis.scale() as ScaleLinear<number, number>).domain(
+          domain as number[]
+        );
 
       default:
-        throw new Error('Invalid Scale');
+        throw new Error("Invalid Scale");
     }
   }
 }

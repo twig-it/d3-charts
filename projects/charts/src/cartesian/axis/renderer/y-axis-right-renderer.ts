@@ -1,8 +1,11 @@
-import { axisRight, AxisScale } from 'd3-axis';
-import { AxisOptions } from '../../cartesian';
-import { SVGGAxisSelection, SVGGAxisTitleSelection } from '../../cartesian-object';
-import { CartesianAxisScale } from '../cartesian-axis-scale';
-import { AxisRenderer, AxisRendererConfig } from './axis-renderer';
+import { axisRight, AxisScale } from "d3-axis";
+import { AxisOptions } from "../../cartesian";
+import {
+  SVGGAxisSelection,
+  SVGGAxisTitleSelection
+} from "../../cartesian-object";
+import { CartesianAxisScale } from "../cartesian-axis-scale";
+import { AxisRenderer, AxisRendererConfig } from "./axis-renderer";
 
 export class YAxisRightRenderer extends AxisRenderer {
   public constructor(cartesianAxisScale: CartesianAxisScale) {
@@ -18,14 +21,18 @@ export class YAxisRightRenderer extends AxisRenderer {
       );
     }
 
-    const d3Axis = axisRight(rendererConfig.scale as AxisScale<number | string | Date>);
+    const d3Axis = axisRight(rendererConfig.scale as AxisScale<
+      number | string | Date
+    >);
     d3Axis.ticks(5);
     d3Axis.tickSize(-1 * rendererConfig.seriesWidth);
     d3Axis.tickSizeOuter(0);
     d3Axis.tickPadding(10);
     this.setScaleFormatting(rendererConfig, d3Axis);
 
-    rendererConfig.axisSelection.datum(this.buildAxisData(d3Axis, rendererConfig.axisOption.scale));
+    rendererConfig.axisSelection.datum(
+      this.buildAxisData(d3Axis, rendererConfig.axisOption.scale)
+    );
 
     return rendererConfig.axisSelection.call(d3Axis);
   }
@@ -36,11 +43,14 @@ export class YAxisRightRenderer extends AxisRenderer {
     this.drawAxisTitle(rendererConfig.axisSelection, rendererConfig.axisOption);
   }
 
-  protected drawAxisTitle(axisSelection: SVGGAxisSelection, axisOption: AxisOptions): SVGGAxisTitleSelection {
-    const yAxisHeight = Number(axisSelection.attr('height'));
+  protected drawAxisTitle(
+    axisSelection: SVGGAxisSelection,
+    axisOption: AxisOptions
+  ): SVGGAxisTitleSelection {
+    const yAxisHeight = Number(axisSelection.attr("height"));
 
     return super
       .drawAxisTitle(axisSelection, axisOption)
-      .attr('transform', `translate(50,${yAxisHeight / 2})rotate(-90)`);
+      .attr("transform", `translate(50,${yAxisHeight / 2})rotate(-90)`);
   }
 }

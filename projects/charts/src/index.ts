@@ -17,7 +17,7 @@ export {
   DataPoint,
   OrdinalDataPoint,
   RecursivePartial
-} from './cartesian/cartesian';
+} from "./cartesian/cartesian";
 
-export { CartesianObject } from './cartesian/cartesian-object';
-export { CartesianChart } from './cartesian/cartesian-chart';
+export { CartesianObject } from "./cartesian/cartesian-object";
+export { CartesianChart } from "./cartesian/cartesian-chart";
