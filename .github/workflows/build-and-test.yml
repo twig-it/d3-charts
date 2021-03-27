@@ -56,4 +56,4 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
       - name: Test
-        run: npm run build
+        run: npm run build:ci
