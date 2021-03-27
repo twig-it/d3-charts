@@ -16,7 +16,7 @@
   "scripts": {
     "clean": "rm -rf node_modules dist",
     "serve:cli": "ng serve",
-    "build": "npm run bundle:libs",
+    "build:ci": "npm run bundle:libs && npm run bundle:app",
     "bundle:libs": "rollup -c ./projects/charts/rollup.config.ts",
     "bundle:app": "rollup -c ./rollup.config.ts",
     "bundle:watch": "rollup -c ./projects/charts/rollup.config.ts -w",
