@@ -10,16 +10,21 @@
     "Charts",
     "Visualization"
   ],
+  "main": "./d3-charts-app.umd.js",
+  "module": "./d3-charts-app.es5.js",
+  "typings": "./types/index.d.ts",
   "scripts": {
     "clean": "rm -rf node_modules dist",
     "serve:cli": "ng serve",
     "build": "npm run bundle:libs",
     "bundle:libs": "rollup -c ./projects/charts/rollup.config.ts",
+    "bundle:app": "rollup -c ./rollup.config.ts",
     "bundle:watch": "rollup -c ./projects/charts/rollup.config.ts -w",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "docs": "typedoc ./projects/charts/src/index.ts --tsconfig ./projects/charts/tsconfig.lib.json"
   },
   "private": true,
   "dependencies": {
@@ -68,12 +73,14 @@
     "pretty-quick": "^1.11.1",
     "rollup": "^2.42.1",
     "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-scss": "^2.6.1",
     "semantic-release": "^17.4.2",
     "style-loader": "^2.0.0",
     "ts-jest": "^26.5.3",
     "ts-loader": "^8.0.18",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "tslib": "^2.1.0",
+    "typedoc": "^0.20.34",
     "typescript": "^4.2"
   },
   "release": {

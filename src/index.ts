@@ -1,5 +1,4 @@
 // Import stylesheets
-import "./style.css";
 import { CartesianChart, VisualizationType } from "@ikshanam/d3-charts";
 
 // Write TypeScript code!

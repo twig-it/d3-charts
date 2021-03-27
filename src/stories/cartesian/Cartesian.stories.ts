@@ -8,13 +8,7 @@ import { createCartesian } from "./cartesian";
 export default {
   title: "Example/Cartesian",
   argTypes: {
-    label: { control: "text" },
-    primary: { control: "boolean" },
-    backgroundColor: { control: "color" },
-    size: {
-      control: { type: "select", options: ["small", "medium", "large"] }
-    },
-    onClick: { action: "onClick" }
+    seriesName: { control: "text" }
   }
 };
 
@@ -35,35 +29,35 @@ const options = {
       data: [
         {
           x: 1551255052196,
-          y: 0
+          y: 150
         },
         {
-          x: 1551256082196,
-          y: 10000
+          x: 1551255082196,
+          y: 150000
         },
         {
-          x: 1551257092196,
-          y: 200
+          x: 1551255092196,
+          y: 2800
         },
         {
-          x: 1551258102196,
-          y: 400
+          x: 1551255102196,
+          y: 4600
         },
         {
-          x: 1551259122196,
-          y: 500
+          x: 1551255122196,
+          y: 61200
         },
         {
-          x: 1551260142196,
-          y: 200
+          x: 1551255142196,
+          y: 8200
         },
         {
-          x: 1551261152196,
-          y: 400
+          x: 1551255152196,
+          y: 11400
         },
         {
-          x: 1551362172196,
-          y: 500
+          x: 1551255172196,
+          y: 15500
         }
       ]
     },
@@ -71,8 +65,8 @@ const options = {
       visualization: VisualizationType.Area,
       name: "Second series",
       color: "#409FF0",
-      xIndex: 1,
-      yIndex: 1,
+      xIndex: 0,
+      yIndex: 0,
       visible: true,
       tooltip: {
         visible: false,
@@ -125,17 +119,6 @@ const options = {
       visible: true,
       opposite: false,
       color: "#4b0082"
-    },
-    {
-      title: "XAxis 2 label",
-      scale: AxisScaleType.Time,
-      grid: {
-        visible: true,
-        color: "#409FF0"
-      },
-      visible: true,
-      opposite: true,
-      color: "#4b0082"
     }
   ],
   yAxis: [
@@ -149,24 +132,11 @@ const options = {
       visible: true,
       opposite: false,
       color: "#4b0082"
-    },
-    {
-      title: "YAxis 2 Label",
-      scale: AxisScaleType.Linear,
-      grid: {
-        visible: true,
-        color: "#409FF0"
-      },
-      visible: true,
-      opposite: true,
-      color: "#4b0082"
     }
   ]
 };
 
 const Template = () => {
-  // You can either use a function to create DOM elements or use a plain html string!
-  // return `<div>${label}</div>`;
   const container = createCartesian();
   setTimeout(() => {
     new CartesianChart(container, options);

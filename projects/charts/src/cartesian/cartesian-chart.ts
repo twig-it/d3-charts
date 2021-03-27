@@ -38,6 +38,8 @@ export class CartesianChart extends CartesianObject {
       chartContainer,
       this.options
     );
+
+    this.draw();
   }
 
   public draw(): void {
