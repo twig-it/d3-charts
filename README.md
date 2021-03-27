@@ -1,6 +1,6 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# D3-charts
+# D3 Charts
 Are you looking for a D3 chart that is ready to be used? If yes, you are at the right place!
 
 Currently, we are supporting Cartesian chart with following features:
