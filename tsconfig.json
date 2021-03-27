@@ -20,8 +20,8 @@
     "outDir": "dist/lib",
     "types": ["jest"],
     "paths": {
-      "@ikshanam/d3-charts": ["dist/charts"],
-      "@ikshanam/d3-charts/*": ["dist/charts/*"]
+      "@samskara-ui/d3-charts": ["dist/charts"],
+      "@samskara-ui/d3-charts/*": ["dist/charts/*"]
     }
   },
   "include": ["src/**/*"]

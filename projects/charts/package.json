@@ -1,8 +1,8 @@
 {
-  "name": "@ikshanam/d3-charts",
+  "name": "@samskara-ui/d3-charts",
   "version": "0.0.0-development",
   "author": "Anand Tiwary",
-  "repository": "git@github.com:Ikshanam/d3-charts.git",
+  "repository": "git@github.com:samskara-ui/d3-charts.git",
   "license": "MIT",
   "main": "./d3-charts.umd.js",
   "module": "./d3-charts.es5.js",
