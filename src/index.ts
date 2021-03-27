@@ -1,5 +1,5 @@
 import './styles.css';
-import { AxisScaleType, CartesianChart, VisualizationType } from "@ikshanam/d3-charts";
+import { AxisScaleType, CartesianChart, VisualizationType } from "@samskara-ui/d3-charts";
 
 // Write TypeScript code!
 const appDiv: HTMLElement = document.createElement("div")!;
