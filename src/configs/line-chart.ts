@@ -1,13 +1,13 @@
 import {
   AxisScaleType,
   CartesianChart,
-  VisualizationType
+  VisualizationType,
 } from "@samskara-ui/d3-charts";
 
 const options = {
   series: [
     {
-      visualization: VisualizationType.Points,
+      visualization: VisualizationType.Line,
       name: "Line series",
       color: "#2D1C90",
       xIndex: 0,
@@ -15,9 +15,9 @@ const options = {
       visible: true,
       tooltip: {
         visible: false,
-        formatter: () => ""
+        formatter: () => "",
       },
-      data: []
+      data: [],
       //   data: [
       //     {
       //       x: 1551255052196,
@@ -52,7 +52,7 @@ const options = {
       //       y: 15500,
       //     },
       //   ],
-    }
+    },
   ],
   xAxis: [
     {
@@ -60,12 +60,12 @@ const options = {
       scale: AxisScaleType.Time,
       grid: {
         visible: true,
-        color: "#D3D3D3"
+        color: "#D3D3D3",
       },
       visible: true,
       opposite: false,
-      color: "#4b0082"
-    }
+      color: "#4b0082",
+    },
   ],
   yAxis: [
     {
@@ -73,13 +73,13 @@ const options = {
       scale: AxisScaleType.Linear,
       grid: {
         visible: true,
-        color: "#D3D3D3"
+        color: "#D3D3D3",
       },
       visible: true,
       opposite: false,
-      color: "#4b0082"
-    }
-  ]
+      color: "#4b0082",
+    },
+  ],
 };
 
 export const buildLineChart = (container: HTMLElement) => {
@@ -94,7 +94,7 @@ export const buildLineChart = (container: HTMLElement) => {
       "Line series",
       {
         x: Date.now(),
-        y: Math.random() * 1000 * count++
+        y: Math.random() * 1000 * count++,
       },
       true
     );

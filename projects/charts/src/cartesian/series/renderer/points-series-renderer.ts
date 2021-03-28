@@ -20,21 +20,18 @@ export class PointsSeriesRenderer extends SeriesRenderer {
     );
     // JOIN new data with old elements.
     const pointSelection = seriesSelection
-      .selectAll<SVGElement, DataPoint>("circle")
+      .selectAll<SVGElement, DataPoint>("circle.points")
       .data(data);
 
     // EXIT old elements not present in new data.
-    pointSelection
-      .exit()
-      .attr("class", "exit")
-      .remove();
+    pointSelection.exit().attr("class", "exit").remove();
 
     // UPDATE old elements present in new data.
     pointSelection
       .attr("class", "update")
       // .transition()
-      .attr("cy", dataPoint => yScale(dataPoint.y)!)
-      .attr("cx", dataPoint => xScale(dataPoint.x)!)
+      .attr("cy", (dataPoint) => yScale(dataPoint.y)!)
+      .attr("cx", (dataPoint) => xScale(dataPoint.x)!)
       .attr("stroke", config.seriesOption.color)
       .attr("fill", config.seriesOption.color);
 
@@ -44,8 +41,8 @@ export class PointsSeriesRenderer extends SeriesRenderer {
       .append("circle")
       .attr("class", "enter")
       .attr("r", 3.5)
-      .attr("cy", dataPoint => yScale(dataPoint.y)!)
-      .attr("cx", dataPoint => xScale(dataPoint.x)!)
+      .attr("cy", (dataPoint) => yScale(dataPoint.y)!)
+      .attr("cx", (dataPoint) => xScale(dataPoint.x)!)
       .attr("stroke", config.seriesOption.color)
       .attr("fill", config.seriesOption.color)
       .classed("points-data", true)

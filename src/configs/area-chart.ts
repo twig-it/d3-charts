@@ -7,9 +7,9 @@ import {
 const options = {
   series: [
     {
-      visualization: VisualizationType.Points,
-      name: "Points series",
-      color: "red",
+      visualization: VisualizationType.Area,
+      name: "Area series",
+      color: "green",
       xIndex: 0,
       yIndex: 0,
       visible: true,
@@ -82,7 +82,7 @@ const options = {
   ],
 };
 
-export const buildPointsChart = (container: HTMLElement) => {
+export const buildAreaChart = (container: HTMLElement) => {
   const chart = new CartesianChart(container, options);
 
   let count = 0;
@@ -91,7 +91,7 @@ export const buildPointsChart = (container: HTMLElement) => {
     console.log("adding a new point");
 
     chart.addPoint(
-      "Points series",
+      "Area series",
       {
         x: Date.now(),
         y: Math.random() * 1000 * count++,

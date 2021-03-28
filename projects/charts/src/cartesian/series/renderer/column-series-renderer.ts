@@ -41,10 +41,10 @@ export class ColumnSeriesRenderer extends SeriesRenderer {
       .append("rect")
       .merge(colSelection)
       .style("fill", config.seriesOption.color)
-      .attr("x", dataPoint => xScale(dataPoint.x)!)
-      .attr("y", dataPoint => yScale(dataPoint.y)!)
+      .attr("x", (dataPoint) => xScale(dataPoint.x)!)
+      .attr("y", (dataPoint) => yScale(dataPoint.y)!)
       .attr("width", () => xScale.bandwidth!())
-      .attr("height", dataPoint => height - yScale(dataPoint.y)!)
+      .attr("height", (dataPoint) => height - yScale(dataPoint.y)!)
       .each((_dataPoint, index, nodes) => {
         const thisSelection = select<SVGElement, DataPoint | OrdinalDataPoint>(
           nodes[index] as SVGElement
@@ -63,7 +63,7 @@ export class ColumnSeriesRenderer extends SeriesRenderer {
     const yScale = config.yAxisData.axis.scale();
     const height = Number(config.seriesSection.attr("height"));
 
-    const minColumnWidth = this.getMinColumnWidth(data);
+    const minColumnWidth = this.getMinColumnWidth(data) ?? 0;
     const seriesSelection = this.getSeriesSelection(
       config.seriesSection,
       config.seriesOption,
@@ -83,18 +83,19 @@ export class ColumnSeriesRenderer extends SeriesRenderer {
       .style("fill", config.seriesOption.color)
       .attr(
         "x",
-        dataPoint =>
+        (dataPoint) =>
           xScale(new Date((dataPoint.x as number) - minColumnWidth / 2))!
       )
-      .attr("y", dataPoint => yScale(dataPoint.y)!)
-      .attr(
-        "width",
-        dataPoint =>
-          xScale(new Date((dataPoint.x as number) + minColumnWidth / 2))! -
-          xScale(new Date((dataPoint.x as number) - minColumnWidth / 2))! -
-          2
-      )
-      .attr("height", dataPoint => height - yScale(dataPoint.y)!)
+      .attr("y", (dataPoint) => yScale(dataPoint.y)!)
+      .attr("width", () => 20)
+      // .attr(
+      //   "width",
+      //   dataPoint =>
+      //     xScale(new Date((dataPoint.x as number) + minColumnWidth / 2))! -
+      //     xScale(new Date((dataPoint.x as number) - minColumnWidth / 2))! -
+      //     2
+      // )
+      .attr("height", (dataPoint) => height - yScale(dataPoint.y)!)
       .each((_dataPoint, index, nodes) => {
         const thisSelection = select<SVGElement, DataPoint | OrdinalDataPoint>(
           nodes[index] as SVGElement
@@ -107,11 +108,11 @@ export class ColumnSeriesRenderer extends SeriesRenderer {
       });
   }
 
-  private getMinColumnWidth(dataPoints: DataPoint[]): number {
+  private getMinColumnWidth(dataPoints: DataPoint[]): number | undefined {
     const colMargin = 20;
     const dataSpan = extent<DataPoint, number>(
       dataPoints,
-      dataPoint => dataPoint.x as number
+      (dataPoint) => dataPoint.x as number
     );
     const minData = dataSpan[0];
     const maxData = dataSpan[1];
@@ -130,6 +131,7 @@ export class ColumnSeriesRenderer extends SeriesRenderer {
         return Math.max(0, Math.min(minXGranularity, maxColumnWidth));
       }
     }
-    throw new Error("Invalid Data");
+
+    return undefined;
   }
 }

@@ -5,6 +5,7 @@ import { area, curveMonotoneX, line } from "d3-shape";
 import { DataPoint, OrdinalDataPoint, SeriesOptions } from "../../cartesian";
 import { CartesianChartSelection } from "../../cartesian-object";
 import { CartesianTooltip } from "../../tooltip/cartesian-tooltip";
+import { LineSeriesRenderer } from "./line-series-renderer";
 import { SeriesRenderer, SeriesRendererConfig } from "./series-renderer";
 
 interface RenderConfig {
@@ -16,8 +17,11 @@ interface RenderConfig {
 }
 
 export class AreaSeriesRenderer extends SeriesRenderer {
+  private readonly lineRenderer: LineSeriesRenderer;
+
   public constructor(cartesianTooltip: CartesianTooltip) {
     super(cartesianTooltip);
+    this.lineRenderer = new LineSeriesRenderer(cartesianTooltip);
   }
 
   public drawSeries(config: SeriesRendererConfig): void {
@@ -35,24 +39,53 @@ export class AreaSeriesRenderer extends SeriesRenderer {
       seriesOption: config.seriesOption,
       xScale: xScale,
       yScale: yScale,
-      height: height
+      height: height,
     };
 
     this.drawArea(renderConfig);
-    this.drawLine(renderConfig);
-    this.drawPoints(renderConfig);
+    this.lineRenderer.drawSeries(config);
+    // this.drawLine(renderConfig);
+    // this.drawPoints(renderConfig);
   }
 
   private drawArea(renderConfig: RenderConfig): void {
     const data = renderConfig.seriesOption.data;
-    const areaSelection = renderConfig.seriesSelection
-      .selectAll<SVGElement, DataPoint[]>("g.area")
-      .data([data])
-      .enter()
-      .append<SVGElement>("g")
-      .classed("area", true);
+    // const areaSelection = renderConfig.seriesSelection
+    //   .selectAll<SVGElement, DataPoint[]>("g.area")
+    //   .data([data])
+    //   .enter()
+    //   .append<SVGElement>("g")
+    //   .classed("area", true);
 
-    areaSelection
+    const fadedSeriesColorObj = color(renderConfig.seriesOption.color);
+    if (!fadedSeriesColorObj) {
+      return;
+    }
+
+    fadedSeriesColorObj.opacity = 0.2;
+
+    // Area with faded color
+    const areaGenerator = area<DataPoint>()
+      .x((dataPoint) => renderConfig.xScale(new Date(dataPoint.x))!)
+      .y0(renderConfig.height)
+      .y1((dataPoint) => renderConfig.yScale(dataPoint.y)!)
+      .curve(curveMonotoneX);
+
+    const areaPath = renderConfig.seriesSelection
+      .selectAll<SVGElement, DataPoint[]>("path.area")
+      .data([data]);
+
+    areaPath.exit().remove();
+
+    areaPath
+      .enter()
+      .append<SVGElement>("svg:path")
+      .classed("area", true)
+      .merge(areaPath)
+      .attr("d", areaGenerator)
+      .attr("fill", fadedSeriesColorObj.toString());
+
+    areaPath
       .on("mouseover", () => {
         if (renderConfig.seriesSelection.classed("hide")) {
           // Don't show point if series is hidden
@@ -70,36 +103,9 @@ export class AreaSeriesRenderer extends SeriesRenderer {
           .style("fill-opacity", 0)
           .style("stroke-opacity", 0);
       });
-
-    const fadedSeriesColorObj = color(renderConfig.seriesOption.color);
-    if (!fadedSeriesColorObj) {
-      return;
-    }
-
-    fadedSeriesColorObj.opacity = 0.2;
-
-    // Area with faded color
-    const areaGenerator = area<DataPoint>()
-      .x(dataPoint => renderConfig.xScale(new Date(dataPoint.x))!)
-      .y0(renderConfig.height)
-      .y1(dataPoint => renderConfig.yScale(dataPoint.y)!)
-      .curve(curveMonotoneX);
-
-    const areaPath = areaSelection
-      .selectAll<SVGElement, DataPoint[]>("path")
-      .data([data]);
-
-    areaPath.exit().remove();
-
-    areaPath
-      .enter()
-      .append<SVGElement>("svg:path")
-      .merge(areaPath)
-      .attr("d", areaGenerator)
-      .attr("fill", fadedSeriesColorObj.toString());
   }
 
-  private drawLine(renderConfig: RenderConfig): void {
+  public drawLine(renderConfig: RenderConfig): void {
     const data = renderConfig.seriesOption.data;
     const lineSelection = renderConfig.seriesSelection
       .selectAll<SVGElement, DataPoint[]>("g.line")
@@ -109,8 +115,8 @@ export class AreaSeriesRenderer extends SeriesRenderer {
       .classed("line", true);
 
     const lineGenerator = line<DataPoint>()
-      .x(dataPoint => renderConfig.xScale(new Date(dataPoint.x))!)
-      .y(dataPoint => renderConfig.yScale(dataPoint.y)!)
+      .x((dataPoint) => renderConfig.xScale(new Date(dataPoint.x))!)
+      .y((dataPoint) => renderConfig.yScale(dataPoint.y)!)
       .curve(curveMonotoneX);
 
     const linePath = lineSelection
@@ -129,7 +135,7 @@ export class AreaSeriesRenderer extends SeriesRenderer {
       .attr("stroke-width", "2px");
   }
 
-  private drawPoints(renderConfig: RenderConfig): void {
+  public drawPoints(renderConfig: RenderConfig): void {
     const data = renderConfig.seriesOption.data;
     const pointsSelection = renderConfig.seriesSelection
       .selectAll<SVGElement, DataPoint[]>("g.points")
@@ -150,8 +156,8 @@ export class AreaSeriesRenderer extends SeriesRenderer {
       .append("circle")
       .merge(pointsPath)
       .attr("r", 4.5)
-      .attr("cy", dataPoint => renderConfig.yScale(dataPoint.y)!)
-      .attr("cx", dataPoint => renderConfig.xScale(dataPoint.x)!)
+      .attr("cy", (dataPoint) => renderConfig.yScale(dataPoint.y)!)
+      .attr("cx", (dataPoint) => renderConfig.xScale(dataPoint.x)!)
       .attr("stroke", renderConfig.seriesOption.color)
       .attr("fill-opacity", 0)
       .attr("stroke-opacity", 0)
