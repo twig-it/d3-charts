@@ -2,3 +2,12 @@ h1,
 h2 {
   font-family: Lato;
 }
+
+.app-root {
+  width: 100%;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 300px;
+}
