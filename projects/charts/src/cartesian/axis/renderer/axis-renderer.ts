@@ -49,11 +49,7 @@ export abstract class AxisRenderer {
   ): SVGGAxisTitleSelection {
     const axisTitleSelection = axisSelection
       .selectAll<SVGTextElement, string[]>("text")
-      .data([axisOption.title]);
-
-    axisTitleSelection.exit().remove();
-
-    axisTitleSelection
+      .data([axisOption.title])
       .enter()
       .append<SVGTextElement>("svg:text")
       .style("fill", axisOption.color)
