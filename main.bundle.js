@@ -257,9 +257,7 @@
         drawAxisTitle(axisSelection, axisOption) {
             const axisTitleSelection = axisSelection
                 .selectAll("text")
-                .data([axisOption.title]);
-            axisTitleSelection.exit().remove();
-            axisTitleSelection
+                .data([axisOption.title])
                 .enter()
                 .append("svg:text")
                 .style("fill", axisOption.color)
