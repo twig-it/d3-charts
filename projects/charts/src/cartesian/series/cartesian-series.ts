@@ -8,11 +8,11 @@ import {
   DataPoint,
   OrdinalDataPoint,
   SeriesOptions,
-  VisualizationType
+  VisualizationType,
 } from "../cartesian";
 import {
   CartesianAxisData,
-  CartesianChartSelection
+  CartesianChartSelection,
 } from "../cartesian-object";
 import { ChartLayoutClass } from "../layout/cartesian-layout";
 import { CartesianTooltip } from "../tooltip/cartesian-tooltip";
@@ -61,7 +61,7 @@ export class CartesianSeries {
         seriesOption: seriesOption,
         seriesIndex: seriesIndex,
         xAxisData: xAxisData,
-        yAxisData: yAxisData
+        yAxisData: yAxisData,
       });
     });
   }
@@ -142,12 +142,17 @@ export class CartesianSeries {
     axisPosition: number,
     scaleType: AxisScaleType
   ): number[] | string[] {
-    return seriesOptions
-      .filter(series => series.xIndex === axisPosition)
-      .map(series => this.getXDomain(series.data, scaleType))
-      .reduce((previousDomain, currentDomain) =>
-        this.getCombinedDomain(scaleType, previousDomain, currentDomain)
-      );
+    const domains = seriesOptions
+      .filter((series) => series.xIndex === axisPosition)
+      .map((series) => this.getXDomain(series.data, scaleType));
+
+    if (domains.length === 0) {
+      return [];
+    }
+
+    return domains.reduce((previousDomain, currentDomain) =>
+      this.getCombinedDomain(scaleType, previousDomain, currentDomain)
+    );
   }
 
   private getYDomainForAllSeries(
@@ -155,12 +160,17 @@ export class CartesianSeries {
     axisPosition: number,
     scaleType: AxisScaleType
   ): number[] | string[] {
-    return seriesOptions
-      .filter(series => series.yIndex === axisPosition)
-      .map(series => this.getYDomain(series.data, scaleType))
-      .reduce((previousDomain, currentDomain) =>
-        this.getCombinedDomain(scaleType, previousDomain, currentDomain)
-      );
+    const domains = seriesOptions
+      .filter((series) => series.yIndex === axisPosition)
+      .map((series) => this.getYDomain(series.data, scaleType));
+
+    if (domains.length === 0) {
+      return [];
+    }
+
+    return domains.reduce((previousDomain, currentDomain) =>
+      this.getCombinedDomain(scaleType, previousDomain, currentDomain)
+    );
   }
 
   private getCombinedDomain(
@@ -171,7 +181,7 @@ export class CartesianSeries {
     if (scaleType !== AxisScaleType.Category) {
       return [
         Math.min((domain1 as number[])[0], (domain2 as number[])[0]),
-        Math.max((domain1 as number[])[1], (domain2 as number[])[1])
+        Math.max((domain1 as number[])[1], (domain2 as number[])[1]),
       ];
     } else {
       return union(domain1 as string[], domain2 as string[]);
@@ -183,11 +193,11 @@ export class CartesianSeries {
     scaleType: AxisScaleType
   ): number[] | string[] {
     if (scaleType !== AxisScaleType.Category) {
-      const x = dataPoints.map(point => point.x as number);
+      const x = dataPoints.map((point) => point.x as number);
 
       return [Math.min(...x), Math.max(...x)];
     } else {
-      return (dataPoints as OrdinalDataPoint[]).map(dataPoint => dataPoint.x);
+      return (dataPoints as OrdinalDataPoint[]).map((dataPoint) => dataPoint.x);
     }
   }
 
@@ -200,11 +210,11 @@ export class CartesianSeries {
         0,
         max<DataPoint, number>(
           dataPoints as DataPoint[],
-          dataPoint => dataPoint.y
-        )
+          (dataPoint) => dataPoint.y
+        ),
       ] as number[];
     } else {
-      return (dataPoints as OrdinalDataPoint[]).map(dataPoint => dataPoint.y);
+      return (dataPoints as OrdinalDataPoint[]).map((dataPoint) => dataPoint.y);
     }
   }
 

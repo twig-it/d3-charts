@@ -21,7 +21,14 @@ h2 {
 }
 
 .charts {
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: 300px;
+}
+
+.full-row {
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
