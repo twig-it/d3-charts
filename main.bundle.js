@@ -77,12 +77,12 @@
         }
         throwIfDestroyed() {
             if (this.destroyed) {
-                throw new Error('This CartesianObject has been destroyed');
+                throw new Error("This CartesianObject has been destroyed");
             }
         }
         destroy() {
             // This should also be called when the object is detached from the HTMLElement.
-            d3Selection.select(this.chartContainer).selectAll('svg').remove();
+            d3Selection.select(this.chartContainer).selectAll("svg").remove();
             this.destroyed = true;
         }
     }
@@ -256,6 +256,11 @@
         }
         drawAxisTitle(axisSelection, axisOption) {
             const axisTitleSelection = axisSelection
+                .selectAll("text")
+                .data([axisOption.title]);
+            axisTitleSelection.exit().remove();
+            axisTitleSelection
+                .enter()
                 .append("svg:text")
                 .style("fill", axisOption.color)
                 .style("font-size", "14px")
@@ -1393,7 +1398,7 @@
                     seriesOption: seriesOption,
                     seriesIndex: seriesIndex,
                     xAxisData: xAxisData,
-                    yAxisData: yAxisData
+                    yAxisData: yAxisData,
                 });
             });
         }
@@ -1426,22 +1431,28 @@
             });
         }
         getXDomainForAllSeries(seriesOptions, axisPosition, scaleType) {
-            return seriesOptions
-                .filter(series => series.xIndex === axisPosition)
-                .map(series => this.getXDomain(series.data, scaleType))
-                .reduce((previousDomain, currentDomain) => this.getCombinedDomain(scaleType, previousDomain, currentDomain));
+            const domains = seriesOptions
+                .filter((series) => series.xIndex === axisPosition)
+                .map((series) => this.getXDomain(series.data, scaleType));
+            if (domains.length === 0) {
+                return [];
+            }
+            return domains.reduce((previousDomain, currentDomain) => this.getCombinedDomain(scaleType, previousDomain, currentDomain));
         }
         getYDomainForAllSeries(seriesOptions, axisPosition, scaleType) {
-            return seriesOptions
-                .filter(series => series.yIndex === axisPosition)
-                .map(series => this.getYDomain(series.data, scaleType))
-                .reduce((previousDomain, currentDomain) => this.getCombinedDomain(scaleType, previousDomain, currentDomain));
+            const domains = seriesOptions
+                .filter((series) => series.yIndex === axisPosition)
+                .map((series) => this.getYDomain(series.data, scaleType));
+            if (domains.length === 0) {
+                return [];
+            }
+            return domains.reduce((previousDomain, currentDomain) => this.getCombinedDomain(scaleType, previousDomain, currentDomain));
         }
         getCombinedDomain(scaleType, domain1, domain2) {
             if (scaleType !== exports.AxisScaleType.Category) {
                 return [
                     Math.min(domain1[0], domain2[0]),
-                    Math.max(domain1[1], domain2[1])
+                    Math.max(domain1[1], domain2[1]),
                 ];
             }
             else {
@@ -1450,22 +1461,22 @@
         }
         getXDomain(dataPoints, scaleType) {
             if (scaleType !== exports.AxisScaleType.Category) {
-                const x = dataPoints.map(point => point.x);
+                const x = dataPoints.map((point) => point.x);
                 return [Math.min(...x), Math.max(...x)];
             }
             else {
-                return dataPoints.map(dataPoint => dataPoint.x);
+                return dataPoints.map((dataPoint) => dataPoint.x);
             }
         }
         getYDomain(dataPoints, scaleType) {
             if (scaleType !== exports.AxisScaleType.Category) {
                 return [
                     0,
-                    d3Array.max(dataPoints, dataPoint => dataPoint.y)
+                    d3Array.max(dataPoints, (dataPoint) => dataPoint.y),
                 ];
             }
             else {
-                return dataPoints.map(dataPoint => dataPoint.y);
+                return dataPoints.map((dataPoint) => dataPoint.y);
             }
         }
         getSeriesRenderer(seriesOptions) {
@@ -1700,7 +1711,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "h1,\nh2 {\n  font-family: Lato;\n}\n\n.app-root {\n  width: 100%;\n  height: 100vh;\n\n  display: flex;\n  flex-direction: column;\n}\n\n.title {\n  display: flex;\n  align-items: center;\n}\n\n.docs {\n  margin-left: 24px;\n}\n\n.charts {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-auto-rows: 300px;\n}\n", "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;;EAEE,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,aAAa;;EAEb,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,aAAa;EACb,8BAA8B;EAC9B,qBAAqB;AACvB","sourcesContent":["h1,\nh2 {\n  font-family: Lato;\n}\n\n.app-root {\n  width: 100%;\n  height: 100vh;\n\n  display: flex;\n  flex-direction: column;\n}\n\n.title {\n  display: flex;\n  align-items: center;\n}\n\n.docs {\n  margin-left: 24px;\n}\n\n.charts {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-auto-rows: 300px;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "h1,\nh2 {\n  font-family: Lato;\n}\n\n.app-root {\n  width: 100%;\n  height: 100vh;\n\n  display: flex;\n  flex-direction: column;\n}\n\n.title {\n  display: flex;\n  align-items: center;\n}\n\n.docs {\n  margin-left: 24px;\n}\n\n.charts {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-auto-rows: 300px;\n}\n\n.full-row {\n  grid-column-start: 1;\n  grid-column-end: 3;\n}\n", "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;;EAEE,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,aAAa;;EAEb,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,8BAA8B;EAC9B,qBAAqB;AACvB;;AAEA;EACE,oBAAoB;EACpB,kBAAkB;AACpB","sourcesContent":["h1,\nh2 {\n  font-family: Lato;\n}\n\n.app-root {\n  width: 100%;\n  height: 100vh;\n\n  display: flex;\n  flex-direction: column;\n}\n\n.title {\n  display: flex;\n  align-items: center;\n}\n\n.docs {\n  margin-left: 24px;\n}\n\n.charts {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-auto-rows: 300px;\n}\n\n.full-row {\n  grid-column-start: 1;\n  grid-column-end: 3;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46619,6 +46630,107 @@ var buildColumnChart = function (container) {
 
 /***/ }),
 
+/***/ "./src/configs/combination-chart.ts":
+/*!******************************************!*\
+  !*** ./src/configs/combination-chart.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "buildCombinationChart": () => (/* binding */ buildCombinationChart)
+/* harmony export */ });
+/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @samskara-ui/d3-charts */ "./dist/charts/d3-charts.umd.js");
+/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__);
+
+var options = {
+    series: [
+        {
+            visualization: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Line,
+            name: "Line series 1",
+            color: "#27c675",
+            xIndex: 0,
+            yIndex: 1,
+            visible: true,
+            tooltip: {
+                visible: false,
+                formatter: function () { return ""; },
+            },
+            data: [],
+        },
+        {
+            visualization: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Line,
+            name: "Line series 2",
+            color: "#9e4c41",
+            xIndex: 0,
+            yIndex: 0,
+            visible: true,
+            tooltip: {
+                visible: false,
+                formatter: function () { return ""; },
+            },
+            data: [],
+        },
+    ],
+    xAxis: [
+        {
+            title: "XAxis label",
+            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Time,
+            grid: {
+                visible: true,
+                color: "#D3D3D3",
+            },
+            visible: true,
+            opposite: false,
+            color: "#27c675",
+        },
+    ],
+    yAxis: [
+        {
+            title: "YAxis Label 1",
+            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
+            grid: {
+                visible: true,
+                color: "#D3D3D3",
+            },
+            visible: true,
+            opposite: false,
+            color: "#9e4c41",
+        },
+        {
+            title: "YAxis Label 2",
+            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
+            grid: {
+                visible: false,
+                color: "#D3D3D3",
+            },
+            visible: true,
+            opposite: true,
+            color: "#27c675",
+        },
+    ],
+};
+var buildCombinationChart = function (container) {
+    var chart = new _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.CartesianChart(container, options);
+    var count = 0;
+    setInterval(function () {
+        var x = Date.now();
+        count++;
+        chart.addPoint("Line series 1", {
+            x: x,
+            y: Math.random() * 1000 * count * 2,
+        }, false);
+        chart.addPoint("Line series 2", {
+            x: x,
+            y: Math.random() * 1000 * count,
+        }, true);
+    }, 2000);
+};
+
+
+/***/ }),
+
 /***/ "./src/configs/line-chart.ts":
 /*!***********************************!*\
   !*** ./src/configs/line-chart.ts ***!
@@ -46876,14 +46988,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _configs_line_chart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./configs/line-chart */ "./src/configs/line-chart.ts");
 /* harmony import */ var _configs_area_chart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./configs/area-chart */ "./src/configs/area-chart.ts");
 /* harmony import */ var _configs_column_chart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./configs/column-chart */ "./src/configs/column-chart.ts");
+/* harmony import */ var _configs_combination_chart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./configs/combination-chart */ "./src/configs/combination-chart.ts");
+
 
 
 
 
 
 var chartsRootDiv = document.getElementById("charts");
-var buildChartContainer = function () {
+var buildChartContainer = function (classes) {
+    if (classes === void 0) { classes = []; }
     var container = document.createElement("div");
+    container.className = "chart " + classes.join(" ");
     chartsRootDiv.appendChild(container);
     return container;
 };
@@ -46895,6 +47011,8 @@ var buildChartContainer = function () {
 (0,_configs_points_chart__WEBPACK_IMPORTED_MODULE_1__.buildPointsChart)(buildChartContainer());
 // Add Column Chart
 (0,_configs_column_chart__WEBPACK_IMPORTED_MODULE_4__.buildColumnChart)(buildChartContainer());
+// Add Combination Chart
+(0,_configs_combination_chart__WEBPACK_IMPORTED_MODULE_5__.buildCombinationChart)(buildChartContainer(["full-row"]));
 
 })();
 
