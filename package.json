@@ -21,7 +21,7 @@
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "docs:types": "typedoc ./projects/charts/src/index.ts --tsconfig ./projects/charts/tsconfig.lib.json --out docs/types",
-    "docs": "rm -rf docs && npx webpack build --mode=production -o docs && npm run docs:types"
+    "docs": "rm -rf docs && npx webpack build --mode=development -o docs && npm run docs:types"
   },
   "private": true,
   "dependencies": {
