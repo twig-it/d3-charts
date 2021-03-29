@@ -4,9 +4,8 @@ import {
   timeHour,
   timeMinute,
   timeMonth,
-  timeSecond,
   timeWeek,
-  timeYear
+  timeYear,
 } from "d3-time";
 import { timeFormat } from "d3-time-format";
 
@@ -16,7 +15,7 @@ import {
   ScaleType,
   SVGChildSelection,
   SVGGAxisSelection,
-  SVGGAxisTitleSelection
+  SVGGAxisTitleSelection,
 } from "../../cartesian-object";
 import { ChartLayoutClass } from "../../layout/cartesian-layout";
 import { CartesianAxisScale } from "../cartesian-axis-scale";
@@ -66,7 +65,7 @@ export abstract class AxisRenderer {
   ): CartesianAxisData {
     return {
       axis: axis,
-      scaleType: scaleType
+      scaleType: scaleType,
     };
   }
 
@@ -146,8 +145,7 @@ export abstract class AxisRenderer {
     axis: Axis<string | number | Date>
   ): void {
     if (rendererConfig.axisOption.scale === AxisScaleType.Time) {
-      const formatMillisecond = timeFormat(".%L");
-      const formatSecond = timeFormat("%I:%M:%S");
+      const formatSecond = timeFormat("%M:%S");
       const formatMinute = timeFormat("%I:%M");
       const formatHour = timeFormat("%I %p");
       const formatDay = timeFormat("%a %d");
@@ -155,11 +153,7 @@ export abstract class AxisRenderer {
       const formatMonth = timeFormat("%B");
       const formatYear = timeFormat("%Y");
 
-      const timeTickFormat: (tickDate: Date) => string = tickDate => {
-        if (timeSecond(tickDate) < tickDate) {
-          return formatMillisecond(tickDate);
-        }
-
+      const timeTickFormat: (tickDate: Date) => string = (tickDate) => {
         if (timeMinute(tickDate) < tickDate) {
           return formatSecond(tickDate);
         }
@@ -186,9 +180,9 @@ export abstract class AxisRenderer {
         }
       };
 
-      axis.tickFormat(timeTickFormat as (
-        tickLabel: string | number | Date
-      ) => string);
+      axis.tickFormat(
+        timeTickFormat as (tickLabel: string | number | Date) => string
+      );
     }
   }
 

@@ -1,13 +1,13 @@
 window.searchData = {
   kinds: {
-    "4": "Enumeration",
-    "16": "Enumeration member",
-    "128": "Class",
-    "256": "Interface",
-    "512": "Constructor",
-    "1024": "Property",
-    "2048": "Method",
-    "4194304": "Type alias"
+    4: "Enumeration",
+    16: "Enumeration member",
+    128: "Class",
+    256: "Interface",
+    512: "Constructor",
+    1024: "Property",
+    2048: "Method",
+    4194304: "Type alias",
   },
   rows: [
     {
@@ -15,7 +15,7 @@ window.searchData = {
       kind: 256,
       name: "CartesianOptions",
       url: "interfaces/cartesianoptions.html",
-      classes: "tsd-kind-interface"
+      classes: "tsd-kind-interface",
     },
     {
       id: 1,
@@ -23,7 +23,7 @@ window.searchData = {
       name: "animation",
       url: "interfaces/cartesianoptions.html#animation",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "CartesianOptions"
+      parent: "CartesianOptions",
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ window.searchData = {
       name: "style",
       url: "interfaces/cartesianoptions.html#style",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "CartesianOptions"
+      parent: "CartesianOptions",
     },
     {
       id: 3,
@@ -39,7 +39,7 @@ window.searchData = {
       name: "margin",
       url: "interfaces/cartesianoptions.html#margin",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "CartesianOptions"
+      parent: "CartesianOptions",
     },
     {
       id: 4,
@@ -47,7 +47,7 @@ window.searchData = {
       name: "xAxis",
       url: "interfaces/cartesianoptions.html#xaxis",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "CartesianOptions"
+      parent: "CartesianOptions",
     },
     {
       id: 5,
@@ -55,7 +55,7 @@ window.searchData = {
       name: "yAxis",
       url: "interfaces/cartesianoptions.html#yaxis",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "CartesianOptions"
+      parent: "CartesianOptions",
     },
     {
       id: 6,
@@ -63,7 +63,7 @@ window.searchData = {
       name: "series",
       url: "interfaces/cartesianoptions.html#series",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "CartesianOptions"
+      parent: "CartesianOptions",
     },
     {
       id: 7,
@@ -71,14 +71,14 @@ window.searchData = {
       name: "legend",
       url: "interfaces/cartesianoptions.html#legend",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "CartesianOptions"
+      parent: "CartesianOptions",
     },
     {
       id: 8,
       kind: 256,
       name: "StyleOptions",
       url: "interfaces/styleoptions.html",
-      classes: "tsd-kind-interface"
+      classes: "tsd-kind-interface",
     },
     {
       id: 9,
@@ -86,7 +86,7 @@ window.searchData = {
       name: "backgroundColor",
       url: "interfaces/styleoptions.html#backgroundcolor",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "StyleOptions"
+      parent: "StyleOptions",
     },
     {
       id: 10,
@@ -94,7 +94,7 @@ window.searchData = {
       name: "fontFamily",
       url: "interfaces/styleoptions.html#fontfamily",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "StyleOptions"
+      parent: "StyleOptions",
     },
     {
       id: 11,
@@ -102,14 +102,14 @@ window.searchData = {
       name: "fontSize",
       url: "interfaces/styleoptions.html#fontsize",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "StyleOptions"
+      parent: "StyleOptions",
     },
     {
       id: 12,
       kind: 256,
       name: "MarginOptions",
       url: "interfaces/marginoptions.html",
-      classes: "tsd-kind-interface"
+      classes: "tsd-kind-interface",
     },
     {
       id: 13,
@@ -117,7 +117,7 @@ window.searchData = {
       name: "top",
       url: "interfaces/marginoptions.html#top",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "MarginOptions"
+      parent: "MarginOptions",
     },
     {
       id: 14,
@@ -125,7 +125,7 @@ window.searchData = {
       name: "left",
       url: "interfaces/marginoptions.html#left",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "MarginOptions"
+      parent: "MarginOptions",
     },
     {
       id: 15,
@@ -133,7 +133,7 @@ window.searchData = {
       name: "bottom",
       url: "interfaces/marginoptions.html#bottom",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "MarginOptions"
+      parent: "MarginOptions",
     },
     {
       id: 16,
@@ -141,14 +141,14 @@ window.searchData = {
       name: "right",
       url: "interfaces/marginoptions.html#right",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "MarginOptions"
+      parent: "MarginOptions",
     },
     {
       id: 17,
       kind: 256,
       name: "AxisOptions",
       url: "interfaces/axisoptions.html",
-      classes: "tsd-kind-interface"
+      classes: "tsd-kind-interface",
     },
     {
       id: 18,
@@ -156,7 +156,7 @@ window.searchData = {
       name: "title",
       url: "interfaces/axisoptions.html#title",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "AxisOptions"
+      parent: "AxisOptions",
     },
     {
       id: 19,
@@ -164,7 +164,7 @@ window.searchData = {
       name: "scale",
       url: "interfaces/axisoptions.html#scale",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "AxisOptions"
+      parent: "AxisOptions",
     },
     {
       id: 20,
@@ -172,7 +172,7 @@ window.searchData = {
       name: "grid",
       url: "interfaces/axisoptions.html#grid",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "AxisOptions"
+      parent: "AxisOptions",
     },
     {
       id: 21,
@@ -180,7 +180,7 @@ window.searchData = {
       name: "visible",
       url: "interfaces/axisoptions.html#visible",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "AxisOptions"
+      parent: "AxisOptions",
     },
     {
       id: 22,
@@ -188,7 +188,7 @@ window.searchData = {
       name: "opposite",
       url: "interfaces/axisoptions.html#opposite",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "AxisOptions"
+      parent: "AxisOptions",
     },
     {
       id: 23,
@@ -196,14 +196,14 @@ window.searchData = {
       name: "color",
       url: "interfaces/axisoptions.html#color",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "AxisOptions"
+      parent: "AxisOptions",
     },
     {
       id: 24,
       kind: 256,
       name: "AxisGridOptions",
       url: "interfaces/axisgridoptions.html",
-      classes: "tsd-kind-interface"
+      classes: "tsd-kind-interface",
     },
     {
       id: 25,
@@ -211,7 +211,7 @@ window.searchData = {
       name: "visible",
       url: "interfaces/axisgridoptions.html#visible",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "AxisGridOptions"
+      parent: "AxisGridOptions",
     },
     {
       id: 26,
@@ -219,14 +219,14 @@ window.searchData = {
       name: "color",
       url: "interfaces/axisgridoptions.html#color",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "AxisGridOptions"
+      parent: "AxisGridOptions",
     },
     {
       id: 27,
       kind: 4,
       name: "AxisScaleType",
       url: "enums/axisscaletype.html",
-      classes: "tsd-kind-enum"
+      classes: "tsd-kind-enum",
     },
     {
       id: 28,
@@ -234,7 +234,7 @@ window.searchData = {
       name: "Linear",
       url: "enums/axisscaletype.html#linear",
       classes: "tsd-kind-enum-member tsd-parent-kind-enum",
-      parent: "AxisScaleType"
+      parent: "AxisScaleType",
     },
     {
       id: 29,
@@ -242,7 +242,7 @@ window.searchData = {
       name: "Logarithmic",
       url: "enums/axisscaletype.html#logarithmic",
       classes: "tsd-kind-enum-member tsd-parent-kind-enum",
-      parent: "AxisScaleType"
+      parent: "AxisScaleType",
     },
     {
       id: 30,
@@ -250,7 +250,7 @@ window.searchData = {
       name: "Time",
       url: "enums/axisscaletype.html#time",
       classes: "tsd-kind-enum-member tsd-parent-kind-enum",
-      parent: "AxisScaleType"
+      parent: "AxisScaleType",
     },
     {
       id: 31,
@@ -258,14 +258,14 @@ window.searchData = {
       name: "Category",
       url: "enums/axisscaletype.html#category",
       classes: "tsd-kind-enum-member tsd-parent-kind-enum",
-      parent: "AxisScaleType"
+      parent: "AxisScaleType",
     },
     {
       id: 32,
       kind: 256,
       name: "LegendOptions",
       url: "interfaces/legendoptions.html",
-      classes: "tsd-kind-interface"
+      classes: "tsd-kind-interface",
     },
     {
       id: 33,
@@ -273,7 +273,7 @@ window.searchData = {
       name: "title",
       url: "interfaces/legendoptions.html#title",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "LegendOptions"
+      parent: "LegendOptions",
     },
     {
       id: 34,
@@ -281,7 +281,7 @@ window.searchData = {
       name: "align",
       url: "interfaces/legendoptions.html#align",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "LegendOptions"
+      parent: "LegendOptions",
     },
     {
       id: 35,
@@ -289,14 +289,14 @@ window.searchData = {
       name: "visible",
       url: "interfaces/legendoptions.html#visible",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "LegendOptions"
+      parent: "LegendOptions",
     },
     {
       id: 36,
       kind: 4,
       name: "LegendAlign",
       url: "enums/legendalign.html",
-      classes: "tsd-kind-enum"
+      classes: "tsd-kind-enum",
     },
     {
       id: 37,
@@ -304,7 +304,7 @@ window.searchData = {
       name: "Right",
       url: "enums/legendalign.html#right",
       classes: "tsd-kind-enum-member tsd-parent-kind-enum",
-      parent: "LegendAlign"
+      parent: "LegendAlign",
     },
     {
       id: 38,
@@ -312,14 +312,14 @@ window.searchData = {
       name: "Bottom",
       url: "enums/legendalign.html#bottom",
       classes: "tsd-kind-enum-member tsd-parent-kind-enum",
-      parent: "LegendAlign"
+      parent: "LegendAlign",
     },
     {
       id: 39,
       kind: 256,
       name: "SeriesOptions",
       url: "interfaces/seriesoptions.html",
-      classes: "tsd-kind-interface"
+      classes: "tsd-kind-interface",
     },
     {
       id: 40,
@@ -327,7 +327,7 @@ window.searchData = {
       name: "visualization",
       url: "interfaces/seriesoptions.html#visualization",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "SeriesOptions"
+      parent: "SeriesOptions",
     },
     {
       id: 41,
@@ -335,7 +335,7 @@ window.searchData = {
       name: "name",
       url: "interfaces/seriesoptions.html#name",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "SeriesOptions"
+      parent: "SeriesOptions",
     },
     {
       id: 42,
@@ -343,7 +343,7 @@ window.searchData = {
       name: "color",
       url: "interfaces/seriesoptions.html#color",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "SeriesOptions"
+      parent: "SeriesOptions",
     },
     {
       id: 43,
@@ -351,7 +351,7 @@ window.searchData = {
       name: "xIndex",
       url: "interfaces/seriesoptions.html#xindex",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "SeriesOptions"
+      parent: "SeriesOptions",
     },
     {
       id: 44,
@@ -359,7 +359,7 @@ window.searchData = {
       name: "yIndex",
       url: "interfaces/seriesoptions.html#yindex",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "SeriesOptions"
+      parent: "SeriesOptions",
     },
     {
       id: 45,
@@ -367,7 +367,7 @@ window.searchData = {
       name: "visible",
       url: "interfaces/seriesoptions.html#visible",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "SeriesOptions"
+      parent: "SeriesOptions",
     },
     {
       id: 46,
@@ -375,7 +375,7 @@ window.searchData = {
       name: "tooltip",
       url: "interfaces/seriesoptions.html#tooltip",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "SeriesOptions"
+      parent: "SeriesOptions",
     },
     {
       id: 47,
@@ -383,14 +383,14 @@ window.searchData = {
       name: "data",
       url: "interfaces/seriesoptions.html#data",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "SeriesOptions"
+      parent: "SeriesOptions",
     },
     {
       id: 48,
       kind: 4,
       name: "VisualizationType",
       url: "enums/visualizationtype.html",
-      classes: "tsd-kind-enum"
+      classes: "tsd-kind-enum",
     },
     {
       id: 49,
@@ -398,7 +398,7 @@ window.searchData = {
       name: "Column",
       url: "enums/visualizationtype.html#column",
       classes: "tsd-kind-enum-member tsd-parent-kind-enum",
-      parent: "VisualizationType"
+      parent: "VisualizationType",
     },
     {
       id: 50,
@@ -406,7 +406,7 @@ window.searchData = {
       name: "Area",
       url: "enums/visualizationtype.html#area",
       classes: "tsd-kind-enum-member tsd-parent-kind-enum",
-      parent: "VisualizationType"
+      parent: "VisualizationType",
     },
     {
       id: 51,
@@ -414,7 +414,7 @@ window.searchData = {
       name: "Line",
       url: "enums/visualizationtype.html#line",
       classes: "tsd-kind-enum-member tsd-parent-kind-enum",
-      parent: "VisualizationType"
+      parent: "VisualizationType",
     },
     {
       id: 52,
@@ -422,14 +422,14 @@ window.searchData = {
       name: "Points",
       url: "enums/visualizationtype.html#points",
       classes: "tsd-kind-enum-member tsd-parent-kind-enum",
-      parent: "VisualizationType"
+      parent: "VisualizationType",
     },
     {
       id: 53,
       kind: 256,
       name: "ToolTipOption",
       url: "interfaces/tooltipoption.html",
-      classes: "tsd-kind-interface"
+      classes: "tsd-kind-interface",
     },
     {
       id: 54,
@@ -437,7 +437,7 @@ window.searchData = {
       name: "visible",
       url: "interfaces/tooltipoption.html#visible",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "ToolTipOption"
+      parent: "ToolTipOption",
     },
     {
       id: 55,
@@ -445,14 +445,14 @@ window.searchData = {
       name: "formatter",
       url: "interfaces/tooltipoption.html#formatter",
       classes: "tsd-kind-method tsd-parent-kind-interface",
-      parent: "ToolTipOption"
+      parent: "ToolTipOption",
     },
     {
       id: 56,
       kind: 256,
       name: "DataPoint",
       url: "interfaces/datapoint.html",
-      classes: "tsd-kind-interface"
+      classes: "tsd-kind-interface",
     },
     {
       id: 57,
@@ -460,7 +460,7 @@ window.searchData = {
       name: "x",
       url: "interfaces/datapoint.html#x",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "DataPoint"
+      parent: "DataPoint",
     },
     {
       id: 58,
@@ -468,14 +468,14 @@ window.searchData = {
       name: "y",
       url: "interfaces/datapoint.html#y",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "DataPoint"
+      parent: "DataPoint",
     },
     {
       id: 59,
       kind: 256,
       name: "OrdinalDataPoint",
       url: "interfaces/ordinaldatapoint.html",
-      classes: "tsd-kind-interface"
+      classes: "tsd-kind-interface",
     },
     {
       id: 60,
@@ -483,7 +483,7 @@ window.searchData = {
       name: "x",
       url: "interfaces/ordinaldatapoint.html#x",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "OrdinalDataPoint"
+      parent: "OrdinalDataPoint",
     },
     {
       id: 61,
@@ -491,21 +491,21 @@ window.searchData = {
       name: "y",
       url: "interfaces/ordinaldatapoint.html#y",
       classes: "tsd-kind-property tsd-parent-kind-interface",
-      parent: "OrdinalDataPoint"
+      parent: "OrdinalDataPoint",
     },
     {
       id: 62,
       kind: 4194304,
       name: "RecursivePartial",
       url: "modules.html#recursivepartial",
-      classes: "tsd-kind-type-alias tsd-has-type-parameter"
+      classes: "tsd-kind-type-alias tsd-has-type-parameter",
     },
     {
       id: 63,
       kind: 128,
       name: "CartesianObject",
       url: "classes/cartesianobject.html",
-      classes: "tsd-kind-class"
+      classes: "tsd-kind-class",
     },
     {
       id: 64,
@@ -513,7 +513,7 @@ window.searchData = {
       name: "constructor",
       url: "classes/cartesianobject.html#constructor",
       classes: "tsd-kind-constructor tsd-parent-kind-class",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 65,
@@ -521,7 +521,7 @@ window.searchData = {
       name: "destroyed",
       url: "classes/cartesianobject.html#destroyed",
       classes: "tsd-kind-property tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 66,
@@ -529,7 +529,7 @@ window.searchData = {
       name: "chartContainer",
       url: "classes/cartesianobject.html#chartcontainer",
       classes: "tsd-kind-property tsd-parent-kind-class tsd-is-protected",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 67,
@@ -537,7 +537,7 @@ window.searchData = {
       name: "options",
       url: "classes/cartesianobject.html#options",
       classes: "tsd-kind-property tsd-parent-kind-class tsd-is-protected",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 68,
@@ -545,7 +545,7 @@ window.searchData = {
       name: "draw",
       url: "classes/cartesianobject.html#draw",
       classes: "tsd-kind-method tsd-parent-kind-class",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 69,
@@ -553,7 +553,7 @@ window.searchData = {
       name: "redraw",
       url: "classes/cartesianobject.html#redraw",
       classes: "tsd-kind-method tsd-parent-kind-class",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 70,
@@ -561,7 +561,7 @@ window.searchData = {
       name: "addSeries",
       url: "classes/cartesianobject.html#addseries",
       classes: "tsd-kind-method tsd-parent-kind-class",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 71,
@@ -569,7 +569,7 @@ window.searchData = {
       name: "removeSeries",
       url: "classes/cartesianobject.html#removeseries",
       classes: "tsd-kind-method tsd-parent-kind-class",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 72,
@@ -577,7 +577,7 @@ window.searchData = {
       name: "setData",
       url: "classes/cartesianobject.html#setdata",
       classes: "tsd-kind-method tsd-parent-kind-class",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 73,
@@ -585,7 +585,7 @@ window.searchData = {
       name: "addPoints",
       url: "classes/cartesianobject.html#addpoints",
       classes: "tsd-kind-method tsd-parent-kind-class",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 74,
@@ -593,7 +593,7 @@ window.searchData = {
       name: "addPoint",
       url: "classes/cartesianobject.html#addpoint",
       classes: "tsd-kind-method tsd-parent-kind-class",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 75,
@@ -601,7 +601,7 @@ window.searchData = {
       name: "throwIfDestroyed",
       url: "classes/cartesianobject.html#throwifdestroyed",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-protected",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 76,
@@ -609,14 +609,14 @@ window.searchData = {
       name: "destroy",
       url: "classes/cartesianobject.html#destroy",
       classes: "tsd-kind-method tsd-parent-kind-class",
-      parent: "CartesianObject"
+      parent: "CartesianObject",
     },
     {
       id: 77,
       kind: 128,
       name: "CartesianChart",
       url: "classes/cartesianchart.html",
-      classes: "tsd-kind-class"
+      classes: "tsd-kind-class",
     },
     {
       id: 78,
@@ -624,7 +624,7 @@ window.searchData = {
       name: "constructor",
       url: "classes/cartesianchart.html#constructor",
       classes: "tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 79,
@@ -632,7 +632,7 @@ window.searchData = {
       name: "layout",
       url: "classes/cartesianchart.html#layout",
       classes: "tsd-kind-property tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 80,
@@ -640,7 +640,7 @@ window.searchData = {
       name: "axis",
       url: "classes/cartesianchart.html#axis",
       classes: "tsd-kind-property tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 81,
@@ -648,7 +648,7 @@ window.searchData = {
       name: "legend",
       url: "classes/cartesianchart.html#legend",
       classes: "tsd-kind-property tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 82,
@@ -656,7 +656,7 @@ window.searchData = {
       name: "tooltip",
       url: "classes/cartesianchart.html#tooltip",
       classes: "tsd-kind-property tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 83,
@@ -664,7 +664,7 @@ window.searchData = {
       name: "series",
       url: "classes/cartesianchart.html#series",
       classes: "tsd-kind-property tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 84,
@@ -672,7 +672,7 @@ window.searchData = {
       name: "chartSelection",
       url: "classes/cartesianchart.html#chartselection",
       classes: "tsd-kind-property tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 85,
@@ -680,7 +680,7 @@ window.searchData = {
       name: "draw",
       url: "classes/cartesianchart.html#draw",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-overwrite",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 86,
@@ -688,7 +688,7 @@ window.searchData = {
       name: "redraw",
       url: "classes/cartesianchart.html#redraw",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-overwrite",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 87,
@@ -696,7 +696,7 @@ window.searchData = {
       name: "reflow",
       url: "classes/cartesianchart.html#reflow",
       classes: "tsd-kind-method tsd-parent-kind-class",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 88,
@@ -704,7 +704,7 @@ window.searchData = {
       name: "addSeries",
       url: "classes/cartesianchart.html#addseries",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-overwrite",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 89,
@@ -712,7 +712,7 @@ window.searchData = {
       name: "removeSeries",
       url: "classes/cartesianchart.html#removeseries",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-overwrite",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 90,
@@ -720,7 +720,7 @@ window.searchData = {
       name: "setData",
       url: "classes/cartesianchart.html#setdata",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-overwrite",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 91,
@@ -728,7 +728,7 @@ window.searchData = {
       name: "addPoints",
       url: "classes/cartesianchart.html#addpoints",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-overwrite",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 92,
@@ -736,7 +736,7 @@ window.searchData = {
       name: "addPoint",
       url: "classes/cartesianchart.html#addpoint",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-overwrite",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 93,
@@ -744,7 +744,7 @@ window.searchData = {
       name: "clear",
       url: "classes/cartesianchart.html#clear",
       classes: "tsd-kind-method tsd-parent-kind-class",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 94,
@@ -752,7 +752,7 @@ window.searchData = {
       name: "buildChartSelection",
       url: "classes/cartesianchart.html#buildchartselection",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 95,
@@ -760,7 +760,7 @@ window.searchData = {
       name: "drawLayout",
       url: "classes/cartesianchart.html#drawlayout",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 96,
@@ -768,7 +768,7 @@ window.searchData = {
       name: "drawAxes",
       url: "classes/cartesianchart.html#drawaxes",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 97,
@@ -776,7 +776,7 @@ window.searchData = {
       name: "drawLegends",
       url: "classes/cartesianchart.html#drawlegends",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 98,
@@ -784,7 +784,7 @@ window.searchData = {
       name: "drawSeries",
       url: "classes/cartesianchart.html#drawseries",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-private",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 99,
@@ -793,7 +793,7 @@ window.searchData = {
       url: "classes/cartesianchart.html#chartcontainer",
       classes:
         "tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 100,
@@ -802,7 +802,7 @@ window.searchData = {
       url: "classes/cartesianchart.html#options",
       classes:
         "tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 101,
@@ -811,7 +811,7 @@ window.searchData = {
       url: "classes/cartesianchart.html#throwifdestroyed",
       classes:
         "tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected",
-      parent: "CartesianChart"
+      parent: "CartesianChart",
     },
     {
       id: 102,
@@ -819,8 +819,8 @@ window.searchData = {
       name: "destroy",
       url: "classes/cartesianchart.html#destroy",
       classes: "tsd-kind-method tsd-parent-kind-class tsd-is-inherited",
-      parent: "CartesianChart"
-    }
+      parent: "CartesianChart",
+    },
   ],
   index: {
     version: "2.3.9",
@@ -1031,248 +1031,223 @@ window.searchData = {
       ["name/101", [64, 37.281]],
       ["parent/101", [66, 1.272]],
       ["name/102", [65, 37.281]],
-      ["parent/102", [66, 1.272]]
+      ["parent/102", [66, 1.272]],
     ],
     invertedIndex: [
-      ["addpoint", { _index: 63, name: { "74": {}, "92": {} }, parent: {} }],
-      ["addpoints", { _index: 62, name: { "73": {}, "91": {} }, parent: {} }],
-      ["addseries", { _index: 59, name: { "70": {}, "88": {} }, parent: {} }],
-      ["align", { _index: 31, name: { "34": {} }, parent: {} }],
-      ["animation", { _index: 1, name: { "1": {} }, parent: {} }],
-      ["area", { _index: 42, name: { "50": {} }, parent: {} }],
-      ["axis", { _index: 68, name: { "80": {} }, parent: {} }],
+      ["addpoint", { _index: 63, name: { 74: {}, 92: {} }, parent: {} }],
+      ["addpoints", { _index: 62, name: { 73: {}, 91: {} }, parent: {} }],
+      ["addseries", { _index: 59, name: { 70: {}, 88: {} }, parent: {} }],
+      ["align", { _index: 31, name: { 34: {} }, parent: {} }],
+      ["animation", { _index: 1, name: { 1: {} }, parent: {} }],
+      ["area", { _index: 42, name: { 50: {} }, parent: {} }],
+      ["axis", { _index: 68, name: { 80: {} }, parent: {} }],
       [
         "axisgridoptions",
-        { _index: 24, name: { "24": {} }, parent: { "25": {}, "26": {} } }
+        { _index: 24, name: { 24: {} }, parent: { 25: {}, 26: {} } },
       ],
       [
         "axisoptions",
         {
           _index: 17,
-          name: { "17": {} },
-          parent: { "18": {}, "19": {}, "20": {}, "21": {}, "22": {}, "23": {} }
-        }
+          name: { 17: {} },
+          parent: { 18: {}, 19: {}, 20: {}, 21: {}, 22: {}, 23: {} },
+        },
       ],
       [
         "axisscaletype",
         {
           _index: 25,
-          name: { "27": {} },
-          parent: { "28": {}, "29": {}, "30": {}, "31": {} }
-        }
+          name: { 27: {} },
+          parent: { 28: {}, 29: {}, 30: {}, 31: {} },
+        },
       ],
-      ["backgroundcolor", { _index: 9, name: { "9": {} }, parent: {} }],
-      ["bottom", { _index: 15, name: { "15": {}, "38": {} }, parent: {} }],
-      ["buildchartselection", { _index: 72, name: { "94": {} }, parent: {} }],
+      ["backgroundcolor", { _index: 9, name: { 9: {} }, parent: {} }],
+      ["bottom", { _index: 15, name: { 15: {}, 38: {} }, parent: {} }],
+      ["buildchartselection", { _index: 72, name: { 94: {} }, parent: {} }],
       [
         "cartesianchart",
         {
           _index: 66,
-          name: { "77": {} },
+          name: { 77: {} },
           parent: {
-            "78": {},
-            "79": {},
-            "80": {},
-            "81": {},
-            "82": {},
-            "83": {},
-            "84": {},
-            "85": {},
-            "86": {},
-            "87": {},
-            "88": {},
-            "89": {},
-            "90": {},
-            "91": {},
-            "92": {},
-            "93": {},
-            "94": {},
-            "95": {},
-            "96": {},
-            "97": {},
-            "98": {},
-            "99": {},
-            "100": {},
-            "101": {},
-            "102": {}
-          }
-        }
+            78: {},
+            79: {},
+            80: {},
+            81: {},
+            82: {},
+            83: {},
+            84: {},
+            85: {},
+            86: {},
+            87: {},
+            88: {},
+            89: {},
+            90: {},
+            91: {},
+            92: {},
+            93: {},
+            94: {},
+            95: {},
+            96: {},
+            97: {},
+            98: {},
+            99: {},
+            100: {},
+            101: {},
+            102: {},
+          },
+        },
       ],
       [
         "cartesianobject",
         {
           _index: 52,
-          name: { "63": {} },
+          name: { 63: {} },
           parent: {
-            "64": {},
-            "65": {},
-            "66": {},
-            "67": {},
-            "68": {},
-            "69": {},
-            "70": {},
-            "71": {},
-            "72": {},
-            "73": {},
-            "74": {},
-            "75": {},
-            "76": {}
-          }
-        }
+            64: {},
+            65: {},
+            66: {},
+            67: {},
+            68: {},
+            69: {},
+            70: {},
+            71: {},
+            72: {},
+            73: {},
+            74: {},
+            75: {},
+            76: {},
+          },
+        },
       ],
       [
         "cartesianoptions",
         {
           _index: 0,
-          name: { "0": {} },
-          parent: {
-            "1": {},
-            "2": {},
-            "3": {},
-            "4": {},
-            "5": {},
-            "6": {},
-            "7": {}
-          }
-        }
+          name: { 0: {} },
+          parent: { 1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {}, 7: {} },
+        },
       ],
-      ["category", { _index: 29, name: { "31": {} }, parent: {} }],
-      [
-        "chartcontainer",
-        { _index: 55, name: { "66": {}, "99": {} }, parent: {} }
-      ],
-      ["chartselection", { _index: 69, name: { "84": {} }, parent: {} }],
-      ["clear", { _index: 71, name: { "93": {} }, parent: {} }],
-      [
-        "color",
-        { _index: 23, name: { "23": {}, "26": {}, "42": {} }, parent: {} }
-      ],
-      ["column", { _index: 41, name: { "49": {} }, parent: {} }],
-      ["constructor", { _index: 53, name: { "64": {}, "78": {} }, parent: {} }],
-      ["data", { _index: 39, name: { "47": {} }, parent: {} }],
+      ["category", { _index: 29, name: { 31: {} }, parent: {} }],
+      ["chartcontainer", { _index: 55, name: { 66: {}, 99: {} }, parent: {} }],
+      ["chartselection", { _index: 69, name: { 84: {} }, parent: {} }],
+      ["clear", { _index: 71, name: { 93: {} }, parent: {} }],
+      ["color", { _index: 23, name: { 23: {}, 26: {}, 42: {} }, parent: {} }],
+      ["column", { _index: 41, name: { 49: {} }, parent: {} }],
+      ["constructor", { _index: 53, name: { 64: {}, 78: {} }, parent: {} }],
+      ["data", { _index: 39, name: { 47: {} }, parent: {} }],
       [
         "datapoint",
-        { _index: 47, name: { "56": {} }, parent: { "57": {}, "58": {} } }
+        { _index: 47, name: { 56: {} }, parent: { 57: {}, 58: {} } },
       ],
-      ["destroy", { _index: 65, name: { "76": {}, "102": {} }, parent: {} }],
-      ["destroyed", { _index: 54, name: { "65": {} }, parent: {} }],
-      ["draw", { _index: 57, name: { "68": {}, "85": {} }, parent: {} }],
-      ["drawaxes", { _index: 74, name: { "96": {} }, parent: {} }],
-      ["drawlayout", { _index: 73, name: { "95": {} }, parent: {} }],
-      ["drawlegends", { _index: 75, name: { "97": {} }, parent: {} }],
-      ["drawseries", { _index: 76, name: { "98": {} }, parent: {} }],
-      ["fontfamily", { _index: 10, name: { "10": {} }, parent: {} }],
-      ["fontsize", { _index: 11, name: { "11": {} }, parent: {} }],
-      ["formatter", { _index: 46, name: { "55": {} }, parent: {} }],
-      ["grid", { _index: 20, name: { "20": {} }, parent: {} }],
-      ["layout", { _index: 67, name: { "79": {} }, parent: {} }],
-      ["left", { _index: 14, name: { "14": {} }, parent: {} }],
-      ["legend", { _index: 7, name: { "7": {}, "81": {} }, parent: {} }],
+      ["destroy", { _index: 65, name: { 76: {}, 102: {} }, parent: {} }],
+      ["destroyed", { _index: 54, name: { 65: {} }, parent: {} }],
+      ["draw", { _index: 57, name: { 68: {}, 85: {} }, parent: {} }],
+      ["drawaxes", { _index: 74, name: { 96: {} }, parent: {} }],
+      ["drawlayout", { _index: 73, name: { 95: {} }, parent: {} }],
+      ["drawlegends", { _index: 75, name: { 97: {} }, parent: {} }],
+      ["drawseries", { _index: 76, name: { 98: {} }, parent: {} }],
+      ["fontfamily", { _index: 10, name: { 10: {} }, parent: {} }],
+      ["fontsize", { _index: 11, name: { 11: {} }, parent: {} }],
+      ["formatter", { _index: 46, name: { 55: {} }, parent: {} }],
+      ["grid", { _index: 20, name: { 20: {} }, parent: {} }],
+      ["layout", { _index: 67, name: { 79: {} }, parent: {} }],
+      ["left", { _index: 14, name: { 14: {} }, parent: {} }],
+      ["legend", { _index: 7, name: { 7: {}, 81: {} }, parent: {} }],
       [
         "legendalign",
-        { _index: 32, name: { "36": {} }, parent: { "37": {}, "38": {} } }
+        { _index: 32, name: { 36: {} }, parent: { 37: {}, 38: {} } },
       ],
       [
         "legendoptions",
-        {
-          _index: 30,
-          name: { "32": {} },
-          parent: { "33": {}, "34": {}, "35": {} }
-        }
+        { _index: 30, name: { 32: {} }, parent: { 33: {}, 34: {}, 35: {} } },
       ],
-      ["line", { _index: 43, name: { "51": {} }, parent: {} }],
-      ["linear", { _index: 26, name: { "28": {} }, parent: {} }],
-      ["logarithmic", { _index: 27, name: { "29": {} }, parent: {} }],
-      ["margin", { _index: 3, name: { "3": {} }, parent: {} }],
+      ["line", { _index: 43, name: { 51: {} }, parent: {} }],
+      ["linear", { _index: 26, name: { 28: {} }, parent: {} }],
+      ["logarithmic", { _index: 27, name: { 29: {} }, parent: {} }],
+      ["margin", { _index: 3, name: { 3: {} }, parent: {} }],
       [
         "marginoptions",
         {
           _index: 12,
-          name: { "12": {} },
-          parent: { "13": {}, "14": {}, "15": {}, "16": {} }
-        }
+          name: { 12: {} },
+          parent: { 13: {}, 14: {}, 15: {}, 16: {} },
+        },
       ],
-      ["name", { _index: 35, name: { "41": {} }, parent: {} }],
-      ["opposite", { _index: 22, name: { "22": {} }, parent: {} }],
-      ["options", { _index: 56, name: { "67": {}, "100": {} }, parent: {} }],
+      ["name", { _index: 35, name: { 41: {} }, parent: {} }],
+      ["opposite", { _index: 22, name: { 22: {} }, parent: {} }],
+      ["options", { _index: 56, name: { 67: {}, 100: {} }, parent: {} }],
       [
         "ordinaldatapoint",
-        { _index: 50, name: { "59": {} }, parent: { "60": {}, "61": {} } }
+        { _index: 50, name: { 59: {} }, parent: { 60: {}, 61: {} } },
       ],
-      ["points", { _index: 44, name: { "52": {} }, parent: {} }],
-      ["recursivepartial", { _index: 51, name: { "62": {} }, parent: {} }],
-      ["redraw", { _index: 58, name: { "69": {}, "86": {} }, parent: {} }],
-      ["reflow", { _index: 70, name: { "87": {} }, parent: {} }],
-      [
-        "removeseries",
-        { _index: 60, name: { "71": {}, "89": {} }, parent: {} }
-      ],
-      ["right", { _index: 16, name: { "16": {}, "37": {} }, parent: {} }],
-      ["scale", { _index: 19, name: { "19": {} }, parent: {} }],
-      ["series", { _index: 6, name: { "6": {}, "83": {} }, parent: {} }],
+      ["points", { _index: 44, name: { 52: {} }, parent: {} }],
+      ["recursivepartial", { _index: 51, name: { 62: {} }, parent: {} }],
+      ["redraw", { _index: 58, name: { 69: {}, 86: {} }, parent: {} }],
+      ["reflow", { _index: 70, name: { 87: {} }, parent: {} }],
+      ["removeseries", { _index: 60, name: { 71: {}, 89: {} }, parent: {} }],
+      ["right", { _index: 16, name: { 16: {}, 37: {} }, parent: {} }],
+      ["scale", { _index: 19, name: { 19: {} }, parent: {} }],
+      ["series", { _index: 6, name: { 6: {}, 83: {} }, parent: {} }],
       [
         "seriesoptions",
         {
           _index: 33,
-          name: { "39": {} },
+          name: { 39: {} },
           parent: {
-            "40": {},
-            "41": {},
-            "42": {},
-            "43": {},
-            "44": {},
-            "45": {},
-            "46": {},
-            "47": {}
-          }
-        }
+            40: {},
+            41: {},
+            42: {},
+            43: {},
+            44: {},
+            45: {},
+            46: {},
+            47: {},
+          },
+        },
       ],
-      ["setdata", { _index: 61, name: { "72": {}, "90": {} }, parent: {} }],
-      ["style", { _index: 2, name: { "2": {} }, parent: {} }],
+      ["setdata", { _index: 61, name: { 72: {}, 90: {} }, parent: {} }],
+      ["style", { _index: 2, name: { 2: {} }, parent: {} }],
       [
         "styleoptions",
-        {
-          _index: 8,
-          name: { "8": {} },
-          parent: { "9": {}, "10": {}, "11": {} }
-        }
+        { _index: 8, name: { 8: {} }, parent: { 9: {}, 10: {}, 11: {} } },
       ],
       [
         "throwifdestroyed",
-        { _index: 64, name: { "75": {}, "101": {} }, parent: {} }
+        { _index: 64, name: { 75: {}, 101: {} }, parent: {} },
       ],
-      ["time", { _index: 28, name: { "30": {} }, parent: {} }],
-      ["title", { _index: 18, name: { "18": {}, "33": {} }, parent: {} }],
-      ["tooltip", { _index: 38, name: { "46": {}, "82": {} }, parent: {} }],
+      ["time", { _index: 28, name: { 30: {} }, parent: {} }],
+      ["title", { _index: 18, name: { 18: {}, 33: {} }, parent: {} }],
+      ["tooltip", { _index: 38, name: { 46: {}, 82: {} }, parent: {} }],
       [
         "tooltipoption",
-        { _index: 45, name: { "53": {} }, parent: { "54": {}, "55": {} } }
+        { _index: 45, name: { 53: {} }, parent: { 54: {}, 55: {} } },
       ],
-      ["top", { _index: 13, name: { "13": {} }, parent: {} }],
+      ["top", { _index: 13, name: { 13: {} }, parent: {} }],
       [
         "visible",
         {
           _index: 21,
-          name: { "21": {}, "25": {}, "35": {}, "45": {}, "54": {} },
-          parent: {}
-        }
+          name: { 21: {}, 25: {}, 35: {}, 45: {}, 54: {} },
+          parent: {},
+        },
       ],
-      ["visualization", { _index: 34, name: { "40": {} }, parent: {} }],
+      ["visualization", { _index: 34, name: { 40: {} }, parent: {} }],
       [
         "visualizationtype",
         {
           _index: 40,
-          name: { "48": {} },
-          parent: { "49": {}, "50": {}, "51": {}, "52": {} }
-        }
+          name: { 48: {} },
+          parent: { 49: {}, 50: {}, 51: {}, 52: {} },
+        },
       ],
-      ["x", { _index: 48, name: { "57": {}, "60": {} }, parent: {} }],
-      ["xaxis", { _index: 4, name: { "4": {} }, parent: {} }],
-      ["xindex", { _index: 36, name: { "43": {} }, parent: {} }],
-      ["y", { _index: 49, name: { "58": {}, "61": {} }, parent: {} }],
-      ["yaxis", { _index: 5, name: { "5": {} }, parent: {} }],
-      ["yindex", { _index: 37, name: { "44": {} }, parent: {} }]
+      ["x", { _index: 48, name: { 57: {}, 60: {} }, parent: {} }],
+      ["xaxis", { _index: 4, name: { 4: {} }, parent: {} }],
+      ["xindex", { _index: 36, name: { 43: {} }, parent: {} }],
+      ["y", { _index: 49, name: { 58: {}, 61: {} }, parent: {} }],
+      ["yaxis", { _index: 5, name: { 5: {} }, parent: {} }],
+      ["yindex", { _index: 37, name: { 44: {} }, parent: {} }],
     ],
-    pipeline: []
-  }
+    pipeline: [],
+  },
 };

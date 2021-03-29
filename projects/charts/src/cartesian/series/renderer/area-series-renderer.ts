@@ -44,6 +44,7 @@ export class AreaSeriesRenderer extends SeriesRenderer {
 
     this.drawArea(renderConfig);
     this.lineRenderer.drawSeries(config);
+
     // this.drawLine(renderConfig);
     // this.drawPoints(renderConfig);
   }

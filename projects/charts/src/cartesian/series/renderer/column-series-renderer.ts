@@ -63,7 +63,7 @@ export class ColumnSeriesRenderer extends SeriesRenderer {
     const yScale = config.yAxisData.axis.scale();
     const height = Number(config.seriesSection.attr("height"));
 
-    const minColumnWidth = this.getMinColumnWidth(data) ?? 0;
+    const minColumnWidth = Math.min(this.getMinColumnWidth(data) ?? 20, 20);
     const seriesSelection = this.getSeriesSelection(
       config.seriesSection,
       config.seriesOption,

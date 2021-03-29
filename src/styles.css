@@ -7,6 +7,14 @@ h2 {
   width: 100%;
   height: 100vh;
 
+  display: flex;
+  flex-direction: column;
+}
+
+.docs {
+}
+
+.charts {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: 300px;

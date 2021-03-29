@@ -20,7 +20,8 @@
     "build:app:serve": "webpack serve",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
-    "docs": "typedoc ./projects/charts/src/index.ts --tsconfig ./projects/charts/tsconfig.lib.json"
+    "docs:types": "typedoc ./projects/charts/src/index.ts --tsconfig ./projects/charts/tsconfig.lib.json --out docs/types",
+    "docs": "rm -rf docs && npx webpack build --mode=production -o docs && npm run docs:types"
   },
   "private": true,
   "dependencies": {

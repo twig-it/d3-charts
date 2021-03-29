@@ -25,7 +25,7 @@ export class CartesianLegend {
       return {
         name: seriesOption.name,
         color: seriesOption.color,
-        selection: selection
+        selection: selection,
       };
     });
 
@@ -43,7 +43,7 @@ export class CartesianLegend {
   ): void {
     const legendGSelection = legendSelection
       .append<SVGGElement>("svg:g")
-      .attr("transform", "translate(20, 100)");
+      .attr("transform", "translate(30, 100)");
 
     this.drawLegendTitle(legendGSelection, legendOptions);
 
@@ -137,7 +137,7 @@ export class CartesianLegend {
       .enter()
       .append("g")
       .attr("class", "legend")
-      .style("fill", legendItem => legendItem.color)
+      .style("fill", (legendItem) => legendItem.color)
       .on("click", (legendItem, index, nodes) => {
         const thisSelection = select(nodes[index]);
         if (thisSelection.classed("hide")) {
@@ -183,7 +183,7 @@ export class CartesianLegend {
       .attr("x", 15)
       .attr("y", 10)
       .attr("width", 100)
-      .text(data => data.name)
+      .text((data) => data.name)
       .style("font-size", "11px")
       .classed("name", true);
   }

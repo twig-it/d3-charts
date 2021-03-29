@@ -4,11 +4,11 @@ import { buildLineChart } from "./configs/line-chart";
 import { buildAreaChart } from "./configs/area-chart";
 import { buildColumnChart } from "./configs/column-chart";
 
-const appRootDiv = document.getElementById("app");
+const chartsRootDiv = document.getElementById("charts");
 
 const buildChartContainer = (): HTMLElement => {
   const container: HTMLElement = document.createElement("div")!;
-  appRootDiv!.appendChild(container);
+  chartsRootDiv!.appendChild(container);
 
   return container;
 };
@@ -24,9 +24,3 @@ buildPointsChart(buildChartContainer());
 
 // Add Column Chart
 buildColumnChart(buildChartContainer());
-
-// Add Points Chart
-buildPointsChart(buildChartContainer());
-
-// Add Points Chart
-buildPointsChart(buildChartContainer());

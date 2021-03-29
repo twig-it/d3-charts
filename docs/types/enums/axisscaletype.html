@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>VisualizationType | @ikshanam/d3-charts</title>
-    <meta name="description" content="Documentation for @ikshanam/d3-charts" />
+    <title>AxisScaleType | @samskara-ui/d3-charts</title>
+    <meta
+      name="description"
+      content="Documentation for @samskara-ui/d3-charts"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../assets/css/main.css" />
     <script async src="../assets/js/search.js" id="search-script"></script>
@@ -32,7 +35,7 @@
                 <li class="state loading">Preparing search index...</li>
                 <li class="state failure">The search index is not available</li>
               </ul>
-              <a href="../index.html" class="title">@ikshanam/d3-charts</a>
+              <a href="../index.html" class="title">@samskara-ui/d3-charts</a>
             </div>
             <div class="table-cell" id="tsd-widgets">
               <div id="tsd-filter">
@@ -72,13 +75,13 @@
         <div class="container">
           <ul class="tsd-breadcrumb">
             <li>
-              <a href="../modules.html">@ikshanam/d3-charts</a>
+              <a href="../modules.html">@samskara-ui/d3-charts</a>
             </li>
             <li>
-              <a href="visualizationtype.html">VisualizationType</a>
+              <a href="axisscaletype.html">AxisScaleType</a>
             </li>
           </ul>
-          <h1>Enumeration VisualizationType</h1>
+          <h1>Enumeration AxisScaleType</h1>
         </div>
       </div>
     </header>
@@ -89,35 +92,31 @@
             <h2>Index</h2>
             <section class="tsd-panel tsd-index-panel">
               <div class="tsd-index-content">
-                <section class="tsd-index-section ">
+                <section class="tsd-index-section">
                   <h3>Enumeration members</h3>
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-enum-member tsd-parent-kind-enum">
                       <a
-                        href="visualizationtype.html#area"
+                        href="axisscaletype.html#category"
                         class="tsd-kind-icon"
-                        >Area</a
+                        >Category</a
+                      >
+                    </li>
+                    <li class="tsd-kind-enum-member tsd-parent-kind-enum">
+                      <a href="axisscaletype.html#linear" class="tsd-kind-icon"
+                        >Linear</a
                       >
                     </li>
                     <li class="tsd-kind-enum-member tsd-parent-kind-enum">
                       <a
-                        href="visualizationtype.html#column"
+                        href="axisscaletype.html#logarithmic"
                         class="tsd-kind-icon"
-                        >Column</a
+                        >Logarithmic</a
                       >
                     </li>
                     <li class="tsd-kind-enum-member tsd-parent-kind-enum">
-                      <a
-                        href="visualizationtype.html#line"
-                        class="tsd-kind-icon"
-                        >Line</a
-                      >
-                    </li>
-                    <li class="tsd-kind-enum-member tsd-parent-kind-enum">
-                      <a
-                        href="visualizationtype.html#points"
-                        class="tsd-kind-icon"
-                        >Points</a
+                      <a href="axisscaletype.html#time" class="tsd-kind-icon"
+                        >Time</a
                       >
                     </li>
                   </ul>
@@ -125,24 +124,26 @@
               </div>
             </section>
           </section>
-          <section class="tsd-panel-group tsd-member-group ">
+          <section class="tsd-panel-group tsd-member-group">
             <h2>Enumeration members</h2>
             <section
               class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum"
             >
-              <a name="area" class="tsd-anchor"></a>
-              <h3>Area</h3>
+              <a name="category" class="tsd-anchor"></a>
+              <h3>Category</h3>
               <div class="tsd-signature tsd-kind-icon">
-                Area<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-symbol"> = &quot;area&quot;</span>
+                Category<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-symbol">
+                  = &quot;category&quot;</span
+                >
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/Ikshanam/d3-charts/blob/7140fda/projects/charts/src/cartesian/cartesian.ts#L99"
-                      >cartesian/cartesian.ts:99</a
+                      href="https://github.com/samskara-ui/d3-charts/blob/a708d40/projects/charts/src/cartesian/cartesian.ts#L60"
+                      >cartesian/cartesian.ts:60</a
                     >
                   </li>
                 </ul>
@@ -151,19 +152,19 @@
             <section
               class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum"
             >
-              <a name="column" class="tsd-anchor"></a>
-              <h3>Column</h3>
+              <a name="linear" class="tsd-anchor"></a>
+              <h3>Linear</h3>
               <div class="tsd-signature tsd-kind-icon">
-                Column<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-symbol"> = &quot;column&quot;</span>
+                Linear<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-symbol"> = &quot;linear&quot;</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/Ikshanam/d3-charts/blob/7140fda/projects/charts/src/cartesian/cartesian.ts#L98"
-                      >cartesian/cartesian.ts:98</a
+                      href="https://github.com/samskara-ui/d3-charts/blob/a708d40/projects/charts/src/cartesian/cartesian.ts#L57"
+                      >cartesian/cartesian.ts:57</a
                     >
                   </li>
                 </ul>
@@ -172,19 +173,21 @@
             <section
               class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum"
             >
-              <a name="line" class="tsd-anchor"></a>
-              <h3>Line</h3>
+              <a name="logarithmic" class="tsd-anchor"></a>
+              <h3>Logarithmic</h3>
               <div class="tsd-signature tsd-kind-icon">
-                Line<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-symbol"> = &quot;line&quot;</span>
+                Logarithmic<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-symbol">
+                  = &quot;logarithmic&quot;</span
+                >
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/Ikshanam/d3-charts/blob/7140fda/projects/charts/src/cartesian/cartesian.ts#L100"
-                      >cartesian/cartesian.ts:100</a
+                      href="https://github.com/samskara-ui/d3-charts/blob/a708d40/projects/charts/src/cartesian/cartesian.ts#L58"
+                      >cartesian/cartesian.ts:58</a
                     >
                   </li>
                 </ul>
@@ -193,19 +196,21 @@
             <section
               class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum"
             >
-              <a name="points" class="tsd-anchor"></a>
-              <h3>Points</h3>
+              <a name="time" class="tsd-anchor"></a>
+              <h3>Time</h3>
               <div class="tsd-signature tsd-kind-icon">
-                Points<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-symbol"> = &quot;points&quot;</span>
+                Time<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-symbol">
+                  = &quot;datetime&quot;</span
+                >
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/Ikshanam/d3-charts/blob/7140fda/projects/charts/src/cartesian/cartesian.ts#L101"
-                      >cartesian/cartesian.ts:101</a
+                      href="https://github.com/samskara-ui/d3-charts/blob/a708d40/projects/charts/src/cartesian/cartesian.ts#L59"
+                      >cartesian/cartesian.ts:59</a
                     >
                   </li>
                 </ul>
@@ -222,119 +227,116 @@
             </ul>
           </nav>
           <nav class="tsd-navigation secondary menu-sticky">
-            <ul class="before-current">
-              <li class=" tsd-kind-enum">
+            <ul class="before-current"></ul>
+            <ul class="current">
+              <li class="current tsd-kind-enum">
                 <a href="axisscaletype.html" class="tsd-kind-icon"
                   >Axis<wbr />Scale<wbr />Type</a
                 >
-              </li>
-              <li class=" tsd-kind-enum">
-                <a href="legendalign.html" class="tsd-kind-icon"
-                  >Legend<wbr />Align</a
-                >
-              </li>
-            </ul>
-            <ul class="current">
-              <li class="current tsd-kind-enum">
-                <a href="visualizationtype.html" class="tsd-kind-icon"
-                  >Visualization<wbr />Type</a
-                >
                 <ul>
-                  <li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-                    <a href="visualizationtype.html#area" class="tsd-kind-icon"
-                      >Area</a
+                  <li class="tsd-kind-enum-member tsd-parent-kind-enum">
+                    <a href="axisscaletype.html#category" class="tsd-kind-icon"
+                      >Category</a
                     >
                   </li>
-                  <li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+                  <li class="tsd-kind-enum-member tsd-parent-kind-enum">
+                    <a href="axisscaletype.html#linear" class="tsd-kind-icon"
+                      >Linear</a
+                    >
+                  </li>
+                  <li class="tsd-kind-enum-member tsd-parent-kind-enum">
                     <a
-                      href="visualizationtype.html#column"
+                      href="axisscaletype.html#logarithmic"
                       class="tsd-kind-icon"
-                      >Column</a
+                      >Logarithmic</a
                     >
                   </li>
-                  <li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-                    <a href="visualizationtype.html#line" class="tsd-kind-icon"
-                      >Line</a
-                    >
-                  </li>
-                  <li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-                    <a
-                      href="visualizationtype.html#points"
-                      class="tsd-kind-icon"
-                      >Points</a
+                  <li class="tsd-kind-enum-member tsd-parent-kind-enum">
+                    <a href="axisscaletype.html#time" class="tsd-kind-icon"
+                      >Time</a
                     >
                   </li>
                 </ul>
               </li>
             </ul>
             <ul class="after-current">
-              <li class=" tsd-kind-class">
+              <li class="tsd-kind-enum">
+                <a href="legendalign.html" class="tsd-kind-icon"
+                  >Legend<wbr />Align</a
+                >
+              </li>
+              <li class="tsd-kind-enum">
+                <a href="visualizationtype.html" class="tsd-kind-icon"
+                  >Visualization<wbr />Type</a
+                >
+              </li>
+              <li class="tsd-kind-class">
                 <a href="../classes/cartesianchart.html" class="tsd-kind-icon"
                   >Cartesian<wbr />Chart</a
                 >
               </li>
-              <li class=" tsd-kind-class">
+              <li class="tsd-kind-class">
                 <a href="../classes/cartesianobject.html" class="tsd-kind-icon"
                   >Cartesian<wbr />Object</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a
                   href="../interfaces/axisgridoptions.html"
                   class="tsd-kind-icon"
                   >Axis<wbr />Grid<wbr />Options</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a href="../interfaces/axisoptions.html" class="tsd-kind-icon"
                   >Axis<wbr />Options</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a
                   href="../interfaces/cartesianoptions.html"
                   class="tsd-kind-icon"
                   >Cartesian<wbr />Options</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a href="../interfaces/datapoint.html" class="tsd-kind-icon"
                   >Data<wbr />Point</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a href="../interfaces/legendoptions.html" class="tsd-kind-icon"
                   >Legend<wbr />Options</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a href="../interfaces/marginoptions.html" class="tsd-kind-icon"
                   >Margin<wbr />Options</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a
                   href="../interfaces/ordinaldatapoint.html"
                   class="tsd-kind-icon"
                   >Ordinal<wbr />Data<wbr />Point</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a href="../interfaces/seriesoptions.html" class="tsd-kind-icon"
                   >Series<wbr />Options</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a href="../interfaces/styleoptions.html" class="tsd-kind-icon"
                   >Style<wbr />Options</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a href="../interfaces/tooltipoption.html" class="tsd-kind-icon"
                   >Tool<wbr />Tip<wbr />Option</a
                 >
               </li>
-              <li class=" tsd-kind-type-alias tsd-has-type-parameter">
+              <li class="tsd-kind-type-alias tsd-has-type-parameter">
                 <a href="../modules.html#recursivepartial" class="tsd-kind-icon"
                   >Recursive<wbr />Partial</a
                 >

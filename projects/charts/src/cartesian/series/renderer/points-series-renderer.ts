@@ -18,28 +18,21 @@ export class PointsSeriesRenderer extends SeriesRenderer {
       config.seriesOption,
       config.seriesIndex
     );
+
     // JOIN new data with old elements.
     const pointSelection = seriesSelection
-      .selectAll<SVGElement, DataPoint>("circle.points")
+      .selectAll<SVGCircleElement, DataPoint>("circle.points")
       .data(data);
 
     // EXIT old elements not present in new data.
     pointSelection.exit().attr("class", "exit").remove();
 
-    // UPDATE old elements present in new data.
-    pointSelection
-      .attr("class", "update")
-      // .transition()
-      .attr("cy", (dataPoint) => yScale(dataPoint.y)!)
-      .attr("cx", (dataPoint) => xScale(dataPoint.x)!)
-      .attr("stroke", config.seriesOption.color)
-      .attr("fill", config.seriesOption.color);
-
-    // ENTER new elements present in new data.
     pointSelection
       .enter()
       .append("circle")
-      .attr("class", "enter")
+      .classed("points", true)
+      .merge(pointSelection)
+      .attr("class", "enter points")
       .attr("r", 3.5)
       .attr("cy", (dataPoint) => yScale(dataPoint.y)!)
       .attr("cx", (dataPoint) => xScale(dataPoint.x)!)
@@ -56,6 +49,37 @@ export class PointsSeriesRenderer extends SeriesRenderer {
           thisSelection
         );
       });
+
+    // // UPDATE old elements present in new data.
+    // pointSelection
+    //   .attr("class", "update")
+    //   // .transition()
+    //   .attr("cy", (dataPoint) => yScale(dataPoint.y)!)
+    //   .attr("cx", (dataPoint) => xScale(dataPoint.x)!)
+    //   .attr("stroke", config.seriesOption.color)
+    //   .attr("fill", config.seriesOption.color);
+
+    // // ENTER new elements present in new data.
+    // pointSelection
+    //   .enter()
+    //   .append("circle")
+    //   .attr("class", "enter points")
+    //   .attr("r", 3.5)
+    //   .attr("cy", (dataPoint) => yScale(dataPoint.y)!)
+    //   .attr("cx", (dataPoint) => xScale(dataPoint.x)!)
+    //   .attr("stroke", config.seriesOption.color)
+    //   .attr("fill", config.seriesOption.color)
+    //   .classed("points-data", true)
+    //   .each((_dataPoint, index, nodes) => {
+    //     const thisSelection = select<SVGElement, DataPoint | OrdinalDataPoint>(
+    //       nodes[index] as SVGElement
+    //     );
+    //     this.setToolTipGenerator(
+    //       config.seriesOption,
+    //       seriesSelection,
+    //       thisSelection
+    //     );
+    //   });
 
     // Const pointsSelection = seriesSelection
     //   .selectAll<SVGElement, DataPoint[]>('g.points')

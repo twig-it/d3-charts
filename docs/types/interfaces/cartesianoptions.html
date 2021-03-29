@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>StyleOptions | @ikshanam/d3-charts</title>
-    <meta name="description" content="Documentation for @ikshanam/d3-charts" />
+    <title>CartesianOptions | @samskara-ui/d3-charts</title>
+    <meta
+      name="description"
+      content="Documentation for @samskara-ui/d3-charts"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../assets/css/main.css" />
     <script async src="../assets/js/search.js" id="search-script"></script>
@@ -32,7 +35,7 @@
                 <li class="state loading">Preparing search index...</li>
                 <li class="state failure">The search index is not available</li>
               </ul>
-              <a href="../index.html" class="title">@ikshanam/d3-charts</a>
+              <a href="../index.html" class="title">@samskara-ui/d3-charts</a>
             </div>
             <div class="table-cell" id="tsd-widgets">
               <div id="tsd-filter">
@@ -72,13 +75,13 @@
         <div class="container">
           <ul class="tsd-breadcrumb">
             <li>
-              <a href="../modules.html">@ikshanam/d3-charts</a>
+              <a href="../modules.html">@samskara-ui/d3-charts</a>
             </li>
             <li>
-              <a href="styleoptions.html">StyleOptions</a>
+              <a href="cartesianoptions.html">CartesianOptions</a>
             </li>
           </ul>
-          <h1>Interface StyleOptions</h1>
+          <h1>Interface CartesianOptions</h1>
         </div>
       </div>
     </header>
@@ -89,7 +92,7 @@
             <h3>Hierarchy</h3>
             <ul class="tsd-hierarchy">
               <li>
-                <span class="target">StyleOptions</span>
+                <span class="target">CartesianOptions</span>
               </li>
             </ul>
           </section>
@@ -97,26 +100,56 @@
             <h2>Index</h2>
             <section class="tsd-panel tsd-index-panel">
               <div class="tsd-index-content">
-                <section class="tsd-index-section ">
+                <section class="tsd-index-section">
                   <h3>Properties</h3>
                   <ul class="tsd-index-list">
                     <li class="tsd-kind-property tsd-parent-kind-interface">
                       <a
-                        href="styleoptions.html#backgroundcolor"
+                        href="cartesianoptions.html#animation"
                         class="tsd-kind-icon"
-                        >background<wbr />Color</a
+                        >animation</a
                       >
                     </li>
                     <li class="tsd-kind-property tsd-parent-kind-interface">
                       <a
-                        href="styleoptions.html#fontfamily"
+                        href="cartesianoptions.html#legend"
                         class="tsd-kind-icon"
-                        >font<wbr />Family</a
+                        >legend</a
                       >
                     </li>
                     <li class="tsd-kind-property tsd-parent-kind-interface">
-                      <a href="styleoptions.html#fontsize" class="tsd-kind-icon"
-                        >font<wbr />Size</a
+                      <a
+                        href="cartesianoptions.html#margin"
+                        class="tsd-kind-icon"
+                        >margin</a
+                      >
+                    </li>
+                    <li class="tsd-kind-property tsd-parent-kind-interface">
+                      <a
+                        href="cartesianoptions.html#series"
+                        class="tsd-kind-icon"
+                        >series</a
+                      >
+                    </li>
+                    <li class="tsd-kind-property tsd-parent-kind-interface">
+                      <a
+                        href="cartesianoptions.html#style"
+                        class="tsd-kind-icon"
+                        >style</a
+                      >
+                    </li>
+                    <li class="tsd-kind-property tsd-parent-kind-interface">
+                      <a
+                        href="cartesianoptions.html#xaxis"
+                        class="tsd-kind-icon"
+                        >x<wbr />Axis</a
+                      >
+                    </li>
+                    <li class="tsd-kind-property tsd-parent-kind-interface">
+                      <a
+                        href="cartesianoptions.html#yaxis"
+                        class="tsd-kind-icon"
+                        >y<wbr />Axis</a
                       >
                     </li>
                   </ul>
@@ -124,26 +157,50 @@
               </div>
             </section>
           </section>
-          <section class="tsd-panel-group tsd-member-group ">
+          <section class="tsd-panel-group tsd-member-group">
             <h2>Properties</h2>
             <section
               class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
             >
-              <a name="backgroundcolor" class="tsd-anchor"></a>
-              <h3>background<wbr />Color</h3>
+              <a name="animation" class="tsd-anchor"></a>
+              <h3>animation</h3>
               <div class="tsd-signature tsd-kind-icon">
-                background<wbr />Color<span class="tsd-signature-symbol"
-                  >:</span
+                animation<span class="tsd-signature-symbol">:</span>
+                <span class="tsd-signature-type">boolean</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/samskara-ui/d3-charts/blob/a708d40/projects/charts/src/cartesian/cartesian.ts#L5"
+                      >cartesian/cartesian.ts:5</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section
+              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
+            >
+              <a name="legend" class="tsd-anchor"></a>
+              <h3>legend</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                legend<span class="tsd-signature-symbol">:</span>
+                <a
+                  href="legendoptions.html"
+                  class="tsd-signature-type"
+                  data-tsd-kind="Interface"
+                  >LegendOptions</a
                 >
-                <span class="tsd-signature-type">string</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/Ikshanam/d3-charts/blob/7140fda/projects/charts/src/cartesian/cartesian.ts#L18"
-                      >cartesian/cartesian.ts:18</a
+                      href="https://github.com/samskara-ui/d3-charts/blob/a708d40/projects/charts/src/cartesian/cartesian.ts#L11"
+                      >cartesian/cartesian.ts:11</a
                     >
                   </li>
                 </ul>
@@ -152,19 +209,24 @@
             <section
               class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
             >
-              <a name="fontfamily" class="tsd-anchor"></a>
-              <h3>font<wbr />Family</h3>
+              <a name="margin" class="tsd-anchor"></a>
+              <h3>margin</h3>
               <div class="tsd-signature tsd-kind-icon">
-                font<wbr />Family<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">string</span>
+                margin<span class="tsd-signature-symbol">:</span>
+                <a
+                  href="marginoptions.html"
+                  class="tsd-signature-type"
+                  data-tsd-kind="Interface"
+                  >MarginOptions</a
+                >
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/Ikshanam/d3-charts/blob/7140fda/projects/charts/src/cartesian/cartesian.ts#L19"
-                      >cartesian/cartesian.ts:19</a
+                      href="https://github.com/samskara-ui/d3-charts/blob/a708d40/projects/charts/src/cartesian/cartesian.ts#L7"
+                      >cartesian/cartesian.ts:7</a
                     >
                   </li>
                 </ul>
@@ -173,19 +235,102 @@
             <section
               class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
             >
-              <a name="fontsize" class="tsd-anchor"></a>
-              <h3>font<wbr />Size</h3>
+              <a name="series" class="tsd-anchor"></a>
+              <h3>series</h3>
               <div class="tsd-signature tsd-kind-icon">
-                font<wbr />Size<span class="tsd-signature-symbol">:</span>
-                <span class="tsd-signature-type">string</span>
+                series<span class="tsd-signature-symbol">:</span>
+                <a
+                  href="seriesoptions.html"
+                  class="tsd-signature-type"
+                  data-tsd-kind="Interface"
+                  >SeriesOptions</a
+                ><span class="tsd-signature-symbol">[]</span>
               </div>
               <aside class="tsd-sources">
                 <ul>
                   <li>
                     Defined in
                     <a
-                      href="https://github.com/Ikshanam/d3-charts/blob/7140fda/projects/charts/src/cartesian/cartesian.ts#L20"
-                      >cartesian/cartesian.ts:20</a
+                      href="https://github.com/samskara-ui/d3-charts/blob/a708d40/projects/charts/src/cartesian/cartesian.ts#L10"
+                      >cartesian/cartesian.ts:10</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section
+              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
+            >
+              <a name="style" class="tsd-anchor"></a>
+              <h3>style</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                style<span class="tsd-signature-symbol">:</span>
+                <a
+                  href="styleoptions.html"
+                  class="tsd-signature-type"
+                  data-tsd-kind="Interface"
+                  >StyleOptions</a
+                >
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/samskara-ui/d3-charts/blob/a708d40/projects/charts/src/cartesian/cartesian.ts#L6"
+                      >cartesian/cartesian.ts:6</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section
+              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
+            >
+              <a name="xaxis" class="tsd-anchor"></a>
+              <h3>x<wbr />Axis</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                x<wbr />Axis<span class="tsd-signature-symbol">:</span>
+                <a
+                  href="axisoptions.html"
+                  class="tsd-signature-type"
+                  data-tsd-kind="Interface"
+                  >AxisOptions</a
+                ><span class="tsd-signature-symbol">[]</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/samskara-ui/d3-charts/blob/a708d40/projects/charts/src/cartesian/cartesian.ts#L8"
+                      >cartesian/cartesian.ts:8</a
+                    >
+                  </li>
+                </ul>
+              </aside>
+            </section>
+            <section
+              class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"
+            >
+              <a name="yaxis" class="tsd-anchor"></a>
+              <h3>y<wbr />Axis</h3>
+              <div class="tsd-signature tsd-kind-icon">
+                y<wbr />Axis<span class="tsd-signature-symbol">:</span>
+                <a
+                  href="axisoptions.html"
+                  class="tsd-signature-type"
+                  data-tsd-kind="Interface"
+                  >AxisOptions</a
+                ><span class="tsd-signature-symbol">[]</span>
+              </div>
+              <aside class="tsd-sources">
+                <ul>
+                  <li>
+                    Defined in
+                    <a
+                      href="https://github.com/samskara-ui/d3-charts/blob/a708d40/projects/charts/src/cartesian/cartesian.ts#L9"
+                      >cartesian/cartesian.ts:9</a
                     >
                   </li>
                 </ul>
@@ -203,105 +348,125 @@
           </nav>
           <nav class="tsd-navigation secondary menu-sticky">
             <ul class="before-current">
-              <li class=" tsd-kind-enum">
+              <li class="tsd-kind-enum">
                 <a href="../enums/axisscaletype.html" class="tsd-kind-icon"
                   >Axis<wbr />Scale<wbr />Type</a
                 >
               </li>
-              <li class=" tsd-kind-enum">
+              <li class="tsd-kind-enum">
                 <a href="../enums/legendalign.html" class="tsd-kind-icon"
                   >Legend<wbr />Align</a
                 >
               </li>
-              <li class=" tsd-kind-enum">
+              <li class="tsd-kind-enum">
                 <a href="../enums/visualizationtype.html" class="tsd-kind-icon"
                   >Visualization<wbr />Type</a
                 >
               </li>
-              <li class=" tsd-kind-class">
+              <li class="tsd-kind-class">
                 <a href="../classes/cartesianchart.html" class="tsd-kind-icon"
                   >Cartesian<wbr />Chart</a
                 >
               </li>
-              <li class=" tsd-kind-class">
+              <li class="tsd-kind-class">
                 <a href="../classes/cartesianobject.html" class="tsd-kind-icon"
                   >Cartesian<wbr />Object</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a href="axisgridoptions.html" class="tsd-kind-icon"
                   >Axis<wbr />Grid<wbr />Options</a
                 >
               </li>
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
                 <a href="axisoptions.html" class="tsd-kind-icon"
                   >Axis<wbr />Options</a
-                >
-              </li>
-              <li class=" tsd-kind-interface">
-                <a href="cartesianoptions.html" class="tsd-kind-icon"
-                  >Cartesian<wbr />Options</a
-                >
-              </li>
-              <li class=" tsd-kind-interface">
-                <a href="datapoint.html" class="tsd-kind-icon"
-                  >Data<wbr />Point</a
-                >
-              </li>
-              <li class=" tsd-kind-interface">
-                <a href="legendoptions.html" class="tsd-kind-icon"
-                  >Legend<wbr />Options</a
-                >
-              </li>
-              <li class=" tsd-kind-interface">
-                <a href="marginoptions.html" class="tsd-kind-icon"
-                  >Margin<wbr />Options</a
-                >
-              </li>
-              <li class=" tsd-kind-interface">
-                <a href="ordinaldatapoint.html" class="tsd-kind-icon"
-                  >Ordinal<wbr />Data<wbr />Point</a
-                >
-              </li>
-              <li class=" tsd-kind-interface">
-                <a href="seriesoptions.html" class="tsd-kind-icon"
-                  >Series<wbr />Options</a
                 >
               </li>
             </ul>
             <ul class="current">
               <li class="current tsd-kind-interface">
-                <a href="styleoptions.html" class="tsd-kind-icon"
-                  >Style<wbr />Options</a
+                <a href="cartesianoptions.html" class="tsd-kind-icon"
+                  >Cartesian<wbr />Options</a
                 >
                 <ul>
-                  <li class=" tsd-kind-property tsd-parent-kind-interface">
+                  <li class="tsd-kind-property tsd-parent-kind-interface">
                     <a
-                      href="styleoptions.html#backgroundcolor"
+                      href="cartesianoptions.html#animation"
                       class="tsd-kind-icon"
-                      >background<wbr />Color</a
+                      >animation</a
                     >
                   </li>
-                  <li class=" tsd-kind-property tsd-parent-kind-interface">
-                    <a href="styleoptions.html#fontfamily" class="tsd-kind-icon"
-                      >font<wbr />Family</a
+                  <li class="tsd-kind-property tsd-parent-kind-interface">
+                    <a href="cartesianoptions.html#legend" class="tsd-kind-icon"
+                      >legend</a
                     >
                   </li>
-                  <li class=" tsd-kind-property tsd-parent-kind-interface">
-                    <a href="styleoptions.html#fontsize" class="tsd-kind-icon"
-                      >font<wbr />Size</a
+                  <li class="tsd-kind-property tsd-parent-kind-interface">
+                    <a href="cartesianoptions.html#margin" class="tsd-kind-icon"
+                      >margin</a
+                    >
+                  </li>
+                  <li class="tsd-kind-property tsd-parent-kind-interface">
+                    <a href="cartesianoptions.html#series" class="tsd-kind-icon"
+                      >series</a
+                    >
+                  </li>
+                  <li class="tsd-kind-property tsd-parent-kind-interface">
+                    <a href="cartesianoptions.html#style" class="tsd-kind-icon"
+                      >style</a
+                    >
+                  </li>
+                  <li class="tsd-kind-property tsd-parent-kind-interface">
+                    <a href="cartesianoptions.html#xaxis" class="tsd-kind-icon"
+                      >x<wbr />Axis</a
+                    >
+                  </li>
+                  <li class="tsd-kind-property tsd-parent-kind-interface">
+                    <a href="cartesianoptions.html#yaxis" class="tsd-kind-icon"
+                      >y<wbr />Axis</a
                     >
                   </li>
                 </ul>
               </li>
             </ul>
             <ul class="after-current">
-              <li class=" tsd-kind-interface">
+              <li class="tsd-kind-interface">
+                <a href="datapoint.html" class="tsd-kind-icon"
+                  >Data<wbr />Point</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="legendoptions.html" class="tsd-kind-icon"
+                  >Legend<wbr />Options</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="marginoptions.html" class="tsd-kind-icon"
+                  >Margin<wbr />Options</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="ordinaldatapoint.html" class="tsd-kind-icon"
+                  >Ordinal<wbr />Data<wbr />Point</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="seriesoptions.html" class="tsd-kind-icon"
+                  >Series<wbr />Options</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
+                <a href="styleoptions.html" class="tsd-kind-icon"
+                  >Style<wbr />Options</a
+                >
+              </li>
+              <li class="tsd-kind-interface">
                 <a href="tooltipoption.html" class="tsd-kind-icon"
                   >Tool<wbr />Tip<wbr />Option</a
                 >
               </li>
-              <li class=" tsd-kind-type-alias tsd-has-type-parameter">
+              <li class="tsd-kind-type-alias tsd-has-type-parameter">
                 <a href="../modules.html#recursivepartial" class="tsd-kind-icon"
                   >Recursive<wbr />Partial</a
                 >

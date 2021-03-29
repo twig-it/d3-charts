@@ -39,6 +39,10 @@ export class LineSeriesRenderer extends SeriesRenderer {
 
     this.drawLine(renderConfig);
     this.pointsRenderer.drawSeries(config);
+    renderConfig.seriesSelection
+      .selectAll("circle")
+      .style("fill-opacity", 0)
+      .style("stroke-opacity", 0);
   }
 
   public drawLine(renderConfig: RenderConfig): void {
