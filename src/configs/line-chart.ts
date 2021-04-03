@@ -2,7 +2,7 @@ import {
   AxisScaleType,
   CartesianChart,
   VisualizationType,
-} from "@samskara-ui/d3-charts";
+} from "@twig-it/d3-charts";
 
 const options = {
   series: [
