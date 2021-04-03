@@ -46496,13 +46496,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "buildAreaChart": () => (/* binding */ buildAreaChart)
 /* harmony export */ });
-/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @samskara-ui/d3-charts */ "./dist/charts/d3-charts.umd.js");
-/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @twig-it/d3-charts */ "./dist/charts/d3-charts.umd.js");
+/* harmony import */ var _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__);
 
 var options = {
     series: [
         {
-            visualization: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Area,
+            visualization: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Area,
             name: "Area series",
             color: "green",
             xIndex: 0,
@@ -46518,7 +46518,7 @@ var options = {
     xAxis: [
         {
             title: "XAxis label",
-            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Time,
+            scale: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Time,
             grid: {
                 visible: true,
                 color: "#D3D3D3",
@@ -46531,7 +46531,7 @@ var options = {
     yAxis: [
         {
             title: "YAxis Label",
-            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
+            scale: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
             grid: {
                 visible: true,
                 color: "#D3D3D3",
@@ -46543,7 +46543,7 @@ var options = {
     ],
 };
 var buildAreaChart = function (container) {
-    var chart = new _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.CartesianChart(container, options);
+    var chart = new _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.CartesianChart(container, options);
     var count = 0;
     setInterval(function () {
         chart.addPoint("Area series", {
@@ -46567,13 +46567,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "buildColumnChart": () => (/* binding */ buildColumnChart)
 /* harmony export */ });
-/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @samskara-ui/d3-charts */ "./dist/charts/d3-charts.umd.js");
-/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @twig-it/d3-charts */ "./dist/charts/d3-charts.umd.js");
+/* harmony import */ var _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__);
 
 var options = {
     series: [
         {
-            visualization: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Column,
+            visualization: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Column,
             name: "Column series",
             color: "green",
             xIndex: 0,
@@ -46589,7 +46589,7 @@ var options = {
     xAxis: [
         {
             title: "XAxis label",
-            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Category,
+            scale: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Category,
             grid: {
                 visible: true,
                 color: "#D3D3D3",
@@ -46602,7 +46602,7 @@ var options = {
     yAxis: [
         {
             title: "YAxis Label",
-            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
+            scale: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
             grid: {
                 visible: true,
                 color: "#D3D3D3",
@@ -46614,7 +46614,7 @@ var options = {
     ],
 };
 var buildColumnChart = function (container) {
-    var chart = new _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.CartesianChart(container, options);
+    var chart = new _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.CartesianChart(container, options);
     var count = 0;
     setInterval(function () {
         count < 10 &&
@@ -46639,13 +46639,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "buildCombinationChart": () => (/* binding */ buildCombinationChart)
 /* harmony export */ });
-/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @samskara-ui/d3-charts */ "./dist/charts/d3-charts.umd.js");
-/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @twig-it/d3-charts */ "./dist/charts/d3-charts.umd.js");
+/* harmony import */ var _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__);
 
 var options = {
     series: [
         {
-            visualization: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Line,
+            visualization: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Line,
             name: "Line series 1",
             color: "#27c675",
             xIndex: 0,
@@ -46658,7 +46658,7 @@ var options = {
             data: [],
         },
         {
-            visualization: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Line,
+            visualization: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Line,
             name: "Line series 2",
             color: "#9e4c41",
             xIndex: 0,
@@ -46674,7 +46674,7 @@ var options = {
     xAxis: [
         {
             title: "XAxis label",
-            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Time,
+            scale: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Time,
             grid: {
                 visible: true,
                 color: "#D3D3D3",
@@ -46687,7 +46687,7 @@ var options = {
     yAxis: [
         {
             title: "YAxis Label 1",
-            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
+            scale: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
             grid: {
                 visible: true,
                 color: "#D3D3D3",
@@ -46698,7 +46698,7 @@ var options = {
         },
         {
             title: "YAxis Label 2",
-            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
+            scale: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
             grid: {
                 visible: false,
                 color: "#D3D3D3",
@@ -46710,7 +46710,7 @@ var options = {
     ],
 };
 var buildCombinationChart = function (container) {
-    var chart = new _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.CartesianChart(container, options);
+    var chart = new _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.CartesianChart(container, options);
     var count = 0;
     setInterval(function () {
         var x = Date.now();
@@ -46740,13 +46740,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "buildLineChart": () => (/* binding */ buildLineChart)
 /* harmony export */ });
-/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @samskara-ui/d3-charts */ "./dist/charts/d3-charts.umd.js");
-/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @twig-it/d3-charts */ "./dist/charts/d3-charts.umd.js");
+/* harmony import */ var _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__);
 
 var options = {
     series: [
         {
-            visualization: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Line,
+            visualization: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Line,
             name: "Line series",
             color: "#2D1C90",
             xIndex: 0,
@@ -46762,7 +46762,7 @@ var options = {
     xAxis: [
         {
             title: "XAxis label",
-            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Time,
+            scale: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Time,
             grid: {
                 visible: true,
                 color: "#D3D3D3",
@@ -46775,7 +46775,7 @@ var options = {
     yAxis: [
         {
             title: "YAxis Label",
-            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
+            scale: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
             grid: {
                 visible: true,
                 color: "#D3D3D3",
@@ -46787,7 +46787,7 @@ var options = {
     ],
 };
 var buildLineChart = function (container) {
-    var chart = new _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.CartesianChart(container, options);
+    var chart = new _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.CartesianChart(container, options);
     var count = 0;
     setInterval(function () {
         chart.addPoint("Line series", {
@@ -46811,13 +46811,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "buildPointsChart": () => (/* binding */ buildPointsChart)
 /* harmony export */ });
-/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @samskara-ui/d3-charts */ "./dist/charts/d3-charts.umd.js");
-/* harmony import */ var _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @twig-it/d3-charts */ "./dist/charts/d3-charts.umd.js");
+/* harmony import */ var _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__);
 
 var options = {
     series: [
         {
-            visualization: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Points,
+            visualization: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.VisualizationType.Points,
             name: "Points series",
             color: "red",
             xIndex: 0,
@@ -46867,7 +46867,7 @@ var options = {
     xAxis: [
         {
             title: "XAxis label",
-            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Time,
+            scale: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Time,
             grid: {
                 visible: true,
                 color: "#D3D3D3",
@@ -46880,7 +46880,7 @@ var options = {
     yAxis: [
         {
             title: "YAxis Label",
-            scale: _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
+            scale: _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.AxisScaleType.Linear,
             grid: {
                 visible: true,
                 color: "#D3D3D3",
@@ -46892,7 +46892,7 @@ var options = {
     ],
 };
 var buildPointsChart = function (container) {
-    var chart = new _samskara_ui_d3_charts__WEBPACK_IMPORTED_MODULE_0__.CartesianChart(container, options);
+    var chart = new _twig_it_d3_charts__WEBPACK_IMPORTED_MODULE_0__.CartesianChart(container, options);
     var count = 0;
     setInterval(function () {
         chart.addPoint("Points series", {
