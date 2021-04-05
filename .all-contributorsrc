@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "anandtiwary",
+      "name": "Anand Tiwary",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52081890?v=4",
+      "profile": "https://www.linkedin.com/in/tiwarya/",
+      "contributions": [
+        "ideas",
+        "code",
+        "tool"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "d3-charts",
+  "projectOwner": "twig-it",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
