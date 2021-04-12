@@ -80,7 +80,26 @@
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
-				<p>Checkout github packages for instructions</p>
+				<p>Checkout github packages for instructions.</p>
+				<a href="#download-twig-it-artifacts-from-github-packages" id="download-twig-it-artifacts-from-github-packages" style="color: inherit; text-decoration: none;">
+					<h3>Download @twig-it artifacts from Github Packages</h3>
+				</a>
+				<ul>
+					<li><p>Create an <code>.npmrc</code> file in your repo</p>
+					</li>
+					<li><p>Add @twig-it:registry=<a href="https://npm.pkg.github.com">https://npm.pkg.github.com</a></p>
+					</li>
+					<li><p>Create a PAT that has read access to Github Packages. Let&#39;s call this token <code>GPRead</code></p>
+					</li>
+					<li><p>Set this token in npm for your CI runs. Example below:</p>
+						<pre><code><span style="color: #000000"> - name: </span><span style="color: #001080">Npm</span><span style="color: #000000"> </span><span style="color: #001080">Install</span>
+<span style="color: #000000">     run: </span><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">config</span><span style="color: #000000"> </span><span style="color: #001080">set</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;//npm.pkg.github.com/:_authToken&#039;</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;${GPRREAD}&quot;</span><span style="color: #000000"> &amp;&amp; </span><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">ci</span>
+<span style="color: #000000">     env:</span>
+<span style="color: #000000">       GPRREAD: </span><span style="color: #001080">$</span><span style="color: #000000">{{ </span><span style="color: #001080">secrets</span><span style="color: #000000">.</span><span style="color: #0070C1">GPREAD</span><span style="color: #000000"> }}</span>
+
+</code></pre>
+					</li>
+				</ul>
 				<a href="#demo" id="demo" style="color: inherit; text-decoration: none;">
 					<h2>Demo</h2>
 				</a>
