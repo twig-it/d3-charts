@@ -16,7 +16,7 @@ jobs:
       - name: Npm Install
         run: npm config set '//npm.pkg.github.com/:_authToken' "${GPREAD}" && npm ci
         env:
-          GPRREAD: ${{ secrets.GPREAD }}
+          GPREAD: ${{ secrets.GPREAD }}
 
       - name: Build
         run: npm run build:ci
