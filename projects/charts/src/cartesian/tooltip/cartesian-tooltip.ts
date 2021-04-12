@@ -4,13 +4,13 @@ import {
   DataPoint,
   OrdinalDataPoint,
   SeriesOptions,
-  ToolTipOption
+  ToolTipOption,
 } from "../cartesian";
 import {
   CartesianChartSelection,
   DataPointSelection,
-  ToolTipSelection
-} from "../cartesian-object";
+  ToolTipSelection,
+} from "../cartesian-chart";
 
 export class CartesianTooltip {
   private static readonly DIMENSTION_X: number = 150;
@@ -26,7 +26,7 @@ export class CartesianTooltip {
     this.initTooltip(seriesOption.tooltip);
 
     dataPointSelection
-      .on("mouseover.tooltip", dataPoint =>
+      .on("mouseover.tooltip", (dataPoint) =>
         this.onTooltipMouseOver(seriesOption, dataPoint, seriesSelection)
       )
       .on("mouseout.tooltip", () => this.onTooltipMouseOut());
@@ -116,10 +116,7 @@ export class CartesianTooltip {
       return;
     }
 
-    this.toolTip
-      .style("opacity", 0)
-      .style("left", "0px")
-      .style("top", "0px");
+    this.toolTip.style("opacity", 0).style("left", "0px").style("top", "0px");
   }
 
   private isMouseOverToolTipDiv(mouseEventObject: MouseEvent): boolean {

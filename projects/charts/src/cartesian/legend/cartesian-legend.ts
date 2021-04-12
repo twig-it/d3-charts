@@ -1,7 +1,7 @@
 import { select, Selection } from "d3-selection";
 import { isNil } from "lodash-es";
 import { CartesianOptions, LegendAlign, LegendOptions } from "../cartesian";
-import { CartesianChartSelection, CartesianObject } from "../cartesian-object";
+import { CartesianChartSelection, CartesianChart } from "../cartesian-chart";
 import { ChartLayoutClass } from "../layout/cartesian-layout";
 
 export class CartesianLegend {
@@ -199,5 +199,5 @@ type LegendItemGroupSelection = Selection<
   SVGGElement,
   LegendItemData,
   SVGElement,
-  CartesianObject
+  CartesianChart
 >;

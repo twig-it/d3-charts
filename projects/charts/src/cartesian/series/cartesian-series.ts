@@ -10,10 +10,7 @@ import {
   SeriesOptions,
   VisualizationType,
 } from "../cartesian";
-import {
-  CartesianAxisData,
-  CartesianChartSelection,
-} from "../cartesian-object";
+import { CartesianAxisData, CartesianChartSelection } from "../cartesian-chart";
 import { ChartLayoutClass } from "../layout/cartesian-layout";
 import { CartesianTooltip } from "../tooltip/cartesian-tooltip";
 import { AreaSeriesRenderer } from "./renderer/area-series-renderer";

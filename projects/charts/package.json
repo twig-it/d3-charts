@@ -19,7 +19,8 @@
   "public": true,
   "peerDependencies": {
     "d3": "^5.9.2",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "@twig-it/from-resize": "^1.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",

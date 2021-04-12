@@ -3,7 +3,7 @@ import { color } from "d3-color";
 import { select } from "d3-selection";
 import { area, curveMonotoneX, line } from "d3-shape";
 import { DataPoint, OrdinalDataPoint, SeriesOptions } from "../../cartesian";
-import { CartesianChartSelection } from "../../cartesian-object";
+import { CartesianChartSelection } from "../../cartesian-chart";
 import { CartesianTooltip } from "../../tooltip/cartesian-tooltip";
 import { LineSeriesRenderer } from "./line-series-renderer";
 import { SeriesRenderer, SeriesRendererConfig } from "./series-renderer";

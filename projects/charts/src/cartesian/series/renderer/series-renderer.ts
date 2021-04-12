@@ -2,8 +2,8 @@ import { SeriesOptions } from "../../cartesian";
 import {
   CartesianAxisData,
   CartesianChartSelection,
-  DataPointSelection
-} from "../../cartesian-object";
+  DataPointSelection,
+} from "../../cartesian-chart";
 import { CartesianTooltip } from "../../tooltip/cartesian-tooltip";
 
 export interface SeriesRendererConfig {
