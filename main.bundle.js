@@ -8,9 +8,9 @@
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 (function (global, factory) {
-     true ? factory(exports, __webpack_require__(/*! d3-selection */ "./node_modules/d3-selection/src/index.js"), __webpack_require__(/*! lodash-es */ "./node_modules/lodash-es/lodash.js"), __webpack_require__(/*! d3-time-format */ "./node_modules/d3-time-format/src/index.js"), __webpack_require__(/*! d3-scale */ "./node_modules/d3-scale/src/index.js"), __webpack_require__(/*! d3-axis */ "./node_modules/d3-axis/src/index.js"), __webpack_require__(/*! d3-array */ "./node_modules/d3-array/src/index.js"), __webpack_require__(/*! d3-color */ "./node_modules/d3-color/src/index.js"), __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/index.js")) :
+     true ? factory(exports, __webpack_require__(/*! lodash-es */ "./node_modules/lodash-es/lodash.js"), __webpack_require__(/*! d3-time-format */ "./node_modules/d3-time-format/src/index.js"), __webpack_require__(/*! d3-scale */ "./node_modules/d3-scale/src/index.js"), __webpack_require__(/*! d3-axis */ "./node_modules/d3-axis/src/index.js"), __webpack_require__(/*! d3-selection */ "./node_modules/d3-selection/src/index.js"), __webpack_require__(/*! d3-array */ "./node_modules/d3-array/src/index.js"), __webpack_require__(/*! d3-color */ "./node_modules/d3-color/src/index.js"), __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/index.js")) :
     0;
-}(this, (function (exports, d3Selection, lodashEs, d3TimeFormat, d3Scale, d3Axis, d3Array, d3Color, d3Shape) { 'use strict';
+}(this, (function (exports, lodashEs, d3TimeFormat, d3Scale, d3Axis, d3Selection, d3Array, d3Color, d3Shape) { 'use strict';
 
     /*
      * Specifies the scale type for the given axis
@@ -43,16 +43,17 @@
     const getDefaultOptions = () => {
         return {
             animation: false,
+            responsive: true,
             style: {
                 backgroundColor: "#FFFFFF",
                 fontFamily: '"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif',
-                fontSize: "12px"
+                fontSize: "12px",
             },
             margin: {
                 top: 5,
                 left: 5,
                 bottom: 5,
-                right: 5
+                right: 5,
             },
             xAxis: [],
             yAxis: [],
@@ -60,32 +61,10 @@
             legend: {
                 title: "",
                 visible: true,
-                align: exports.LegendAlign.Right
-            }
+                align: exports.LegendAlign.Right,
+            },
         };
     };
-
-    class CartesianObject {
-        constructor(chartContainer, options) {
-            var _a;
-            this.chartContainer = chartContainer;
-            this.options = options;
-            this.destroyed = false;
-            const containerSelection = d3Selection.select(this.chartContainer);
-            (_a = containerSelection.datum()) === null || _a === void 0 ? void 0 : _a.destroy();
-            containerSelection.datum(this);
-        }
-        throwIfDestroyed() {
-            if (this.destroyed) {
-                throw new Error("This CartesianObject has been destroyed");
-            }
-        }
-        destroy() {
-            // This should also be called when the object is detached from the HTMLElement.
-            d3Selection.select(this.chartContainer).selectAll("svg").remove();
-            this.destroyed = true;
-        }
-    }
 
     var t0 = new Date,
         t1 = new Date;
@@ -398,14 +377,10 @@
                 .nice();
         }
         getLinearScale(rangeMin, rangeMax) {
-            return d3Scale.scaleLinear()
-                .range([rangeMin, rangeMax])
-                .nice();
+            return d3Scale.scaleLinear().range([rangeMin, rangeMax]).nice();
         }
         getLogarithmicScale(rangeMin, rangeMax) {
-            return d3Scale.scaleLog()
-                .range([rangeMin, rangeMax])
-                .nice();
+            return d3Scale.scaleLog().range([rangeMin, rangeMax]).nice();
         }
         getOrdinalScale(rangeMin, rangeMax) {
             return d3Scale.scaleBand()
@@ -600,7 +575,7 @@
                 axisOption: axisOption,
                 seriesWidth: seriesWidth,
                 seriesHeight: seriesHeight,
-                scale: scale
+                scale: scale,
             });
         }
         getAxisData(plotSelection, axisOption, isXAxis, axisPosition) {
@@ -626,7 +601,7 @@
                     axisSelection: axisSelection,
                     axisOption: axisOption,
                     seriesWidth: seriesWidth,
-                    seriesHeight: seriesHeight
+                    seriesHeight: seriesHeight,
                 });
             });
         }
@@ -694,14 +669,14 @@
         buildXAxesSections(plotSelection, options) {
             const plotWidth = Number(plotSelection.attr("width"));
             const availablePlotWidth = plotWidth - options.yAxis.length * CartesianLayout.YAXIS_SECTION_WIDTH;
-            const offsetX = options.yAxis.filter(axisOption => !axisOption.opposite).length *
+            const offsetX = options.yAxis.filter((axisOption) => !axisOption.opposite).length *
                 CartesianLayout.YAXIS_SECTION_WIDTH;
             this.buildBottomXAxesSections(plotSelection, options.xAxis, availablePlotWidth, offsetX);
             this.buildTopXAxesSections(plotSelection, options.xAxis, availablePlotWidth, offsetX);
         }
         buildBottomXAxesSections(plotSelection, axisOptions, availablePlotWidth, offsetX) {
             const plotheight = Number(plotSelection.attr("height"));
-            const bottomAligned = axisOptions.filter(axisOption => !axisOption.opposite);
+            const bottomAligned = axisOptions.filter((axisOption) => !axisOption.opposite);
             const dimension = this.getXAxisSectionDimension(availablePlotWidth, plotheight, bottomAligned.length, offsetX, true);
             const xAxisBottomSelection = this.addSection(plotSelection, dimension, "axis-bottom-section" /* AxisBottom */);
             let axisIndex = 0;
@@ -714,7 +689,7 @@
         }
         buildTopXAxesSections(plotSelection, axisOptions, availablePlotWidth, offsetX) {
             const plotheight = Number(plotSelection.attr("height"));
-            const topAligned = axisOptions.filter(axisOption => axisOption.opposite);
+            const topAligned = axisOptions.filter((axisOption) => axisOption.opposite);
             const dimension = this.getXAxisSectionDimension(availablePlotWidth, plotheight, topAligned.length, offsetX, false);
             const xAxisTopSelection = this.addSection(plotSelection, dimension, "axis-top-section" /* AxisTop */);
             let axisIndex = 0;
@@ -728,14 +703,14 @@
         buildYAxesSections(plotSelection, options) {
             const plotheight = Number(plotSelection.attr("height"));
             const availablePlotHeight = plotheight - options.xAxis.length * CartesianLayout.XAXIS_SECTION_HEIGHT;
-            const offsetY = options.xAxis.filter(axisOption => axisOption.opposite).length *
+            const offsetY = options.xAxis.filter((axisOption) => axisOption.opposite).length *
                 CartesianLayout.XAXIS_SECTION_HEIGHT;
             this.buildLeftYAxesSections(plotSelection, options.yAxis, availablePlotHeight, offsetY);
             this.buildRightYAxesSections(plotSelection, options.yAxis, availablePlotHeight, offsetY);
         }
         buildLeftYAxesSections(plotSelection, axisOptions, availablePlotHeight, offsetY) {
             const plotWidth = Number(plotSelection.attr("width"));
-            const leftAligned = axisOptions.filter(axisOption => !axisOption.opposite);
+            const leftAligned = axisOptions.filter((axisOption) => !axisOption.opposite);
             const dimension = this.getYAxisSectionDimension(plotWidth, availablePlotHeight, leftAligned.length, offsetY, true);
             const yAxisLeftSelection = this.addSection(plotSelection, dimension, "axis-left-section" /* AxisLeft */);
             let axisIndex = 0;
@@ -748,7 +723,7 @@
         }
         buildRightYAxesSections(plotSelection, axisOptions, availablePlotHeight, offsetY) {
             const plotWidth = Number(plotSelection.attr("width"));
-            const rightAligned = axisOptions.filter(axisOption => axisOption.opposite);
+            const rightAligned = axisOptions.filter((axisOption) => axisOption.opposite);
             const dimension = this.getYAxisSectionDimension(plotWidth, availablePlotHeight, rightAligned.length, offsetY, false);
             const yAxisRightSelection = this.addSection(plotSelection, dimension, "axis-right-section" /* AxisRight */);
             let axisIndex = 0;
@@ -785,8 +760,8 @@
                 height: height,
                 position: {
                     x: 0,
-                    y: 0
-                }
+                    y: 0,
+                },
             };
         }
         getHorizontalPlotDimension(width, height) {
@@ -796,8 +771,8 @@
                 height: height,
                 position: {
                     x: 0,
-                    y: 0
-                }
+                    y: 0,
+                },
             };
         }
         getVerticalPlotDimension(width, height) {
@@ -807,8 +782,8 @@
                 height: height - legendHeight,
                 position: {
                     x: 0,
-                    y: 0
-                }
+                    y: 0,
+                },
             };
         }
         getHorizontalLegendDimension(width, height) {
@@ -818,8 +793,8 @@
                 height: height,
                 position: {
                     x: width - legendWidth,
-                    y: 0
-                }
+                    y: 0,
+                },
             };
         }
         getVerticalLegendDimension(width, height) {
@@ -829,8 +804,8 @@
                 height: legendHeight,
                 position: {
                     x: 0,
-                    y: height - legendHeight
-                }
+                    y: height - legendHeight,
+                },
             };
         }
         getYAxisSectionDimension(width, height, axesCount, offsetY, isLeft = false) {
@@ -840,8 +815,8 @@
                 height: height,
                 position: {
                     x: isLeft ? 0 : width - sectionWidth,
-                    y: offsetY
-                }
+                    y: offsetY,
+                },
             };
         }
         getXAxisSectionDimension(width, height, axesCount, offsetX, isBottom = false) {
@@ -851,8 +826,8 @@
                 height: sectionHeight,
                 position: {
                     x: offsetX,
-                    y: isBottom ? height - sectionHeight : sectionHeight
-                }
+                    y: isBottom ? height - sectionHeight : sectionHeight,
+                },
             };
         }
         getYAxisDimension(height, axisPosition) {
@@ -862,8 +837,8 @@
                 height: height,
                 position: {
                     x: axisPosition * sectionWidth,
-                    y: 0
-                }
+                    y: 0,
+                },
             };
         }
         getXAxisDimension(width, axisPosition) {
@@ -873,8 +848,8 @@
                 height: sectionHeight,
                 position: {
                     x: 0,
-                    y: axisPosition * sectionHeight
-                }
+                    y: axisPosition * sectionHeight,
+                },
             };
         }
         getSeriesSectionDimension(width, height, offsetX, offsetY) {
@@ -883,8 +858,8 @@
                 height: height,
                 position: {
                     x: offsetX,
-                    y: offsetY
-                }
+                    y: offsetY,
+                },
             };
         }
     }
@@ -1496,7 +1471,7 @@
         setToolTipGenerator(seriesOption, seriesSelection, dataPointSelection) {
             this.initTooltip(seriesOption.tooltip);
             dataPointSelection
-                .on("mouseover.tooltip", dataPoint => this.onTooltipMouseOver(seriesOption, dataPoint, seriesSelection))
+                .on("mouseover.tooltip", (dataPoint) => this.onTooltipMouseOver(seriesOption, dataPoint, seriesSelection))
                 .on("mouseout.tooltip", () => this.onTooltipMouseOut());
             this.toolTip &&
                 this.toolTip.on("mouseout.tooltip", () => this.onTooltipMouseOut());
@@ -1560,10 +1535,7 @@
             if (this.isMouseOverToolTipDiv(mouseEventObject)) {
                 return;
             }
-            this.toolTip
-                .style("opacity", 0)
-                .style("left", "0px")
-                .style("top", "0px");
+            this.toolTip.style("opacity", 0).style("left", "0px").style("top", "0px");
         }
         isMouseOverToolTipDiv(mouseEventObject) {
             if (this.toolTip === undefined) {
@@ -1583,16 +1555,1526 @@
     CartesianTooltip.DIMENSTION_X = 150;
     CartesianTooltip.DIMENSTION_Y = 54;
 
-    class CartesianChart extends CartesianObject {
-        constructor(chartContainer, partialOptions) {
-            super(chartContainer, lodashEs.defaultsDeep({}, partialOptions, getDefaultOptions()));
+    /*! *****************************************************************************
+    Copyright (c) Microsoft Corporation.
+
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
+    /* global Reflect, Promise */
+
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+
+    function __extends(d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    function isFunction(x) {
+        return typeof x === 'function';
+    }
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    var _enable_super_gross_mode_that_will_cause_bad_things = false;
+    var config = {
+        Promise: undefined,
+        set useDeprecatedSynchronousErrorHandling(value) {
+            if (value) {
+                var error = /*@__PURE__*/ new Error();
+                /*@__PURE__*/ console.warn('DEPRECATED! RxJS was set to use deprecated synchronous error handling behavior by code at: \n' + error.stack);
+            }
+            _enable_super_gross_mode_that_will_cause_bad_things = value;
+        },
+        get useDeprecatedSynchronousErrorHandling() {
+            return _enable_super_gross_mode_that_will_cause_bad_things;
+        },
+    };
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    function hostReportError(err) {
+        setTimeout(function () { throw err; }, 0);
+    }
+
+    /** PURE_IMPORTS_START _config,_util_hostReportError PURE_IMPORTS_END */
+    var empty = {
+        closed: true,
+        next: function (value) { },
+        error: function (err) {
+            if (config.useDeprecatedSynchronousErrorHandling) {
+                throw err;
+            }
+            else {
+                hostReportError(err);
+            }
+        },
+        complete: function () { }
+    };
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    var isArray = /*@__PURE__*/ (function () { return Array.isArray || (function (x) { return x && typeof x.length === 'number'; }); })();
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    function isObject(x) {
+        return x !== null && typeof x === 'object';
+    }
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    var UnsubscriptionErrorImpl = /*@__PURE__*/ (function () {
+        function UnsubscriptionErrorImpl(errors) {
+            Error.call(this);
+            this.message = errors ?
+                errors.length + " errors occurred during unsubscription:\n" + errors.map(function (err, i) { return i + 1 + ") " + err.toString(); }).join('\n  ') : '';
+            this.name = 'UnsubscriptionError';
+            this.errors = errors;
+            return this;
+        }
+        UnsubscriptionErrorImpl.prototype = /*@__PURE__*/ Object.create(Error.prototype);
+        return UnsubscriptionErrorImpl;
+    })();
+    var UnsubscriptionError = UnsubscriptionErrorImpl;
+
+    /** PURE_IMPORTS_START _util_isArray,_util_isObject,_util_isFunction,_util_UnsubscriptionError PURE_IMPORTS_END */
+    var Subscription = /*@__PURE__*/ (function () {
+        function Subscription(unsubscribe) {
+            this.closed = false;
+            this._parentOrParents = null;
+            this._subscriptions = null;
+            if (unsubscribe) {
+                this._ctorUnsubscribe = true;
+                this._unsubscribe = unsubscribe;
+            }
+        }
+        Subscription.prototype.unsubscribe = function () {
+            var errors;
+            if (this.closed) {
+                return;
+            }
+            var _a = this, _parentOrParents = _a._parentOrParents, _ctorUnsubscribe = _a._ctorUnsubscribe, _unsubscribe = _a._unsubscribe, _subscriptions = _a._subscriptions;
+            this.closed = true;
+            this._parentOrParents = null;
+            this._subscriptions = null;
+            if (_parentOrParents instanceof Subscription) {
+                _parentOrParents.remove(this);
+            }
+            else if (_parentOrParents !== null) {
+                for (var index = 0; index < _parentOrParents.length; ++index) {
+                    var parent_1 = _parentOrParents[index];
+                    parent_1.remove(this);
+                }
+            }
+            if (isFunction(_unsubscribe)) {
+                if (_ctorUnsubscribe) {
+                    this._unsubscribe = undefined;
+                }
+                try {
+                    _unsubscribe.call(this);
+                }
+                catch (e) {
+                    errors = e instanceof UnsubscriptionError ? flattenUnsubscriptionErrors(e.errors) : [e];
+                }
+            }
+            if (isArray(_subscriptions)) {
+                var index = -1;
+                var len = _subscriptions.length;
+                while (++index < len) {
+                    var sub = _subscriptions[index];
+                    if (isObject(sub)) {
+                        try {
+                            sub.unsubscribe();
+                        }
+                        catch (e) {
+                            errors = errors || [];
+                            if (e instanceof UnsubscriptionError) {
+                                errors = errors.concat(flattenUnsubscriptionErrors(e.errors));
+                            }
+                            else {
+                                errors.push(e);
+                            }
+                        }
+                    }
+                }
+            }
+            if (errors) {
+                throw new UnsubscriptionError(errors);
+            }
+        };
+        Subscription.prototype.add = function (teardown) {
+            var subscription = teardown;
+            if (!teardown) {
+                return Subscription.EMPTY;
+            }
+            switch (typeof teardown) {
+                case 'function':
+                    subscription = new Subscription(teardown);
+                case 'object':
+                    if (subscription === this || subscription.closed || typeof subscription.unsubscribe !== 'function') {
+                        return subscription;
+                    }
+                    else if (this.closed) {
+                        subscription.unsubscribe();
+                        return subscription;
+                    }
+                    else if (!(subscription instanceof Subscription)) {
+                        var tmp = subscription;
+                        subscription = new Subscription();
+                        subscription._subscriptions = [tmp];
+                    }
+                    break;
+                default: {
+                    throw new Error('unrecognized teardown ' + teardown + ' added to Subscription.');
+                }
+            }
+            var _parentOrParents = subscription._parentOrParents;
+            if (_parentOrParents === null) {
+                subscription._parentOrParents = this;
+            }
+            else if (_parentOrParents instanceof Subscription) {
+                if (_parentOrParents === this) {
+                    return subscription;
+                }
+                subscription._parentOrParents = [_parentOrParents, this];
+            }
+            else if (_parentOrParents.indexOf(this) === -1) {
+                _parentOrParents.push(this);
+            }
+            else {
+                return subscription;
+            }
+            var subscriptions = this._subscriptions;
+            if (subscriptions === null) {
+                this._subscriptions = [subscription];
+            }
+            else {
+                subscriptions.push(subscription);
+            }
+            return subscription;
+        };
+        Subscription.prototype.remove = function (subscription) {
+            var subscriptions = this._subscriptions;
+            if (subscriptions) {
+                var subscriptionIndex = subscriptions.indexOf(subscription);
+                if (subscriptionIndex !== -1) {
+                    subscriptions.splice(subscriptionIndex, 1);
+                }
+            }
+        };
+        Subscription.EMPTY = (function (empty) {
+            empty.closed = true;
+            return empty;
+        }(new Subscription()));
+        return Subscription;
+    }());
+    function flattenUnsubscriptionErrors(errors) {
+        return errors.reduce(function (errs, err) { return errs.concat((err instanceof UnsubscriptionError) ? err.errors : err); }, []);
+    }
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    var rxSubscriber = /*@__PURE__*/ (function () {
+        return typeof Symbol === 'function'
+            ? /*@__PURE__*/ Symbol('rxSubscriber')
+            : '@@rxSubscriber_' + /*@__PURE__*/ Math.random();
+    })();
+
+    /** PURE_IMPORTS_START tslib,_util_isFunction,_Observer,_Subscription,_internal_symbol_rxSubscriber,_config,_util_hostReportError PURE_IMPORTS_END */
+    var Subscriber = /*@__PURE__*/ (function (_super) {
+        __extends(Subscriber, _super);
+        function Subscriber(destinationOrNext, error, complete) {
+            var _this = _super.call(this) || this;
+            _this.syncErrorValue = null;
+            _this.syncErrorThrown = false;
+            _this.syncErrorThrowable = false;
+            _this.isStopped = false;
+            switch (arguments.length) {
+                case 0:
+                    _this.destination = empty;
+                    break;
+                case 1:
+                    if (!destinationOrNext) {
+                        _this.destination = empty;
+                        break;
+                    }
+                    if (typeof destinationOrNext === 'object') {
+                        if (destinationOrNext instanceof Subscriber) {
+                            _this.syncErrorThrowable = destinationOrNext.syncErrorThrowable;
+                            _this.destination = destinationOrNext;
+                            destinationOrNext.add(_this);
+                        }
+                        else {
+                            _this.syncErrorThrowable = true;
+                            _this.destination = new SafeSubscriber(_this, destinationOrNext);
+                        }
+                        break;
+                    }
+                default:
+                    _this.syncErrorThrowable = true;
+                    _this.destination = new SafeSubscriber(_this, destinationOrNext, error, complete);
+                    break;
+            }
+            return _this;
+        }
+        Subscriber.prototype[rxSubscriber] = function () { return this; };
+        Subscriber.create = function (next, error, complete) {
+            var subscriber = new Subscriber(next, error, complete);
+            subscriber.syncErrorThrowable = false;
+            return subscriber;
+        };
+        Subscriber.prototype.next = function (value) {
+            if (!this.isStopped) {
+                this._next(value);
+            }
+        };
+        Subscriber.prototype.error = function (err) {
+            if (!this.isStopped) {
+                this.isStopped = true;
+                this._error(err);
+            }
+        };
+        Subscriber.prototype.complete = function () {
+            if (!this.isStopped) {
+                this.isStopped = true;
+                this._complete();
+            }
+        };
+        Subscriber.prototype.unsubscribe = function () {
+            if (this.closed) {
+                return;
+            }
+            this.isStopped = true;
+            _super.prototype.unsubscribe.call(this);
+        };
+        Subscriber.prototype._next = function (value) {
+            this.destination.next(value);
+        };
+        Subscriber.prototype._error = function (err) {
+            this.destination.error(err);
+            this.unsubscribe();
+        };
+        Subscriber.prototype._complete = function () {
+            this.destination.complete();
+            this.unsubscribe();
+        };
+        Subscriber.prototype._unsubscribeAndRecycle = function () {
+            var _parentOrParents = this._parentOrParents;
+            this._parentOrParents = null;
+            this.unsubscribe();
+            this.closed = false;
+            this.isStopped = false;
+            this._parentOrParents = _parentOrParents;
+            return this;
+        };
+        return Subscriber;
+    }(Subscription));
+    var SafeSubscriber = /*@__PURE__*/ (function (_super) {
+        __extends(SafeSubscriber, _super);
+        function SafeSubscriber(_parentSubscriber, observerOrNext, error, complete) {
+            var _this = _super.call(this) || this;
+            _this._parentSubscriber = _parentSubscriber;
+            var next;
+            var context = _this;
+            if (isFunction(observerOrNext)) {
+                next = observerOrNext;
+            }
+            else if (observerOrNext) {
+                next = observerOrNext.next;
+                error = observerOrNext.error;
+                complete = observerOrNext.complete;
+                if (observerOrNext !== empty) {
+                    context = Object.create(observerOrNext);
+                    if (isFunction(context.unsubscribe)) {
+                        _this.add(context.unsubscribe.bind(context));
+                    }
+                    context.unsubscribe = _this.unsubscribe.bind(_this);
+                }
+            }
+            _this._context = context;
+            _this._next = next;
+            _this._error = error;
+            _this._complete = complete;
+            return _this;
+        }
+        SafeSubscriber.prototype.next = function (value) {
+            if (!this.isStopped && this._next) {
+                var _parentSubscriber = this._parentSubscriber;
+                if (!config.useDeprecatedSynchronousErrorHandling || !_parentSubscriber.syncErrorThrowable) {
+                    this.__tryOrUnsub(this._next, value);
+                }
+                else if (this.__tryOrSetError(_parentSubscriber, this._next, value)) {
+                    this.unsubscribe();
+                }
+            }
+        };
+        SafeSubscriber.prototype.error = function (err) {
+            if (!this.isStopped) {
+                var _parentSubscriber = this._parentSubscriber;
+                var useDeprecatedSynchronousErrorHandling = config.useDeprecatedSynchronousErrorHandling;
+                if (this._error) {
+                    if (!useDeprecatedSynchronousErrorHandling || !_parentSubscriber.syncErrorThrowable) {
+                        this.__tryOrUnsub(this._error, err);
+                        this.unsubscribe();
+                    }
+                    else {
+                        this.__tryOrSetError(_parentSubscriber, this._error, err);
+                        this.unsubscribe();
+                    }
+                }
+                else if (!_parentSubscriber.syncErrorThrowable) {
+                    this.unsubscribe();
+                    if (useDeprecatedSynchronousErrorHandling) {
+                        throw err;
+                    }
+                    hostReportError(err);
+                }
+                else {
+                    if (useDeprecatedSynchronousErrorHandling) {
+                        _parentSubscriber.syncErrorValue = err;
+                        _parentSubscriber.syncErrorThrown = true;
+                    }
+                    else {
+                        hostReportError(err);
+                    }
+                    this.unsubscribe();
+                }
+            }
+        };
+        SafeSubscriber.prototype.complete = function () {
+            var _this = this;
+            if (!this.isStopped) {
+                var _parentSubscriber = this._parentSubscriber;
+                if (this._complete) {
+                    var wrappedComplete = function () { return _this._complete.call(_this._context); };
+                    if (!config.useDeprecatedSynchronousErrorHandling || !_parentSubscriber.syncErrorThrowable) {
+                        this.__tryOrUnsub(wrappedComplete);
+                        this.unsubscribe();
+                    }
+                    else {
+                        this.__tryOrSetError(_parentSubscriber, wrappedComplete);
+                        this.unsubscribe();
+                    }
+                }
+                else {
+                    this.unsubscribe();
+                }
+            }
+        };
+        SafeSubscriber.prototype.__tryOrUnsub = function (fn, value) {
+            try {
+                fn.call(this._context, value);
+            }
+            catch (err) {
+                this.unsubscribe();
+                if (config.useDeprecatedSynchronousErrorHandling) {
+                    throw err;
+                }
+                else {
+                    hostReportError(err);
+                }
+            }
+        };
+        SafeSubscriber.prototype.__tryOrSetError = function (parent, fn, value) {
+            if (!config.useDeprecatedSynchronousErrorHandling) {
+                throw new Error('bad call');
+            }
+            try {
+                fn.call(this._context, value);
+            }
+            catch (err) {
+                if (config.useDeprecatedSynchronousErrorHandling) {
+                    parent.syncErrorValue = err;
+                    parent.syncErrorThrown = true;
+                    return true;
+                }
+                else {
+                    hostReportError(err);
+                    return true;
+                }
+            }
+            return false;
+        };
+        SafeSubscriber.prototype._unsubscribe = function () {
+            var _parentSubscriber = this._parentSubscriber;
+            this._context = null;
+            this._parentSubscriber = null;
+            _parentSubscriber.unsubscribe();
+        };
+        return SafeSubscriber;
+    }(Subscriber));
+
+    /** PURE_IMPORTS_START _Subscriber PURE_IMPORTS_END */
+    function canReportError(observer) {
+        while (observer) {
+            var _a = observer, closed_1 = _a.closed, destination = _a.destination, isStopped = _a.isStopped;
+            if (closed_1 || isStopped) {
+                return false;
+            }
+            else if (destination && destination instanceof Subscriber) {
+                observer = destination;
+            }
+            else {
+                observer = null;
+            }
+        }
+        return true;
+    }
+
+    /** PURE_IMPORTS_START _Subscriber,_symbol_rxSubscriber,_Observer PURE_IMPORTS_END */
+    function toSubscriber(nextOrObserver, error, complete) {
+        if (nextOrObserver) {
+            if (nextOrObserver instanceof Subscriber) {
+                return nextOrObserver;
+            }
+            if (nextOrObserver[rxSubscriber]) {
+                return nextOrObserver[rxSubscriber]();
+            }
+        }
+        if (!nextOrObserver && !error && !complete) {
+            return new Subscriber(empty);
+        }
+        return new Subscriber(nextOrObserver, error, complete);
+    }
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    var observable = /*@__PURE__*/ (function () { return typeof Symbol === 'function' && Symbol.observable || '@@observable'; })();
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    function identity(x) {
+        return x;
+    }
+
+    /** PURE_IMPORTS_START _identity PURE_IMPORTS_END */
+    function pipeFromArray(fns) {
+        if (fns.length === 0) {
+            return identity;
+        }
+        if (fns.length === 1) {
+            return fns[0];
+        }
+        return function piped(input) {
+            return fns.reduce(function (prev, fn) { return fn(prev); }, input);
+        };
+    }
+
+    /** PURE_IMPORTS_START _util_canReportError,_util_toSubscriber,_symbol_observable,_util_pipe,_config PURE_IMPORTS_END */
+    var Observable = /*@__PURE__*/ (function () {
+        function Observable(subscribe) {
+            this._isScalar = false;
+            if (subscribe) {
+                this._subscribe = subscribe;
+            }
+        }
+        Observable.prototype.lift = function (operator) {
+            var observable = new Observable();
+            observable.source = this;
+            observable.operator = operator;
+            return observable;
+        };
+        Observable.prototype.subscribe = function (observerOrNext, error, complete) {
+            var operator = this.operator;
+            var sink = toSubscriber(observerOrNext, error, complete);
+            if (operator) {
+                sink.add(operator.call(sink, this.source));
+            }
+            else {
+                sink.add(this.source || (config.useDeprecatedSynchronousErrorHandling && !sink.syncErrorThrowable) ?
+                    this._subscribe(sink) :
+                    this._trySubscribe(sink));
+            }
+            if (config.useDeprecatedSynchronousErrorHandling) {
+                if (sink.syncErrorThrowable) {
+                    sink.syncErrorThrowable = false;
+                    if (sink.syncErrorThrown) {
+                        throw sink.syncErrorValue;
+                    }
+                }
+            }
+            return sink;
+        };
+        Observable.prototype._trySubscribe = function (sink) {
+            try {
+                return this._subscribe(sink);
+            }
+            catch (err) {
+                if (config.useDeprecatedSynchronousErrorHandling) {
+                    sink.syncErrorThrown = true;
+                    sink.syncErrorValue = err;
+                }
+                if (canReportError(sink)) {
+                    sink.error(err);
+                }
+                else {
+                    console.warn(err);
+                }
+            }
+        };
+        Observable.prototype.forEach = function (next, promiseCtor) {
+            var _this = this;
+            promiseCtor = getPromiseCtor(promiseCtor);
+            return new promiseCtor(function (resolve, reject) {
+                var subscription;
+                subscription = _this.subscribe(function (value) {
+                    try {
+                        next(value);
+                    }
+                    catch (err) {
+                        reject(err);
+                        if (subscription) {
+                            subscription.unsubscribe();
+                        }
+                    }
+                }, reject, resolve);
+            });
+        };
+        Observable.prototype._subscribe = function (subscriber) {
+            var source = this.source;
+            return source && source.subscribe(subscriber);
+        };
+        Observable.prototype[observable] = function () {
+            return this;
+        };
+        Observable.prototype.pipe = function () {
+            var operations = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                operations[_i] = arguments[_i];
+            }
+            if (operations.length === 0) {
+                return this;
+            }
+            return pipeFromArray(operations)(this);
+        };
+        Observable.prototype.toPromise = function (promiseCtor) {
+            var _this = this;
+            promiseCtor = getPromiseCtor(promiseCtor);
+            return new promiseCtor(function (resolve, reject) {
+                var value;
+                _this.subscribe(function (x) { return value = x; }, function (err) { return reject(err); }, function () { return resolve(value); });
+            });
+        };
+        Observable.create = function (subscribe) {
+            return new Observable(subscribe);
+        };
+        return Observable;
+    }());
+    function getPromiseCtor(promiseCtor) {
+        if (!promiseCtor) {
+            promiseCtor = Promise;
+        }
+        if (!promiseCtor) {
+            throw new Error('no Promise impl found');
+        }
+        return promiseCtor;
+    }
+
+    /** PURE_IMPORTS_START tslib,_Subscription PURE_IMPORTS_END */
+    var Action = /*@__PURE__*/ (function (_super) {
+        __extends(Action, _super);
+        function Action(scheduler, work) {
+            return _super.call(this) || this;
+        }
+        Action.prototype.schedule = function (state, delay) {
+            return this;
+        };
+        return Action;
+    }(Subscription));
+
+    /** PURE_IMPORTS_START tslib,_Action PURE_IMPORTS_END */
+    var AsyncAction = /*@__PURE__*/ (function (_super) {
+        __extends(AsyncAction, _super);
+        function AsyncAction(scheduler, work) {
+            var _this = _super.call(this, scheduler, work) || this;
+            _this.scheduler = scheduler;
+            _this.work = work;
+            _this.pending = false;
+            return _this;
+        }
+        AsyncAction.prototype.schedule = function (state, delay) {
+            if (delay === void 0) {
+                delay = 0;
+            }
+            if (this.closed) {
+                return this;
+            }
+            this.state = state;
+            var id = this.id;
+            var scheduler = this.scheduler;
+            if (id != null) {
+                this.id = this.recycleAsyncId(scheduler, id, delay);
+            }
+            this.pending = true;
+            this.delay = delay;
+            this.id = this.id || this.requestAsyncId(scheduler, this.id, delay);
+            return this;
+        };
+        AsyncAction.prototype.requestAsyncId = function (scheduler, id, delay) {
+            if (delay === void 0) {
+                delay = 0;
+            }
+            return setInterval(scheduler.flush.bind(scheduler, this), delay);
+        };
+        AsyncAction.prototype.recycleAsyncId = function (scheduler, id, delay) {
+            if (delay === void 0) {
+                delay = 0;
+            }
+            if (delay !== null && this.delay === delay && this.pending === false) {
+                return id;
+            }
+            clearInterval(id);
+            return undefined;
+        };
+        AsyncAction.prototype.execute = function (state, delay) {
+            if (this.closed) {
+                return new Error('executing a cancelled action');
+            }
+            this.pending = false;
+            var error = this._execute(state, delay);
+            if (error) {
+                return error;
+            }
+            else if (this.pending === false && this.id != null) {
+                this.id = this.recycleAsyncId(this.scheduler, this.id, null);
+            }
+        };
+        AsyncAction.prototype._execute = function (state, delay) {
+            var errored = false;
+            var errorValue = undefined;
+            try {
+                this.work(state);
+            }
+            catch (e) {
+                errored = true;
+                errorValue = !!e && e || new Error(e);
+            }
+            if (errored) {
+                this.unsubscribe();
+                return errorValue;
+            }
+        };
+        AsyncAction.prototype._unsubscribe = function () {
+            var id = this.id;
+            var scheduler = this.scheduler;
+            var actions = scheduler.actions;
+            var index = actions.indexOf(this);
+            this.work = null;
+            this.state = null;
+            this.pending = false;
+            this.scheduler = null;
+            if (index !== -1) {
+                actions.splice(index, 1);
+            }
+            if (id != null) {
+                this.id = this.recycleAsyncId(scheduler, id, null);
+            }
+            this.delay = null;
+        };
+        return AsyncAction;
+    }(Action));
+
+    var Scheduler = /*@__PURE__*/ (function () {
+        function Scheduler(SchedulerAction, now) {
+            if (now === void 0) {
+                now = Scheduler.now;
+            }
+            this.SchedulerAction = SchedulerAction;
+            this.now = now;
+        }
+        Scheduler.prototype.schedule = function (work, delay, state) {
+            if (delay === void 0) {
+                delay = 0;
+            }
+            return new this.SchedulerAction(this, work).schedule(state, delay);
+        };
+        Scheduler.now = function () { return Date.now(); };
+        return Scheduler;
+    }());
+
+    /** PURE_IMPORTS_START tslib,_Scheduler PURE_IMPORTS_END */
+    var AsyncScheduler = /*@__PURE__*/ (function (_super) {
+        __extends(AsyncScheduler, _super);
+        function AsyncScheduler(SchedulerAction, now) {
+            if (now === void 0) {
+                now = Scheduler.now;
+            }
+            var _this = _super.call(this, SchedulerAction, function () {
+                if (AsyncScheduler.delegate && AsyncScheduler.delegate !== _this) {
+                    return AsyncScheduler.delegate.now();
+                }
+                else {
+                    return now();
+                }
+            }) || this;
+            _this.actions = [];
+            _this.active = false;
+            _this.scheduled = undefined;
+            return _this;
+        }
+        AsyncScheduler.prototype.schedule = function (work, delay, state) {
+            if (delay === void 0) {
+                delay = 0;
+            }
+            if (AsyncScheduler.delegate && AsyncScheduler.delegate !== this) {
+                return AsyncScheduler.delegate.schedule(work, delay, state);
+            }
+            else {
+                return _super.prototype.schedule.call(this, work, delay, state);
+            }
+        };
+        AsyncScheduler.prototype.flush = function (action) {
+            var actions = this.actions;
+            if (this.active) {
+                actions.push(action);
+                return;
+            }
+            var error;
+            this.active = true;
+            do {
+                if (error = action.execute(action.state, action.delay)) {
+                    break;
+                }
+            } while (action = actions.shift());
+            this.active = false;
+            if (error) {
+                while (action = actions.shift()) {
+                    action.unsubscribe();
+                }
+                throw error;
+            }
+        };
+        return AsyncScheduler;
+    }(Scheduler));
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    function isScheduler(value) {
+        return value && typeof value.schedule === 'function';
+    }
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    var subscribeToArray = function (array) {
+        return function (subscriber) {
+            for (var i = 0, len = array.length; i < len && !subscriber.closed; i++) {
+                subscriber.next(array[i]);
+            }
+            subscriber.complete();
+        };
+    };
+
+    /** PURE_IMPORTS_START _Observable,_Subscription PURE_IMPORTS_END */
+    function scheduleArray(input, scheduler) {
+        return new Observable(function (subscriber) {
+            var sub = new Subscription();
+            var i = 0;
+            sub.add(scheduler.schedule(function () {
+                if (i === input.length) {
+                    subscriber.complete();
+                    return;
+                }
+                subscriber.next(input[i++]);
+                if (!subscriber.closed) {
+                    sub.add(this.schedule());
+                }
+            }));
+            return sub;
+        });
+    }
+
+    /** PURE_IMPORTS_START _Observable,_util_subscribeToArray,_scheduled_scheduleArray PURE_IMPORTS_END */
+    function fromArray(input, scheduler) {
+        if (!scheduler) {
+            return new Observable(subscribeToArray(input));
+        }
+        else {
+            return scheduleArray(input, scheduler);
+        }
+    }
+
+    /** PURE_IMPORTS_START _util_isScheduler,_fromArray,_scheduled_scheduleArray PURE_IMPORTS_END */
+    function of() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var scheduler = args[args.length - 1];
+        if (isScheduler(scheduler)) {
+            args.pop();
+            return scheduleArray(args, scheduler);
+        }
+        else {
+            return fromArray(args);
+        }
+    }
+
+    /** PURE_IMPORTS_START _AsyncAction,_AsyncScheduler PURE_IMPORTS_END */
+    var asyncScheduler = /*@__PURE__*/ new AsyncScheduler(AsyncAction);
+    var async = asyncScheduler;
+
+    /** PURE_IMPORTS_START tslib,_Subscriber PURE_IMPORTS_END */
+    function map(project, thisArg) {
+        return function mapOperation(source) {
+            if (typeof project !== 'function') {
+                throw new TypeError('argument is not a function. Are you looking for `mapTo()`?');
+            }
+            return source.lift(new MapOperator(project, thisArg));
+        };
+    }
+    var MapOperator = /*@__PURE__*/ (function () {
+        function MapOperator(project, thisArg) {
+            this.project = project;
+            this.thisArg = thisArg;
+        }
+        MapOperator.prototype.call = function (subscriber, source) {
+            return source.subscribe(new MapSubscriber(subscriber, this.project, this.thisArg));
+        };
+        return MapOperator;
+    }());
+    var MapSubscriber = /*@__PURE__*/ (function (_super) {
+        __extends(MapSubscriber, _super);
+        function MapSubscriber(destination, project, thisArg) {
+            var _this = _super.call(this, destination) || this;
+            _this.project = project;
+            _this.count = 0;
+            _this.thisArg = thisArg || _this;
+            return _this;
+        }
+        MapSubscriber.prototype._next = function (value) {
+            var result;
+            try {
+                result = this.project.call(this.thisArg, value, this.count++);
+            }
+            catch (err) {
+                this.destination.error(err);
+                return;
+            }
+            this.destination.next(result);
+        };
+        return MapSubscriber;
+    }(Subscriber));
+
+    /** PURE_IMPORTS_START _hostReportError PURE_IMPORTS_END */
+    var subscribeToPromise = function (promise) {
+        return function (subscriber) {
+            promise.then(function (value) {
+                if (!subscriber.closed) {
+                    subscriber.next(value);
+                    subscriber.complete();
+                }
+            }, function (err) { return subscriber.error(err); })
+                .then(null, hostReportError);
+            return subscriber;
+        };
+    };
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    function getSymbolIterator() {
+        if (typeof Symbol !== 'function' || !Symbol.iterator) {
+            return '@@iterator';
+        }
+        return Symbol.iterator;
+    }
+    var iterator = /*@__PURE__*/ getSymbolIterator();
+
+    /** PURE_IMPORTS_START _symbol_iterator PURE_IMPORTS_END */
+    var subscribeToIterable = function (iterable) {
+        return function (subscriber) {
+            var iterator$1 = iterable[iterator]();
+            do {
+                var item = void 0;
+                try {
+                    item = iterator$1.next();
+                }
+                catch (err) {
+                    subscriber.error(err);
+                    return subscriber;
+                }
+                if (item.done) {
+                    subscriber.complete();
+                    break;
+                }
+                subscriber.next(item.value);
+                if (subscriber.closed) {
+                    break;
+                }
+            } while (true);
+            if (typeof iterator$1.return === 'function') {
+                subscriber.add(function () {
+                    if (iterator$1.return) {
+                        iterator$1.return();
+                    }
+                });
+            }
+            return subscriber;
+        };
+    };
+
+    /** PURE_IMPORTS_START _symbol_observable PURE_IMPORTS_END */
+    var subscribeToObservable = function (obj) {
+        return function (subscriber) {
+            var obs = obj[observable]();
+            if (typeof obs.subscribe !== 'function') {
+                throw new TypeError('Provided object does not correctly implement Symbol.observable');
+            }
+            else {
+                return obs.subscribe(subscriber);
+            }
+        };
+    };
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    var isArrayLike = (function (x) { return x && typeof x.length === 'number' && typeof x !== 'function'; });
+
+    /** PURE_IMPORTS_START  PURE_IMPORTS_END */
+    function isPromise(value) {
+        return !!value && typeof value.subscribe !== 'function' && typeof value.then === 'function';
+    }
+
+    /** PURE_IMPORTS_START _subscribeToArray,_subscribeToPromise,_subscribeToIterable,_subscribeToObservable,_isArrayLike,_isPromise,_isObject,_symbol_iterator,_symbol_observable PURE_IMPORTS_END */
+    var subscribeTo = function (result) {
+        if (!!result && typeof result[observable] === 'function') {
+            return subscribeToObservable(result);
+        }
+        else if (isArrayLike(result)) {
+            return subscribeToArray(result);
+        }
+        else if (isPromise(result)) {
+            return subscribeToPromise(result);
+        }
+        else if (!!result && typeof result[iterator] === 'function') {
+            return subscribeToIterable(result);
+        }
+        else {
+            var value = isObject(result) ? 'an invalid object' : "'" + result + "'";
+            var msg = "You provided " + value + " where a stream was expected."
+                + ' You can provide an Observable, Promise, Array, or Iterable.';
+            throw new TypeError(msg);
+        }
+    };
+
+    /** PURE_IMPORTS_START _Observable,_Subscription,_symbol_observable PURE_IMPORTS_END */
+    function scheduleObservable(input, scheduler) {
+        return new Observable(function (subscriber) {
+            var sub = new Subscription();
+            sub.add(scheduler.schedule(function () {
+                var observable$1 = input[observable]();
+                sub.add(observable$1.subscribe({
+                    next: function (value) { sub.add(scheduler.schedule(function () { return subscriber.next(value); })); },
+                    error: function (err) { sub.add(scheduler.schedule(function () { return subscriber.error(err); })); },
+                    complete: function () { sub.add(scheduler.schedule(function () { return subscriber.complete(); })); },
+                }));
+            }));
+            return sub;
+        });
+    }
+
+    /** PURE_IMPORTS_START _Observable,_Subscription PURE_IMPORTS_END */
+    function schedulePromise(input, scheduler) {
+        return new Observable(function (subscriber) {
+            var sub = new Subscription();
+            sub.add(scheduler.schedule(function () {
+                return input.then(function (value) {
+                    sub.add(scheduler.schedule(function () {
+                        subscriber.next(value);
+                        sub.add(scheduler.schedule(function () { return subscriber.complete(); }));
+                    }));
+                }, function (err) {
+                    sub.add(scheduler.schedule(function () { return subscriber.error(err); }));
+                });
+            }));
+            return sub;
+        });
+    }
+
+    /** PURE_IMPORTS_START _Observable,_Subscription,_symbol_iterator PURE_IMPORTS_END */
+    function scheduleIterable(input, scheduler) {
+        if (!input) {
+            throw new Error('Iterable cannot be null');
+        }
+        return new Observable(function (subscriber) {
+            var sub = new Subscription();
+            var iterator$1;
+            sub.add(function () {
+                if (iterator$1 && typeof iterator$1.return === 'function') {
+                    iterator$1.return();
+                }
+            });
+            sub.add(scheduler.schedule(function () {
+                iterator$1 = input[iterator]();
+                sub.add(scheduler.schedule(function () {
+                    if (subscriber.closed) {
+                        return;
+                    }
+                    var value;
+                    var done;
+                    try {
+                        var result = iterator$1.next();
+                        value = result.value;
+                        done = result.done;
+                    }
+                    catch (err) {
+                        subscriber.error(err);
+                        return;
+                    }
+                    if (done) {
+                        subscriber.complete();
+                    }
+                    else {
+                        subscriber.next(value);
+                        this.schedule();
+                    }
+                }));
+            }));
+            return sub;
+        });
+    }
+
+    /** PURE_IMPORTS_START _symbol_observable PURE_IMPORTS_END */
+    function isInteropObservable(input) {
+        return input && typeof input[observable] === 'function';
+    }
+
+    /** PURE_IMPORTS_START _symbol_iterator PURE_IMPORTS_END */
+    function isIterable(input) {
+        return input && typeof input[iterator] === 'function';
+    }
+
+    /** PURE_IMPORTS_START _scheduleObservable,_schedulePromise,_scheduleArray,_scheduleIterable,_util_isInteropObservable,_util_isPromise,_util_isArrayLike,_util_isIterable PURE_IMPORTS_END */
+    function scheduled(input, scheduler) {
+        if (input != null) {
+            if (isInteropObservable(input)) {
+                return scheduleObservable(input, scheduler);
+            }
+            else if (isPromise(input)) {
+                return schedulePromise(input, scheduler);
+            }
+            else if (isArrayLike(input)) {
+                return scheduleArray(input, scheduler);
+            }
+            else if (isIterable(input) || typeof input === 'string') {
+                return scheduleIterable(input, scheduler);
+            }
+        }
+        throw new TypeError((input !== null && typeof input || input) + ' is not observable');
+    }
+
+    /** PURE_IMPORTS_START _Observable,_util_subscribeTo,_scheduled_scheduled PURE_IMPORTS_END */
+    function from(input, scheduler) {
+        if (!scheduler) {
+            if (input instanceof Observable) {
+                return input;
+            }
+            return new Observable(subscribeTo(input));
+        }
+        else {
+            return scheduled(input, scheduler);
+        }
+    }
+
+    /** PURE_IMPORTS_START tslib,_Subscriber,_Observable,_util_subscribeTo PURE_IMPORTS_END */
+    var SimpleInnerSubscriber = /*@__PURE__*/ (function (_super) {
+        __extends(SimpleInnerSubscriber, _super);
+        function SimpleInnerSubscriber(parent) {
+            var _this = _super.call(this) || this;
+            _this.parent = parent;
+            return _this;
+        }
+        SimpleInnerSubscriber.prototype._next = function (value) {
+            this.parent.notifyNext(value);
+        };
+        SimpleInnerSubscriber.prototype._error = function (error) {
+            this.parent.notifyError(error);
+            this.unsubscribe();
+        };
+        SimpleInnerSubscriber.prototype._complete = function () {
+            this.parent.notifyComplete();
+            this.unsubscribe();
+        };
+        return SimpleInnerSubscriber;
+    }(Subscriber));
+    var SimpleOuterSubscriber = /*@__PURE__*/ (function (_super) {
+        __extends(SimpleOuterSubscriber, _super);
+        function SimpleOuterSubscriber() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        SimpleOuterSubscriber.prototype.notifyNext = function (innerValue) {
+            this.destination.next(innerValue);
+        };
+        SimpleOuterSubscriber.prototype.notifyError = function (err) {
+            this.destination.error(err);
+        };
+        SimpleOuterSubscriber.prototype.notifyComplete = function () {
+            this.destination.complete();
+        };
+        return SimpleOuterSubscriber;
+    }(Subscriber));
+    function innerSubscribe(result, innerSubscriber) {
+        if (innerSubscriber.closed) {
+            return undefined;
+        }
+        if (result instanceof Observable) {
+            return result.subscribe(innerSubscriber);
+        }
+        var subscription;
+        try {
+            subscription = subscribeTo(result)(innerSubscriber);
+        }
+        catch (error) {
+            innerSubscriber.error(error);
+        }
+        return subscription;
+    }
+
+    /** PURE_IMPORTS_START tslib,_map,_observable_from,_innerSubscribe PURE_IMPORTS_END */
+    function mergeMap(project, resultSelector, concurrent) {
+        if (concurrent === void 0) {
+            concurrent = Number.POSITIVE_INFINITY;
+        }
+        if (typeof resultSelector === 'function') {
+            return function (source) { return source.pipe(mergeMap(function (a, i) { return from(project(a, i)).pipe(map(function (b, ii) { return resultSelector(a, b, i, ii); })); }, concurrent)); };
+        }
+        else if (typeof resultSelector === 'number') {
+            concurrent = resultSelector;
+        }
+        return function (source) { return source.lift(new MergeMapOperator(project, concurrent)); };
+    }
+    var MergeMapOperator = /*@__PURE__*/ (function () {
+        function MergeMapOperator(project, concurrent) {
+            if (concurrent === void 0) {
+                concurrent = Number.POSITIVE_INFINITY;
+            }
+            this.project = project;
+            this.concurrent = concurrent;
+        }
+        MergeMapOperator.prototype.call = function (observer, source) {
+            return source.subscribe(new MergeMapSubscriber(observer, this.project, this.concurrent));
+        };
+        return MergeMapOperator;
+    }());
+    var MergeMapSubscriber = /*@__PURE__*/ (function (_super) {
+        __extends(MergeMapSubscriber, _super);
+        function MergeMapSubscriber(destination, project, concurrent) {
+            if (concurrent === void 0) {
+                concurrent = Number.POSITIVE_INFINITY;
+            }
+            var _this = _super.call(this, destination) || this;
+            _this.project = project;
+            _this.concurrent = concurrent;
+            _this.hasCompleted = false;
+            _this.buffer = [];
+            _this.active = 0;
+            _this.index = 0;
+            return _this;
+        }
+        MergeMapSubscriber.prototype._next = function (value) {
+            if (this.active < this.concurrent) {
+                this._tryNext(value);
+            }
+            else {
+                this.buffer.push(value);
+            }
+        };
+        MergeMapSubscriber.prototype._tryNext = function (value) {
+            var result;
+            var index = this.index++;
+            try {
+                result = this.project(value, index);
+            }
+            catch (err) {
+                this.destination.error(err);
+                return;
+            }
+            this.active++;
+            this._innerSub(result);
+        };
+        MergeMapSubscriber.prototype._innerSub = function (ish) {
+            var innerSubscriber = new SimpleInnerSubscriber(this);
+            var destination = this.destination;
+            destination.add(innerSubscriber);
+            var innerSubscription = innerSubscribe(ish, innerSubscriber);
+            if (innerSubscription !== innerSubscriber) {
+                destination.add(innerSubscription);
+            }
+        };
+        MergeMapSubscriber.prototype._complete = function () {
+            this.hasCompleted = true;
+            if (this.active === 0 && this.buffer.length === 0) {
+                this.destination.complete();
+            }
+            this.unsubscribe();
+        };
+        MergeMapSubscriber.prototype.notifyNext = function (innerValue) {
+            this.destination.next(innerValue);
+        };
+        MergeMapSubscriber.prototype.notifyComplete = function () {
+            var buffer = this.buffer;
+            this.active--;
+            if (buffer.length > 0) {
+                this._next(buffer.shift());
+            }
+            else if (this.active === 0 && this.hasCompleted) {
+                this.destination.complete();
+            }
+        };
+        return MergeMapSubscriber;
+    }(SimpleOuterSubscriber));
+
+    /** PURE_IMPORTS_START _mergeMap,_util_identity PURE_IMPORTS_END */
+    function mergeAll(concurrent) {
+        if (concurrent === void 0) {
+            concurrent = Number.POSITIVE_INFINITY;
+        }
+        return mergeMap(identity, concurrent);
+    }
+
+    /** PURE_IMPORTS_START _mergeAll PURE_IMPORTS_END */
+    function concatAll() {
+        return mergeAll(1);
+    }
+
+    /** PURE_IMPORTS_START _of,_operators_concatAll PURE_IMPORTS_END */
+    function concat() {
+        var observables = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            observables[_i] = arguments[_i];
+        }
+        return concatAll()(of.apply(void 0, observables));
+    }
+
+    /** PURE_IMPORTS_START tslib,_Subscriber PURE_IMPORTS_END */
+    function filter(predicate, thisArg) {
+        return function filterOperatorFunction(source) {
+            return source.lift(new FilterOperator(predicate, thisArg));
+        };
+    }
+    var FilterOperator = /*@__PURE__*/ (function () {
+        function FilterOperator(predicate, thisArg) {
+            this.predicate = predicate;
+            this.thisArg = thisArg;
+        }
+        FilterOperator.prototype.call = function (subscriber, source) {
+            return source.subscribe(new FilterSubscriber(subscriber, this.predicate, this.thisArg));
+        };
+        return FilterOperator;
+    }());
+    var FilterSubscriber = /*@__PURE__*/ (function (_super) {
+        __extends(FilterSubscriber, _super);
+        function FilterSubscriber(destination, predicate, thisArg) {
+            var _this = _super.call(this, destination) || this;
+            _this.predicate = predicate;
+            _this.thisArg = thisArg;
+            _this.count = 0;
+            return _this;
+        }
+        FilterSubscriber.prototype._next = function (value) {
+            var result;
+            try {
+                result = this.predicate.call(this.thisArg, value, this.count++);
+            }
+            catch (err) {
+                this.destination.error(err);
+                return;
+            }
+            if (result) {
+                this.destination.next(value);
+            }
+        };
+        return FilterSubscriber;
+    }(Subscriber));
+
+    /** PURE_IMPORTS_START tslib,_Subscriber,_scheduler_async PURE_IMPORTS_END */
+    function debounceTime(dueTime, scheduler) {
+        if (scheduler === void 0) {
+            scheduler = async;
+        }
+        return function (source) { return source.lift(new DebounceTimeOperator(dueTime, scheduler)); };
+    }
+    var DebounceTimeOperator = /*@__PURE__*/ (function () {
+        function DebounceTimeOperator(dueTime, scheduler) {
+            this.dueTime = dueTime;
+            this.scheduler = scheduler;
+        }
+        DebounceTimeOperator.prototype.call = function (subscriber, source) {
+            return source.subscribe(new DebounceTimeSubscriber(subscriber, this.dueTime, this.scheduler));
+        };
+        return DebounceTimeOperator;
+    }());
+    var DebounceTimeSubscriber = /*@__PURE__*/ (function (_super) {
+        __extends(DebounceTimeSubscriber, _super);
+        function DebounceTimeSubscriber(destination, dueTime, scheduler) {
+            var _this = _super.call(this, destination) || this;
+            _this.dueTime = dueTime;
+            _this.scheduler = scheduler;
+            _this.debouncedSubscription = null;
+            _this.lastValue = null;
+            _this.hasValue = false;
+            return _this;
+        }
+        DebounceTimeSubscriber.prototype._next = function (value) {
+            this.clearDebounce();
+            this.lastValue = value;
+            this.hasValue = true;
+            this.add(this.debouncedSubscription = this.scheduler.schedule(dispatchNext, this.dueTime, this));
+        };
+        DebounceTimeSubscriber.prototype._complete = function () {
+            this.debouncedNext();
+            this.destination.complete();
+        };
+        DebounceTimeSubscriber.prototype.debouncedNext = function () {
+            this.clearDebounce();
+            if (this.hasValue) {
+                var lastValue = this.lastValue;
+                this.lastValue = null;
+                this.hasValue = false;
+                this.destination.next(lastValue);
+            }
+        };
+        DebounceTimeSubscriber.prototype.clearDebounce = function () {
+            var debouncedSubscription = this.debouncedSubscription;
+            if (debouncedSubscription !== null) {
+                this.remove(debouncedSubscription);
+                debouncedSubscription.unsubscribe();
+                this.debouncedSubscription = null;
+            }
+        };
+        return DebounceTimeSubscriber;
+    }(Subscriber));
+    function dispatchNext(subscriber) {
+        subscriber.debouncedNext();
+    }
+
+    /** PURE_IMPORTS_START tslib,_Subscriber PURE_IMPORTS_END */
+    function pairwise() {
+        return function (source) { return source.lift(new PairwiseOperator()); };
+    }
+    var PairwiseOperator = /*@__PURE__*/ (function () {
+        function PairwiseOperator() {
+        }
+        PairwiseOperator.prototype.call = function (subscriber, source) {
+            return source.subscribe(new PairwiseSubscriber(subscriber));
+        };
+        return PairwiseOperator;
+    }());
+    var PairwiseSubscriber = /*@__PURE__*/ (function (_super) {
+        __extends(PairwiseSubscriber, _super);
+        function PairwiseSubscriber(destination) {
+            var _this = _super.call(this, destination) || this;
+            _this.hasPrev = false;
+            return _this;
+        }
+        PairwiseSubscriber.prototype._next = function (value) {
+            var pair;
+            if (this.hasPrev) {
+                pair = [this.prev, value];
+            }
+            else {
+                this.hasPrev = true;
+            }
+            this.prev = value;
+            if (pair) {
+                this.destination.next(pair);
+            }
+        };
+        return PairwiseSubscriber;
+    }(Subscriber));
+
+    /** PURE_IMPORTS_START _observable_concat,_util_isScheduler PURE_IMPORTS_END */
+    function startWith() {
+        var array = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            array[_i] = arguments[_i];
+        }
+        var scheduler = array[array.length - 1];
+        if (isScheduler(scheduler)) {
+            array.pop();
+            return function (source) { return concat(array, source, scheduler); };
+        }
+        else {
+            return function (source) { return concat(array, source); };
+        }
+    }
+
+    /**
+     *
+     * @param element Container HTML Element
+     * @param options ResizeOptions
+     * @returns Observable<ClientRect>
+     */
+    const fromResize = (element, options) => {
+        const resolvedOptions = lodashEs.defaultsDeep(options, { direction: "all" /* All */, emitOnStart: true, debounceTime: 10 });
+        const initialRect = element.getBoundingClientRect();
+        let resize$ = buildResize(element).pipe(debounceTime(resolvedOptions.debounceTime));
+        if (resolvedOptions.direction !== "all" /* All */) {
+            resize$ = withDirectionFilter(resize$, resolvedOptions.direction, initialRect);
+        }
+        if (resolvedOptions.emitOnStart) {
+            resize$ = resize$.pipe(startWith(initialRect));
+        }
+        return resize$;
+    };
+    const buildResize = (element) => new Observable(subscriber => {
+        const resizeObserver = new ResizeObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.target === element) {
+                    subscriber.next(entry.contentRect);
+                }
+            });
+        });
+        resizeObserver.observe(element, { box: 'border-box' });
+        return () => {
+            resizeObserver.unobserve(element);
+            resizeObserver.disconnect();
+        };
+    });
+    const withDirectionFilter = (resize$, direction, initialRect) => {
+        return resize$.pipe(startWith(initialRect), pairwise(), filter(([previous, current]) => {
+            console.log('direction: ' + direction + ' previous:' + previous.height + ' current: ' + current.height);
+            switch (direction) {
+                case "horizontal" /* Horizontal */:
+                    return previous.width !== current.width;
+                case "vertical" /* Vertical */:
+                    return previous.height !== current.height;
+                case "all" /* All */:
+                default:
+                    return true;
+            }
+        }), map(([_, current]) => current));
+    };
+    var ResizeDirection;
+    (function (ResizeDirection) {
+        ResizeDirection["All"] = "all";
+        ResizeDirection["Horizontal"] = "horizontal";
+        ResizeDirection["Vertical"] = "vertical";
+    })(ResizeDirection || (ResizeDirection = {}));
+
+    class CartesianChart {
+        constructor(container, partialOptions) {
+            this.container = container;
             this.layout = new CartesianLayout();
             this.axis = new CartesianAxis();
             this.legend = new CartesianLegend();
             this.tooltip = new CartesianTooltip();
             this.series = new CartesianSeries(this.axis, this.tooltip);
-            this.chartSelection = this.buildChartSelection(chartContainer, this.options);
+            this.destroyed = false;
+            this.options = lodashEs.defaultsDeep({}, partialOptions, getDefaultOptions());
+            this.chartSelection = this.buildChartSelection(container, this.options);
+            this.setResponsive(this.options.responsive);
             this.draw();
+        }
+        setResponsive(enabled) {
+            if (enabled) {
+                fromResize(this.container, { emitOnStart: false }).subscribe(() => this.redraw());
+            }
         }
         draw() {
             this.drawLayout();
@@ -1602,6 +3084,7 @@
         }
         redraw() {
             this.clear();
+            this.chartSelection = this.buildChartSelection(this.container, this.options);
             this.draw();
         }
         reflow() {
@@ -1614,11 +3097,11 @@
             }
         }
         removeSeries(seriesName) {
-            this.options.series = this.options.series.filter(seriesOption => seriesOption.name !== seriesName);
+            this.options.series = this.options.series.filter((seriesOption) => seriesOption.name !== seriesName);
             this.series.drawSeries(this.chartSelection, this.options);
         }
         setData(seriesName, data, render = true) {
-            const currentSeriesOption = this.options.series.find(seriesOption => seriesOption.name === seriesName);
+            const currentSeriesOption = this.options.series.find((seriesOption) => seriesOption.name === seriesName);
             if (!currentSeriesOption) {
                 throw new Error(`Series: ${seriesName} does not exist`);
             }
@@ -1628,7 +3111,7 @@
             }
         }
         addPoints(seriesName, data, redraw) {
-            const seriesOption = this.options.series.find(series => series.name === seriesName);
+            const seriesOption = this.options.series.find((series) => series.name === seriesName);
             if (seriesOption === undefined) {
                 throw Error("Unknown series");
             }
@@ -1638,7 +3121,7 @@
             }
         }
         addPoint(seriesName, datum, redraw) {
-            const seriesOption = this.options.series.find(series => series.name === seriesName);
+            const seriesOption = this.options.series.find((series) => series.name === seriesName);
             if (seriesOption === undefined) {
                 throw Error("Unknown series");
             }
@@ -1648,13 +3131,16 @@
             }
         }
         clear() {
-            this.chartSelection.selectAll("*").remove();
+            d3Selection.select(this.container).selectAll("svg").remove();
+        }
+        destroy() {
+            this.clear();
+            this.destroyed = true;
         }
         buildChartSelection(chartContainer, options) {
-            const containerSelection = d3Selection.select(chartContainer);
-            const width = containerSelection.node().offsetWidth;
-            const height = containerSelection.node().offsetHeight;
-            return containerSelection
+            const width = chartContainer.offsetWidth;
+            const height = chartContainer.offsetHeight;
+            return d3Selection.select(chartContainer)
                 .append("svg")
                 .attr("height", height)
                 .attr("width", width)
@@ -1676,10 +3162,14 @@
         drawSeries() {
             this.series.drawSeries(this.chartSelection, this.options);
         }
+        throwIfDestroyed() {
+            if (this.destroyed) {
+                throw new Error("This CartesianChart has been destroyed");
+            }
+        }
     }
 
     exports.CartesianChart = CartesianChart;
-    exports.CartesianObject = CartesianObject;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
@@ -1709,7 +3199,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "h1,\nh2 {\n  font-family: Lato;\n}\n\n.app-root {\n  width: 100%;\n  height: 100vh;\n\n  display: flex;\n  flex-direction: column;\n}\n\n.title {\n  display: flex;\n  align-items: center;\n}\n\n.docs {\n  margin-left: 24px;\n}\n\n.charts {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-auto-rows: 300px;\n}\n\n.full-row {\n  grid-column-start: 1;\n  grid-column-end: 3;\n}\n", "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;;EAEE,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,aAAa;;EAEb,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,8BAA8B;EAC9B,qBAAqB;AACvB;;AAEA;EACE,oBAAoB;EACpB,kBAAkB;AACpB","sourcesContent":["h1,\nh2 {\n  font-family: Lato;\n}\n\n.app-root {\n  width: 100%;\n  height: 100vh;\n\n  display: flex;\n  flex-direction: column;\n}\n\n.title {\n  display: flex;\n  align-items: center;\n}\n\n.docs {\n  margin-left: 24px;\n}\n\n.charts {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-auto-rows: 300px;\n}\n\n.full-row {\n  grid-column-start: 1;\n  grid-column-end: 3;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "h1,\nh2 {\n  font-family: Lato;\n}\n\n.app-root {\n  width: 100%;\n  height: 100vh;\n\n  display: flex;\n  flex-direction: column;\n}\n\n.title {\n  display: flex;\n  align-items: center;\n}\n\n.docs {\n  margin-left: 24px;\n}\n\n.charts {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 50% 50%;\n  grid-auto-rows: 300px;\n}\n\n.full-row {\n  grid-column-start: 1;\n  grid-column-end: 3;\n}\n", "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;;EAEE,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,aAAa;;EAEb,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,8BAA8B;EAC9B,qBAAqB;AACvB;;AAEA;EACE,oBAAoB;EACpB,kBAAkB;AACpB","sourcesContent":["h1,\nh2 {\n  font-family: Lato;\n}\n\n.app-root {\n  width: 100%;\n  height: 100vh;\n\n  display: flex;\n  flex-direction: column;\n}\n\n.title {\n  display: flex;\n  align-items: center;\n}\n\n.docs {\n  margin-left: 24px;\n}\n\n.charts {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 50% 50%;\n  grid-auto-rows: 300px;\n}\n\n.full-row {\n  grid-column-start: 1;\n  grid-column-end: 3;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
