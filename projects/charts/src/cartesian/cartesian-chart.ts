@@ -1,20 +1,23 @@
-import { select } from "d3-selection";
 import { defaultsDeep } from "lodash-es";
 import { CartesianAxis } from "./axis/cartesian-axis";
 import {
+  AxisScaleType,
   CartesianOptions,
   DataPoint,
   getDefaultOptions,
+  OrdinalDataPoint,
   RecursivePartial,
-  SeriesOptions
+  SeriesOptions,
 } from "./cartesian";
-import { CartesianChartSelection, CartesianObject } from "./cartesian-object";
 import { CartesianLayout } from "./layout/cartesian-layout";
 import { CartesianLegend } from "./legend/cartesian-legend";
 import { CartesianSeries } from "./series/cartesian-series";
 import { CartesianTooltip } from "./tooltip/cartesian-tooltip";
-
-export class CartesianChart extends CartesianObject {
+import { Axis } from "d3-axis";
+import { ScaleBand, ScaleContinuousNumeric, ScaleTime } from "d3-scale";
+import { select, Selection } from "d3-selection";
+import { fromResize } from "@twig-it/from-resize";
+export class CartesianChart {
   private readonly layout: CartesianLayout = new CartesianLayout();
   private readonly axis: CartesianAxis = new CartesianAxis();
   private readonly legend: CartesianLegend = new CartesianLegend();
@@ -24,22 +27,27 @@ export class CartesianChart extends CartesianObject {
     this.tooltip
   );
 
-  private readonly chartSelection: CartesianChartSelection;
+  protected readonly options: CartesianOptions;
+  private chartSelection: CartesianChartSelection;
+  private destroyed: boolean = false;
 
   public constructor(
-    chartContainer: HTMLElement,
+    protected readonly container: HTMLElement,
     partialOptions: RecursivePartial<CartesianOptions>
   ) {
-    super(
-      chartContainer,
-      defaultsDeep({}, partialOptions, getDefaultOptions())
-    );
-    this.chartSelection = this.buildChartSelection(
-      chartContainer,
-      this.options
-    );
+    this.options = defaultsDeep({}, partialOptions, getDefaultOptions());
+    this.chartSelection = this.buildChartSelection(container, this.options);
 
+    this.setResponsive(this.options.responsive);
     this.draw();
+  }
+
+  public setResponsive(enabled: boolean): void {
+    if (enabled) {
+      fromResize(this.container, { emitOnStart: false }).subscribe(() =>
+        this.redraw()
+      );
+    }
   }
 
   public draw(): void {
@@ -51,6 +59,10 @@ export class CartesianChart extends CartesianObject {
 
   public redraw(): void {
     this.clear();
+    this.chartSelection = this.buildChartSelection(
+      this.container,
+      this.options
+    );
     this.draw();
   }
 
@@ -67,7 +79,7 @@ export class CartesianChart extends CartesianObject {
 
   public removeSeries(seriesName: string): void {
     this.options.series = this.options.series.filter(
-      seriesOption => seriesOption.name !== seriesName
+      (seriesOption) => seriesOption.name !== seriesName
     );
     this.series.drawSeries(this.chartSelection, this.options);
   }
@@ -78,7 +90,7 @@ export class CartesianChart extends CartesianObject {
     render: boolean = true
   ): void {
     const currentSeriesOption = this.options.series.find(
-      seriesOption => seriesOption.name === seriesName
+      (seriesOption) => seriesOption.name === seriesName
     );
 
     if (!currentSeriesOption) {
@@ -98,7 +110,7 @@ export class CartesianChart extends CartesianObject {
     redraw: boolean
   ): void {
     const seriesOption = this.options.series.find(
-      series => series.name === seriesName
+      (series) => series.name === seriesName
     );
     if (seriesOption === undefined) {
       throw Error("Unknown series");
@@ -112,7 +124,7 @@ export class CartesianChart extends CartesianObject {
 
   public addPoint(seriesName: string, datum: DataPoint, redraw: boolean): void {
     const seriesOption = this.options.series.find(
-      series => series.name === seriesName
+      (series) => series.name === seriesName
     );
     if (seriesOption === undefined) {
       throw Error("Unknown series");
@@ -125,20 +137,22 @@ export class CartesianChart extends CartesianObject {
   }
 
   public clear(): void {
-    this.chartSelection.selectAll("*").remove();
+    select(this.container).selectAll("svg").remove();
+  }
+
+  public destroy(): void {
+    this.clear();
+    this.destroyed = true;
   }
 
   private buildChartSelection(
     chartContainer: HTMLElement,
     options: CartesianOptions
   ): CartesianChartSelection {
-    const containerSelection = select<HTMLElement, CartesianObject>(
-      chartContainer
-    );
-    const width = (containerSelection.node() as HTMLElement).offsetWidth;
-    const height = (containerSelection.node() as HTMLElement).offsetHeight;
+    const width = chartContainer.offsetWidth;
+    const height = chartContainer.offsetHeight;
 
-    return containerSelection
+    return select<HTMLElement, CartesianChart>(chartContainer)
       .append<SVGElement>("svg")
       .attr("height", height)
       .attr("width", width)
@@ -167,4 +181,111 @@ export class CartesianChart extends CartesianObject {
   private drawSeries(): void {
     this.series.drawSeries(this.chartSelection, this.options);
   }
+
+  protected throwIfDestroyed(): void {
+    if (this.destroyed) {
+      throw new Error("This CartesianChart has been destroyed");
+    }
+  }
+}
+
+/*
+ * @ignore for documentation
+ */
+export type CartesianContainerSelection = Selection<
+  HTMLElement,
+  CartesianChart,
+  null,
+  undefined
+>;
+
+/*
+ * @ignore for documentation
+ */
+export type CartesianChartSelection = Selection<
+  SVGGElement,
+  CartesianChart,
+  null,
+  undefined
+>;
+
+/*
+ * @ignore for documentation
+ */
+export type HTMLSelection = Selection<HTMLElement, {}, null, undefined>;
+
+/*
+ * @ignore for documentation
+ */
+export type SVGSelection = Selection<
+  SVGElement,
+  CartesianChart,
+  null,
+  undefined
+>;
+
+/*
+ * @ignore for documentation
+ */
+export type SVGGAxisSelection = Selection<
+  SVGGElement,
+  CartesianAxisData,
+  SVGElement,
+  CartesianChart
+>;
+
+/*
+ * @ignore for documentation
+ */
+export type SVGGAxisTitleSelection = Selection<
+  SVGTextElement,
+  string,
+  SVGGElement,
+  CartesianAxisData
+>;
+
+/*
+ * @ignore for documentation
+ */
+export type SVGChildSelection = Selection<SVGElement, {}, SVGElement, {}>;
+
+/*
+ * @ignore for documentation
+ */
+export type AxisSelection = Selection<
+  SVGElement,
+  CartesianAxisData,
+  SVGElement,
+  {}
+>;
+
+/*
+ * @ignore for documentation
+ */
+export type DataPointSelection = Selection<
+  SVGElement,
+  DataPoint | OrdinalDataPoint,
+  null,
+  undefined
+>;
+
+/*
+ * @ignore for documentation
+ */
+export type ToolTipSelection = Selection<HTMLElement, {}, HTMLElement, unknown>;
+
+/*
+ * @ignore for documentation
+ */
+export type ScaleType =
+  | ScaleContinuousNumeric<number, number>
+  | ScaleTime<number, number>
+  | ScaleBand<string>;
+
+/*
+ * @ignore for documentation
+ */
+export interface CartesianAxisData {
+  axis: Axis<string | number | Date>;
+  scaleType: AxisScaleType;
 }

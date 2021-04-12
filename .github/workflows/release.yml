@@ -14,7 +14,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Npm Install
-        run: npm ci
+        run: npm config set '//npm.pkg.github.com/:_authToken' "${GPREAD}" && npm ci
+        env:
+          GPRREAD: ${{ secrets.GPREAD }}
 
       - name: Build
         run: npm run build:ci

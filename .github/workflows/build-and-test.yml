@@ -20,7 +20,9 @@ jobs:
 
       - name: Npm Install
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm config set '//npm.pkg.github.com/:_authToken' "${GPREAD}" && npm ci
+        env:
+          GPRREAD: ${{ secrets.GPREAD }}
   build:
     runs-on: ubuntu-20.04
     needs: [npm-install]

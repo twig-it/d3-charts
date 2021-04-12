@@ -16,8 +16,7 @@ export {
   ToolTipOption,
   DataPoint,
   OrdinalDataPoint,
-  RecursivePartial
+  RecursivePartial,
 } from "./cartesian/cartesian";
 
-export { CartesianObject } from "./cartesian/cartesian-object";
 export { CartesianChart } from "./cartesian/cartesian-chart";

@@ -2,8 +2,8 @@ import { axisLeft, AxisScale } from "d3-axis";
 import { AxisOptions } from "../../cartesian";
 import {
   SVGGAxisSelection,
-  SVGGAxisTitleSelection
-} from "../../cartesian-object";
+  SVGGAxisTitleSelection,
+} from "../../cartesian-chart";
 import { CartesianAxisScale } from "../cartesian-axis-scale";
 import { AxisRenderer, AxisRendererConfig } from "./axis-renderer";
 
@@ -21,9 +21,9 @@ export class YAxisLeftRenderer extends AxisRenderer {
       );
     }
 
-    const d3Axis = axisLeft(rendererConfig.scale as AxisScale<
-      number | string | Date
-    >);
+    const d3Axis = axisLeft(
+      rendererConfig.scale as AxisScale<number | string | Date>
+    );
     d3Axis.ticks(5);
     d3Axis.tickSize(-1 * rendererConfig.seriesWidth);
     d3Axis.tickSizeOuter(0);

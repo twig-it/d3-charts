@@ -18,6 +18,7 @@
     "build:app:dev": "webpack build --mode=development -c webpack.config.js",
     "build:app:prod": "webpack build --mode=production -c webpack.config.js",
     "build:app:serve": "webpack serve",
+    "start:demo": "npm run bundle:libs && webpack build --mode=development && webpack serve",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "docs:types": "typedoc ./projects/charts/src/index.ts --tsconfig ./projects/charts/tsconfig.lib.json --out docs/types",
@@ -25,8 +26,7 @@
   },
   "private": true,
   "dependencies": {
-    "@types/node": "^14.14.37",
-    "@types/webpack": "^5.0.0",
+    "@twig-it/from-resize": "^1.0.1",
     "d3": "^5.9.2",
     "lodash-es": "^4.17.21"
   },

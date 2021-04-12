@@ -1,7 +1,7 @@
 import { AxisScale } from "d3-axis";
 import { curveMonotoneX, line } from "d3-shape";
 import { DataPoint, SeriesOptions } from "../../cartesian";
-import { CartesianChartSelection } from "../../cartesian-object";
+import { CartesianChartSelection } from "../../cartesian-chart";
 import { CartesianTooltip } from "../../tooltip/cartesian-tooltip";
 import { PointsSeriesRenderer } from "./points-series-renderer";
 import { SeriesRenderer, SeriesRendererConfig } from "./series-renderer";

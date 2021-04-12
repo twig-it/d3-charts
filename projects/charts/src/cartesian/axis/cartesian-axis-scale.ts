@@ -7,10 +7,10 @@ import {
   scaleLog,
   ScaleLogarithmic,
   scaleTime,
-  ScaleTime
+  ScaleTime,
 } from "d3-scale";
 import { AxisScaleType } from "../cartesian";
-import { ScaleType } from "../cartesian-object";
+import { ScaleType } from "../cartesian-chart";
 
 export class CartesianAxisScale {
   public getScale(
@@ -54,18 +54,14 @@ export class CartesianAxisScale {
     rangeMin: number,
     rangeMax: number
   ): ScaleLinear<number, number> {
-    return scaleLinear()
-      .range([rangeMin, rangeMax])
-      .nice();
+    return scaleLinear().range([rangeMin, rangeMax]).nice();
   }
 
   public getLogarithmicScale(
     rangeMin: number,
     rangeMax: number
   ): ScaleLogarithmic<number, number> {
-    return scaleLog()
-      .range([rangeMin, rangeMax])
-      .nice();
+    return scaleLog().range([rangeMin, rangeMax]).nice();
   }
 
   public getOrdinalScale(

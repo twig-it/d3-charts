@@ -4,8 +4,8 @@ import { AxisOptions, CartesianOptions } from "../cartesian";
 import {
   CartesianAxisData,
   CartesianChartSelection,
-  ScaleType
-} from "../cartesian-object";
+  ScaleType,
+} from "../cartesian-chart";
 import { ChartLayoutClass } from "../layout/cartesian-layout";
 import { CartesianAxisScale } from "./cartesian-axis-scale";
 import { XAxisBottomRenderer } from "./renderer/x-axis-bottom-renderer";
@@ -71,7 +71,7 @@ export class CartesianAxis {
       axisOption: axisOption,
       seriesWidth: seriesWidth,
       seriesHeight: seriesHeight,
-      scale: scale
+      scale: scale,
     });
   }
 
@@ -135,7 +135,7 @@ export class CartesianAxis {
         axisSelection: axisSelection,
         axisOption: axisOption,
         seriesWidth: seriesWidth,
-        seriesHeight: seriesHeight
+        seriesHeight: seriesHeight,
       });
     });
   }

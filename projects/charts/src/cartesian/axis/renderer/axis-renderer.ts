@@ -16,7 +16,7 @@ import {
   SVGChildSelection,
   SVGGAxisSelection,
   SVGGAxisTitleSelection,
-} from "../../cartesian-object";
+} from "../../cartesian-chart";
 import { ChartLayoutClass } from "../../layout/cartesian-layout";
 import { CartesianAxisScale } from "../cartesian-axis-scale";
 

@@ -2,6 +2,7 @@
  * Options for configuring the chart
  */
 export interface CartesianOptions {
+  responsive: boolean;
   animation: boolean;
   style: StyleOptions;
   margin: MarginOptions;
@@ -57,7 +58,7 @@ export enum AxisScaleType {
   Linear = "linear",
   Logarithmic = "logarithmic",
   Time = "datetime",
-  Category = "category"
+  Category = "category",
 }
 
 /*
@@ -74,7 +75,7 @@ export interface LegendOptions {
  */
 export enum LegendAlign {
   Right = "right",
-  Bottom = "bottom"
+  Bottom = "bottom",
 }
 
 /*
@@ -98,7 +99,7 @@ export enum VisualizationType {
   Column = "column",
   Area = "area",
   Line = "line",
-  Points = "points"
+  Points = "points",
 }
 
 /*
@@ -128,17 +129,18 @@ export interface OrdinalDataPoint {
 export const getDefaultOptions = (): CartesianOptions => {
   return {
     animation: false,
+    responsive: true,
     style: {
       backgroundColor: "#FFFFFF",
       fontFamily:
         '"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif',
-      fontSize: "12px"
+      fontSize: "12px",
     },
     margin: {
       top: 5,
       left: 5,
       bottom: 5,
-      right: 5
+      right: 5,
     },
     xAxis: [],
     yAxis: [],
@@ -146,8 +148,8 @@ export const getDefaultOptions = (): CartesianOptions => {
     legend: {
       title: "",
       visible: true,
-      align: LegendAlign.Right
-    }
+      align: LegendAlign.Right,
+    },
   };
 };
 

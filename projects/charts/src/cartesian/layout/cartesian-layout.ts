@@ -1,5 +1,5 @@
 import { AxisOptions, CartesianOptions, LegendAlign } from "../cartesian";
-import { CartesianChartSelection } from "../cartesian-object";
+import { CartesianChartSelection } from "../cartesian-chart";
 
 interface SectionDimension {
   position: Position;
@@ -19,7 +19,7 @@ export const enum ChartLayoutClass {
   AxisTop = "axis-top-section",
   AxisBottom = "axis-bottom-section",
   AxisLeft = "axis-left-section",
-  AxisRight = "axis-right-section"
+  AxisRight = "axis-right-section",
 }
 
 export class CartesianLayout {
@@ -119,7 +119,7 @@ export class CartesianLayout {
     const availablePlotWidth =
       plotWidth - options.yAxis.length * CartesianLayout.YAXIS_SECTION_WIDTH;
     const offsetX =
-      options.yAxis.filter(axisOption => !axisOption.opposite).length *
+      options.yAxis.filter((axisOption) => !axisOption.opposite).length *
       CartesianLayout.YAXIS_SECTION_WIDTH;
 
     this.buildBottomXAxesSections(
@@ -144,7 +144,7 @@ export class CartesianLayout {
   ): void {
     const plotheight = Number(plotSelection.attr("height"));
     const bottomAligned = axisOptions.filter(
-      axisOption => !axisOption.opposite
+      (axisOption) => !axisOption.opposite
     );
     const dimension = this.getXAxisSectionDimension(
       availablePlotWidth,
@@ -181,7 +181,7 @@ export class CartesianLayout {
     offsetX: number
   ): void {
     const plotheight = Number(plotSelection.attr("height"));
-    const topAligned = axisOptions.filter(axisOption => axisOption.opposite);
+    const topAligned = axisOptions.filter((axisOption) => axisOption.opposite);
     const dimension = this.getXAxisSectionDimension(
       availablePlotWidth,
       plotheight,
@@ -219,7 +219,7 @@ export class CartesianLayout {
     const availablePlotHeight =
       plotheight - options.xAxis.length * CartesianLayout.XAXIS_SECTION_HEIGHT;
     const offsetY =
-      options.xAxis.filter(axisOption => axisOption.opposite).length *
+      options.xAxis.filter((axisOption) => axisOption.opposite).length *
       CartesianLayout.XAXIS_SECTION_HEIGHT;
 
     this.buildLeftYAxesSections(
@@ -243,7 +243,9 @@ export class CartesianLayout {
     offsetY: number
   ): void {
     const plotWidth = Number(plotSelection.attr("width"));
-    const leftAligned = axisOptions.filter(axisOption => !axisOption.opposite);
+    const leftAligned = axisOptions.filter(
+      (axisOption) => !axisOption.opposite
+    );
     const dimension = this.getYAxisSectionDimension(
       plotWidth,
       availablePlotHeight,
@@ -280,7 +282,9 @@ export class CartesianLayout {
     offsetY: number
   ): void {
     const plotWidth = Number(plotSelection.attr("width"));
-    const rightAligned = axisOptions.filter(axisOption => axisOption.opposite);
+    const rightAligned = axisOptions.filter(
+      (axisOption) => axisOption.opposite
+    );
     const dimension = this.getYAxisSectionDimension(
       plotWidth,
       availablePlotHeight,
@@ -363,8 +367,8 @@ export class CartesianLayout {
       height: height,
       position: {
         x: 0,
-        y: 0
-      }
+        y: 0,
+      },
     };
   }
 
@@ -379,8 +383,8 @@ export class CartesianLayout {
       height: height,
       position: {
         x: 0,
-        y: 0
-      }
+        y: 0,
+      },
     };
   }
 
@@ -395,8 +399,8 @@ export class CartesianLayout {
       height: height - legendHeight,
       position: {
         x: 0,
-        y: 0
-      }
+        y: 0,
+      },
     };
   }
 
@@ -411,8 +415,8 @@ export class CartesianLayout {
       height: height,
       position: {
         x: width - legendWidth,
-        y: 0
-      }
+        y: 0,
+      },
     };
   }
 
@@ -427,8 +431,8 @@ export class CartesianLayout {
       height: legendHeight,
       position: {
         x: 0,
-        y: height - legendHeight
-      }
+        y: height - legendHeight,
+      },
     };
   }
 
@@ -446,8 +450,8 @@ export class CartesianLayout {
       height: height,
       position: {
         x: isLeft ? 0 : width - sectionWidth,
-        y: offsetY
-      }
+        y: offsetY,
+      },
     };
   }
 
@@ -465,8 +469,8 @@ export class CartesianLayout {
       height: sectionHeight,
       position: {
         x: offsetX,
-        y: isBottom ? height - sectionHeight : sectionHeight
-      }
+        y: isBottom ? height - sectionHeight : sectionHeight,
+      },
     };
   }
 
@@ -481,8 +485,8 @@ export class CartesianLayout {
       height: height,
       position: {
         x: axisPosition * sectionWidth,
-        y: 0
-      }
+        y: 0,
+      },
     };
   }
 
@@ -497,8 +501,8 @@ export class CartesianLayout {
       height: sectionHeight,
       position: {
         x: 0,
-        y: axisPosition * sectionHeight
-      }
+        y: axisPosition * sectionHeight,
+      },
     };
   }
 
@@ -513,8 +517,8 @@ export class CartesianLayout {
       height: height,
       position: {
         x: offsetX,
-        y: offsetY
-      }
+        y: offsetY,
+      },
     };
   }
 }
