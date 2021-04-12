@@ -18,9 +18,23 @@ Currently, we are supporting Cartesian chart with following features:
 - Combination of charts (E.g. combine Column, Area in a multi axis chart)
 - Dynamically update charts (E.g. Add new series, update series data, change color etc
 
+
 ## Installation
 
-Checkout github packages for instructions
+Checkout github packages for instructions.
+
+### Download @twig-it artifacts from Github Packages
+- Create an `.npmrc` file in your repo
+- Add @twig-it:registry=https://npm.pkg.github.com
+- Create a PAT that has read access to Github Packages. Let's call this token `GPRead`
+- Set this token in npm for your CI runs. Example below:
+   ```
+    - name: Npm Install
+        run: npm config set '//npm.pkg.github.com/:_authToken' "${GPRREAD}" && npm ci
+        env:
+          GPRREAD: ${{ secrets.GPREAD }}
+
+   ```
 
 ## Demo
 
