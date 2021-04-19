@@ -1,6 +1,9 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # D3 Charts
@@ -20,7 +23,22 @@ Currently, we are supporting Cartesian chart with following features:
 
 ## Installation
 
-Checkout github packages for instructions
+Checkout github packages for instructions.
+
+### Download @twig-it artifacts from Github Packages
+
+- Create an `.npmrc` file in your repo
+- Add @twig-it:registry=https://npm.pkg.github.com
+- Create a PAT that has read access to Github Packages. Let's call this token `GPRead`
+- Set this token in npm for your CI runs. Example below:
+
+  ```
+   - name: Npm Install
+       run: npm config set '//npm.pkg.github.com/:_authToken' "${GPRREAD}" && npm ci
+       env:
+         GPRREAD: ${{ secrets.GPREAD }}
+
+  ```
 
 ## Demo
 
