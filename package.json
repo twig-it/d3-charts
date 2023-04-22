@@ -54,7 +54,7 @@
     "@types/lodash-es": "^4.17.4",
     "@types/webpack-dev-server": "^3.11.3",
     "babel-loader": "^8.2.2",
-    "commitizen": "^4.0.3",
+    "commitizen": "^4.3.0",
     "core-js": "^3.9.1",
     "css-loader": "^5.2.0",
     "cz-conventional-changelog": "^3.0.2",
